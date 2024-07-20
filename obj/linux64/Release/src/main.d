@@ -320,19 +320,7 @@ obj/linux64/Release/src/main.o: \
  /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/3d/of3dUtils.h \
  /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/3d/ofCamera.h \
  /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/3d/ofEasyCam.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/apps/myApps/videoSynthesis/src/ofApp.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidi.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiIn.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxBaseMidi.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiConstants.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiMessage.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiTypes.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/desktop/ofxRtMidiIn.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/libs/rtmidi/RtMidi.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiOut.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/desktop/ofxRtMidiOut.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiClock.h \
- /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiTimecode.h
+ /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/apps/myApps/videoSynthesis/src/ofApp.h
 /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/ofMain.h:
 /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/utils/ofConstants.h:
 /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/tess2/include/tesselator.h:
@@ -655,15 +643,3 @@ obj/linux64/Release/src/main.o: \
 /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/3d/ofCamera.h:
 /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/libs/openFrameworks/3d/ofEasyCam.h:
 /home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/apps/myApps/videoSynthesis/src/ofApp.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidi.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiIn.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxBaseMidi.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiConstants.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiMessage.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiTypes.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/desktop/ofxRtMidiIn.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/libs/rtmidi/RtMidi.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiOut.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/desktop/ofxRtMidiOut.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiClock.h:
-/home/dominic/Desktop/projects/of_v0.12.0_linux64gcc6_release/addons/ofxMidi/src/ofxMidiTimecode.h:

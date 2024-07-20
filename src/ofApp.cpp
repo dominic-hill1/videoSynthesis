@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2013 Dan Wilcox <danomatika@gmail.com>
- *
- * BSD Simplified License.
- * For information on usage and redistribution, and for a DISCLAIMER OF ALL
- * WARRANTIES, see the file, "LICENSE.txt," in this distribution.
- *
- * See https://github.com/danomatika/ofxMidi for documentation
- *
- */
 #include "ofApp.h"
 
 #include "iostream"
@@ -57,14 +47,9 @@ void ofApp::setup() {
 	allocateAndDeclareSundries();
 	
 	shader1.load("shadersES2/shader1");
-	midiSetup();
 
 	serial.setup("/dev/ttyACM0", 9600);
 	
-	for(int i=0;i<controlSize;i++){
-		control1[i]=0.0;
-		midiActiveFloat[i]=0;
-	}
 
 	// Audio Setup
 	soundStream.printDeviceList();
@@ -82,19 +67,6 @@ void ofApp::setup() {
 
 
 	ofSoundStreamSettings settings;
-
-	// if you want to set the device id to be different than the default
-	// auto devices = soundStream.getDeviceList();
-	// settings.device = devices[4];
-
-	// you can also get devices for an specific api
-	// auto devices = soundStream.getDevicesByApi(ofSoundDevice::Api::PULSE);
-	// settings.device = devices[0];
-
-	// or get the default device for an specific api:
-	// settings.api = ofSoundDevice::Api::PULSE;
-
-	// or by name
 	auto devices = soundStream.getMatchingDevices("default");
 	if(!devices.empty()){
 		settings.setInDevice(devices[0]);
@@ -133,17 +105,8 @@ void ofApp::allocateAndDeclareSundries(){
 }
 //--------------------------------------------------------------
 void ofApp::update() {
-	/*there is no practical difference between update()
-	 * and draw().  any code that you write in either function
-	 * will execute in a continuous sequential loop while the
-	 * program is running.  the custom is to put everything that is not 
-	 * directly related to placing pixels on the screen in update
-	 * and everything else in draw for easier parsing, but 
-	 * you can do whatever you want and it won't affect how things compile
-	 */
 	input1.update();
 	// movie1.update();
-	midiBiz();
 
 	while (serial.available() > 0) {
 		char byteData = serial.readByte();
@@ -164,13 +127,10 @@ void ofApp::update() {
 		}
 	}
 
-	//lets scale the vol up to a 0-1 range
 	scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
 
-	//lets record the volume into an array
 	volHistory.push_back( scaledVol );
 	
-	//if we are bigger the the size we want to record - lets drop the oldest value
 	if( volHistory.size() >= 400 ){
 		volHistory.erase(volHistory.begin(), volHistory.begin()+1);
 	}
@@ -221,11 +181,7 @@ void ofApp::draw() {
 
 	// movie1.draw(0, 480);
 	
-	//i use this block of code to print out like useful information for debugging various things and/or just to keep the 
-	//framerate displayed to make sure i'm not losing any frames while testing out new features.  uncomment the ofDrawBitmap etc etc
-	//to print the stuff out on screen
-	//for homework one i added an example where we will print 
-	//the string "sx =" and then the value sx to the screen
+
     ofSetColor(255);
     string msg="fps="+ofToString(ofGetFrameRate(),2)+" sx = " +ofToString(sx,2)+" time = " +ofToString(time1,2) + " audio = " +ofToString(scaledVol,2) +  " az = " +ofToString(az,2) + " fv = " +ofToString(fv,2);
     ofDrawBitmapString(msg,10,10);
@@ -233,90 +189,7 @@ void ofApp::draw() {
 
 //--------------------------------------------------------------
 void ofApp::exit() {
-	
-	// clean up
-	midiIn.closePort();
-	midiIn.removeListener(this);
-}
 
-//--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage& msg) {
-
-	/* // add the latest message to the message queue */
-	/* midiMessages.push_back(msg); */
-
-	/* // remove any old messages if we have too many */
-	/* while(midiMessages.size() > 2) { */
-	/* 	midiMessages.erase(midiMessages.begin()); */
-	/* } */
-}
-
-//----------------------------------------------------------
-void ofApp::midiSetup(){
-	/* // print input ports to console */
-	/* midiIn.listInPorts(); */
-	
-	/* // open port by number (you may need to change this) */
-	/* midiIn.openPort(1); */
-	/* //midiIn.openPort("IAC Pure Data In");	// by name */
-	/* //midiIn.openVirtualPort("ofxMidiIn Input"); // open a virtual port */
-	
-	/* // don't ignore sysex, timing, & active sense messages, */
-	/* // these are ignored by default */
-	/* midiIn.ignoreTypes(false, false, false); */
-	
-	/* // add ofApp as a listener */
-	/* midiIn.addListener(this); */
-	
-	/* // print received messages to the console */
-	/* midiIn.setVerbose(true); */
-	
-}
-//----------------------------------------------------------
-void ofApp::midiBiz(){
-                
-	/* for(unsigned int i = 0; i < midiMessages.size(); ++i) { */
-
-	/* 	ofxMidiMessage &message = midiMessages[i]; */
-	
-	/* 	if(message.status < MIDI_SYSEX) { */
-	/* 		//text << "chan: " << message.channel; */
-            /* if(message.status == MIDI_CONTROL_CHANGE) { */
-                
-                /* if(message.control>15 && message.control<24){ */
-	/* 				if(abs((message.value-MIDI_MAGIC)/MIDI_MAGIC-control1[message.control-16])<CONTROL_THRESHOLD){ */
-	/* 						midiActiveFloat[message.control-16]=TRUE; */
-	/* 				} */
-	/* 				if(midiActiveFloat[message.control-16]==1){ */
-	/* 					control1[message.control-16]=(message.value-MIDI_MAGIC)/MIDI_MAGIC; */
-	/* 				} */	
-                /* } */
-                
-                /* if(message.control>119 && message.control<128){ */
-	/* 				if(abs((message.value-MIDI_MAGIC)/MIDI_MAGIC-control1[message.control-120+8])<CONTROL_THRESHOLD){ */
-	/* 						midiActiveFloat[message.control-120+8]=TRUE; */
-	/* 				} */
-	/* 				if(midiActiveFloat[message.control-120+8]==1){ */
-	/* 					control1[message.control-120+8]=(message.value-MIDI_MAGIC)/MIDI_MAGIC; */
-                    /* } */
-                /* } */
-                /* if(message.control==58){ */
-	/* 				for(int i=0;i<controlSize;i++){ */
-	/* 					control1[i]=0.0; */
-	/* 					midiActiveFloat[i]=0; */
-	/* 				} */
-	/* 			} */
-	/* 			if(message.control==62){ */					
-                    /* if(message.value==127){ */
-                        /* //switch on */
-                    /* } */                    
-                    /* if(message.value==0){ */
-	/* 					//switch off */
-                    /* } */
-                /* } */
-            /* } */
-	/* 	} */
-	/* } */	
 }
 
 void ofApp::audioIn(ofSoundBuffer & input){
@@ -379,7 +252,6 @@ void ofApp::keyPressed(int key) {
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key) {
-	//if we wanted key pressed things to be momentary, we would use
-	//both keyPressed and keyReleased to manage that
+	
 }
 

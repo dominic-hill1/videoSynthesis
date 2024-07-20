@@ -106,6 +106,12 @@ void main()
 	float colorx=texCoordVarying.x / windowWidth;
 	float colory=texCoordVarying.y / windowHeight;
 
+	// feedback
+	vec2 feedbackCoords = texCoordVarying;
+	feedbackCoords = feedbackZoom(feedbackCoords, 1.0+0.1*-az/10);
+	// feedbackCoords.x += az;
+	vec4 feedbackColor = texture(tex0, feedbackCoords);
+
 	float hOsc = oscillator(1, colorx*fv/10, audio , 0);
 	float vOsc = oscillator(1, 1/(colory*(1/hOsc)), time2, 0);
 	float zOsc = oscillator(1, 1/(colorx*(hOsc/vOsc*hOsc)), 0, 1); 
@@ -119,10 +125,10 @@ void main()
 	vec4 oscColor = vec4(hOsc/zOsc, vOsc, zOsc/hOsc, 1.0);
 
 	// feedback
-	vec2 feedbackCoords = texCoordVarying;
-	feedbackCoords = feedbackZoom(feedbackCoords, 1.0+0.1*-az/10);
-	// feedbackCoords.x += az;
-	vec4 feedbackColor = texture(tex0, feedbackCoords);
+	// vec2 feedbackCoords = texCoordVarying;
+	// feedbackCoords = feedbackZoom(feedbackCoords, 1.0+0.1*-az/10);
+	// // feedbackCoords.x += az;
+	// vec4 feedbackColor = texture(tex0, feedbackCoords);
 
 	// colors
 	// feedbackColor = colorDisplaceHsb(feedbackColor, .05, 1, .01);
@@ -159,6 +165,8 @@ void main()
 	outColor.rgb = lumaKey(outColor, feedbackColor, audio*fv);
 	// outColor.rgb = lumaKey(input1Color, feedbackColor, fv);
 	// outColor.rgb = lumaKey(input1Color, feedbackColor, audio*10 + 0.01);
+
+
 	
 	outputColor = outColor;
 

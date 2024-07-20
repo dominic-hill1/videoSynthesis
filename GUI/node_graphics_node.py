@@ -7,7 +7,7 @@ class QDMGraphicsNode(QGraphicsItem):
         super().__init__(parent)
 
         self.node = node
-        self.content = self.node.content
+        # self.content = self.node.content
         
         self._title_color = Qt.white
         self._title_font = QFont("Ubuntu", 10)
@@ -16,7 +16,8 @@ class QDMGraphicsNode(QGraphicsItem):
         self.height = 240
         self.edge_size = 10
         self.title_height = 24
-        self._padding = 4
+        self._padding = 20
+        self._text_padding = 4
         self._pen_default = QPen(QColor("#7f000000"))
         self._pen_selected = QPen(QColor("#FFFFA637"))
 
@@ -30,8 +31,8 @@ class QDMGraphicsNode(QGraphicsItem):
         # Init sockets
         self.initSockets()
 
-        # Init content
-        self.initContent()
+        # # Init content
+        # self.initContent()
 
 
         self.initUI()
@@ -71,10 +72,11 @@ class QDMGraphicsNode(QGraphicsItem):
         self.title_item.node = self.node
         self.title_item.setDefaultTextColor(self._title_color)
         self.title_item.setFont(self._title_font)
-        self.title_item.setPos(self._padding, 0)
-        self.title_item.setTextWidth(self.width - 2 * self._padding)
+        self.title_item.setPos(self._text_padding, 0)
+        self.title_item.setTextWidth(self.width - 2 * self._text_padding)
 
     def initContent(self):
+        self.content = self.node.content
         self.grContent = QGraphicsProxyWidget(self)
         self.content.setGeometry(self.edge_size, self.title_height + self.edge_size, self.width - 2 * self.edge_size, self.height - 2 * self.edge_size - self.title_height)
         self.grContent.setWidget(self.content)
