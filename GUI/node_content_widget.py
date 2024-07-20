@@ -103,6 +103,23 @@ class QDMNodeContentLumaKey(QDMNodeContentWidget):
         self.out_label = QLabel("Output", self)
         self.out_label.move(110, 13)
 
+    
+class QDMNodeContentColorDisplace(QDMNodeContentWidget):
+    def initUI(self):
+        self.setContentsMargins(0, 0, 0, 0)
+
+        self.color_label = QLabel("Colour", self)
+        self.color_label.move(5, 10)
+        self.x_label = QLabel("x", self)
+        self.x_label.move(5, 48)
+        self.y_label = QLabel("y", self)
+        self.y_label.move(5, 88)
+        self.z_label = QLabel("z", self)
+        self.z_label.move(5, 128)
+
+        self.out_label = QLabel("Output", self)
+        self.out_label.move(110, 168)
+
 class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
 
     def initUI(self):

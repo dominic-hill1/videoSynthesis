@@ -13,29 +13,10 @@ class Node(Serializable):
         super().__init__()
         self.scene = scene
 
-        # self.content = QDMNodeContentWidget(self)
-        # self.grNode = QDMGraphicsNode(self)
-
-        # self.scene.addNode(self)
-        # self.scene.grScene.addItem(self.grNode)
-
         self.socket_spacing = 40
 
         self.inputs = []
         self.outputs = []
-
-
-        # counter = 0
-        # for item in inputs:
-        #     socket = Socket(node=self, index=counter, position=LEFT_BOTTOM, socket_type=item)
-        #     counter += 1
-        #     self.inputs.append(socket)
-
-        # counter = 0
-        # for item in outputs:
-        #     socket = Socket(node=self, index=counter, position=RIGHT_TOP, socket_type=item)
-        #     counter += 1
-        #     self.outputs.append(socket)
 
 
     def __str__(self):
@@ -182,6 +163,28 @@ class ColorMultNode(Node):
 
         self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
         self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
+
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+
+
+class ColorDisplaceNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Colour displacer"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 240
+        self.content = QDMNodeContentColorDisplace(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=2, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=3, position=LEFT_TOP, socket_type=FLOAT_TYPE))
 
         self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 

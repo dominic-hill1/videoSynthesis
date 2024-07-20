@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
-# from node_socket import FLOAT_TYPE, COLOR_TYPE, FEEDBACK_TYPE
 FLOAT_TYPE = 0
 COLOR_TYPE = 1
 FEEDBACK_TYPE = 2

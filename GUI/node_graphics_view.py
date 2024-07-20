@@ -232,7 +232,7 @@ class QDMGraphicsView(QGraphicsView):
                 if item.socket.hasEdge():
                     item.socket.edge.remove()
                 if DEBUG: print("View::edgeDragEnd ~ Assign end socket", item.socket)
-                if self.previousEdge is not None: self.previousEdge.remove()
+                # if self.previousEdge is not None: self.previousEdge.remove()
                 if DEBUG: print("View::edgeDragEnd ~ Previous edge removed")
                 self.dragEdge.start_socket = self.last_start_socket
                 self.dragEdge.end_socket = item.socket
