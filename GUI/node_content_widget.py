@@ -89,6 +89,31 @@ class QDMNodeContentColorAdd(QDMNodeContentWidget):
         self.out_label = QLabel("Output", self)
         self.out_label.move(110, 85)
 
+class QDMNodeContentLumaKey(QDMNodeContentWidget):
+    def initUI(self):
+        self.setContentsMargins(0, 0, 0, 0)
+
+        self.amp_label = QLabel("Default colour", self)
+        self.amp_label.move(5, 50)
+        self.rate_label = QLabel("Alternative colour", self)
+        self.rate_label.move(5, 88)
+        self.freq_label = QLabel("Sensitivity", self)
+        self.freq_label.move(5, 126)
+
+        self.out_label = QLabel("Output", self)
+        self.out_label.move(110, 13)
+
+class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
+
+    def initUI(self):
+        self.setContentsMargins(0, 0, 0, 0)
+
+        self.zoom_label = QLabel("Zoom factor", self)
+        self.zoom_label.move(5, 10)
+
+        self.out_label = QLabel("Output", self)
+        self.out_label.move(110, 45)
+
 class QDMNodeContentSlider(QDMNodeContentWidget):
     def initUI(self):
         layout = QVBoxLayout()
@@ -114,3 +139,14 @@ class QDMNodeContentSlider(QDMNodeContentWidget):
     def update_label(self, value):
         self.node.value = value
         self.label.setText(f"Value: {value}")
+
+class QDMNodeContentOutput(QDMNodeContentWidget):
+    def initUI(self):
+        self.setContentsMargins(0, 0, 0, 0)
+
+        self.out_label = QLabel("Output to screen", self)
+        self.out_label.move(5, 10)
+
+
+        self.feedback_label = QLabel("Feedback", self)
+        self.feedback_label.move(5, 50)

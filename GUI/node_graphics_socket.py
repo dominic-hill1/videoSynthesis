@@ -2,13 +2,21 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
+# from node_socket import FLOAT_TYPE, COLOR_TYPE, FEEDBACK_TYPE
+FLOAT_TYPE = 0
+COLOR_TYPE = 1
+FEEDBACK_TYPE = 2
+
+
 class QDMGraphicsSocket(QGraphicsItem):
-    def __init__(self, socket, socket_type=0):
+    def __init__(self, socket, socket_type=FLOAT_TYPE):
         self.socket = socket
         super().__init__(socket.node.grNode)
 
         self.radius = 6
         self.outline_width = 1.0
+
+
         self._colors = [
             QColor("#FFFF7700"),
             QColor("#FFFF0000"),
@@ -21,7 +29,16 @@ class QDMGraphicsSocket(QGraphicsItem):
             QColor("#FFDBE220"),
 
         ]
-        self._color_background = self._colors[socket_type]
+
+        if socket_type == FLOAT_TYPE:
+            self._color_background = QColor("#FFFF7700")
+        elif socket_type == COLOR_TYPE:
+            self._color_background = QColor("#ED254E")
+        else: 
+            self._color_background = QColor("#48A9A6")
+
+        # self._color_background = self._colors[socket_type]
+
         self._color_outline = QColor("FF000000")
 
         self._pen = QPen(self._color_outline)

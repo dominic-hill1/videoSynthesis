@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 from node_scene import Scene
-from node_node import SinOscNode, SquareOscNode, ColorMixerNode, ColorAddNode, ColorMultNode, SliderNode
+from node_node import SinOscNode, SquareOscNode, ColorMixerNode, ColorAddNode, ColorMultNode, SliderNode, OutputNode, FeedbackZoomNode, LumaKeyNode
 from node_edge import Edge, EDGE_TYPE_BEZIER
 from node_graphics_view import QDMGraphicsView
 
@@ -44,12 +44,18 @@ class NodeEditorWnd(QWidget):
         node3 = SquareOscNode(self.scene)
         node4 = ColorMixerNode(self.scene)
         node5 = SliderNode(self.scene)
+        node6 = OutputNode(self.scene)
+        node7 = FeedbackZoomNode(self.scene)
+        node8 = LumaKeyNode(self.scene)
 
         node1.setPos(-350, -250)
         node2.setPos(-75, 0)
         node3.setPos(200, -150)
         node4.setPos(300, 300)
-        node4.setPos(100, 300)
+        node5.setPos(100, 300)
+        node6.setPos(300, 200)
+        node7.setPos(100, 100)
+        node8.setPos(200, 150)
 
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[2], edge_type=EDGE_TYPE_BEZIER)

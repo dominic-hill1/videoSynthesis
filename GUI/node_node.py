@@ -2,8 +2,8 @@ from collections import OrderedDict
 from node_serializable import Serializable
 from node_graphics_node import QDMGraphicsNode
 # from node_content_widget import QDMNodeContentWidget
-from node_content_widget import QDMNodeContentOsc, QDMNodeContentColorMixer, QDMNodeContentColorAdd, QDMNodeContentSlider
-from node_socket import Socket, LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM
+from node_content_widget import * 
+from node_socket import Socket, LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM, FLOAT_TYPE, COLOR_TYPE, FEEDBACK_TYPE
 
 DEBUG = False
 
@@ -106,11 +106,11 @@ class OscNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=0))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_BOTTOM, socket_type=0))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=0))
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_TOP, socket_type=0))
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
 
 
 class SinOscNode(OscNode):
@@ -140,11 +140,11 @@ class ColorMixerNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=0))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=0))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_TOP, socket_type=0))
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=2, position=LEFT_TOP, socket_type=FLOAT_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=0))
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
     
 class ColorAddNode(Node):
@@ -161,10 +161,10 @@ class ColorAddNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=0))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=0))
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=0))
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
 class ColorMultNode(Node):
     def __init__(self, scene):
@@ -180,10 +180,48 @@ class ColorMultNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=0))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=0))
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=0))
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+
+class LumaKeyNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Luma Keying"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 200
+        self.content = QDMNodeContentLumaKey(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_TOP, socket_type=COLOR_TYPE))
+
+
+class FeedbackZoomNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Zooming feedback"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentFeedbackZoom(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=FeedbackZoomNode))
 
 
 class SliderNode(Node):
@@ -202,5 +240,23 @@ class SliderNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
+        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=0))
+class OutputNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Output"
+
+        self.value = 0
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentOutput(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=FEEDBACK_TYPE))

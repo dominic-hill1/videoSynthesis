@@ -7,8 +7,12 @@ LEFT_BOTTOM = 2
 RIGHT_TOP = 3
 RIGHT_BOTTOM = 4
 
+FLOAT_TYPE = 0
+COLOR_TYPE = 1
+FEEDBACK_TYPE = 2
+
 class Socket(Serializable):
-    def __init__(self, node, index=0, position=LEFT_TOP, socket_type=1):
+    def __init__(self, node, index=0, position=LEFT_TOP, socket_type=0):
         super().__init__()
         self.node = node
         self.index = index
