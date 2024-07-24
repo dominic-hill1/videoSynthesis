@@ -1,5 +1,8 @@
 from collections import OrderedDict
 import uuid
+import serial
+from multiprocessing import shared_memory
+import numpy as np
 
 from node_serializable import Serializable
 from node_graphics_node import QDMGraphicsNode
@@ -120,8 +123,11 @@ class SinOscNode(OscNode):
         self.title = "Sin Oscillator"
         super().__init__(scene)
 
+    def writeInitCode(self):
+        code = f"float {self.id} = 0;"
+        return code
     def writeCode(self):
-        code = f"float {self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1);"
+        code = f"{self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1);"
         return code
 
 class SquareOscNode(OscNode):
@@ -130,8 +136,11 @@ class SquareOscNode(OscNode):
         self.title = "Square Oscillator"
         super().__init__(scene)
 
+    def writeInitCode(self):
+        code = f"float {self.id} = 0;"
+        return code
     def writeCode(self):
-        code = f"float {self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 2);"
+        code = f"{self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 2);"
         return code
 
 
@@ -155,8 +164,11 @@ class ColorMixerNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeInitCode(self):
+        code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
+        return code
     def writeCode(self):
-        code = f"vec4 {self.id} = vec4({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1.0);"
+        code = f"{self.id} = vec4({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1.0);"
         return code
     
 class ColorAddNode(Node):
@@ -178,8 +190,11 @@ class ColorAddNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeInitCode(self):
+        code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
+        return code
     def writeCode(self):
-        code = f"vec4 {self.id} = vec4(addColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
+        code = f"{self.id} = vec4(addColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
         return code
 
 class ColorMultNode(Node):
@@ -201,8 +216,11 @@ class ColorMultNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeInitCode(self):
+        code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
+        return code
     def writeCode(self):
-        code = f"vec4 {self.id} = vec4(mulitplyColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
+        code = f"{self.id} = vec4(mulitplyColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
         return code
 
 
@@ -227,8 +245,11 @@ class ColorDisplaceNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeInitCode(self):
+        code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
+        return code
     def writeCode(self):
-        code = f"vec4 {self.id} = colorDisplaceHsb({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, {self.inputNodes[3].id});"
+        code = f"{self.id} = colorDisplaceHsb({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, {self.inputNodes[3].id});"
         return code
     
 
@@ -252,8 +273,11 @@ class LumaKeyNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=COLOR_TYPE))
 
+    def writeInitCode(self):
+        code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
+        return code
     def writeCode(self):
-        code = f"vec4 {self.id} = vec4(lumaKey({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}), 1.0);"
+        code = f"{self.id} = vec4(lumaKey({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}), 1.0);"
         return code
 
 
@@ -295,9 +319,25 @@ class SliderNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
 
-    def writeCode(self):
-        code = f"float {self.id} = {self.value};"
+    def writeInitCode(self):
+        code = ""
         return code
+    def writeCode(self):
+        # code = f"{self.id} = {self.value};"
+        # return code
+        return ""
+    
+    def sendValue(self):
+        # self.scene.comms.write(f"{self.id} {self.value}")
+        string = f"{self.id} {self.value}"
+        self.shm = shared_memory.SharedMemory(name=self.scene.shm_name)
+        self.size = 1024
+        self.buffer = self.shm.buf
+        if len(string) >= self.size:
+            raise ValueError("String is too large to fit in the shared memory block.")
+        self.buffer[:len(string)] = string.encode('utf-8')
+        self.buffer[len(string):len(string)+1] = b'\0'  # Null-ter
+
 
 
 
@@ -320,6 +360,10 @@ class OutputNode(Node):
         self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
         self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FEEDBACK_TYPE))
 
+
+
+    def writeInitCode(self):
+        return ""
     def writeCode(self):
         code = f"outputColor = {self.inputNodes[0].id};"
         return code

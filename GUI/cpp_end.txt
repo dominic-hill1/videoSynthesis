@@ -1,0 +1,94 @@
+
+
+	// ofSetColor(127 + 127 * sin(time1), 200, 127 - 127 * sin(time2), 255);
+	// // ofDrawEllipse(mouseX, mouseY, 20+80*abs(sin(time1)), 20+80*abs(sin(time2)));
+	// ofDrawEllipse(720/2, 480/2, 20+80*abs(sin(time1)), 20+80*abs(sin(time2)));
+	// ofSetColor(0);
+	// ofDrawEllipse(720/2, 480/2, 18+80*abs(sin(time1)), 18+80*abs(sin(time2)));
+	// // ofDrawEllipse(mouseX, mouseY, 18+80*abs(sin(time1)), 18+80*abs(sin(time2)));
+
+
+	framebuffer0.end();
+	
+	framebuffer0.draw(0,0,720,480);
+
+	framebuffer1.begin();
+	framebuffer0.draw(0, 0);
+	framebuffer1.end();
+
+	// movie1.draw(0, 480);
+	
+
+    ofSetColor(255);
+    string msg="fps="+ofToString(ofGetFrameRate(),2)+" sx = " +ofToString(sx,2)+" time = " +ofToString(time1,2) + " audio = " +ofToString(scaledVol,2) +  " az = " +ofToString(az,2) + " fv = " +ofToString(fv,2);
+    ofDrawBitmapString(msg,10,10);
+}
+
+//--------------------------------------------------------------
+void ofApp::exit() {
+
+}
+
+void ofApp::audioIn(ofSoundBuffer & input){
+	
+	float curVol = 0.0;
+	
+	// samples are "interleaved"
+	int numCounted = 0;	
+
+	//lets go through each sample and calculate the root mean square which is a rough way to calculate volume	
+	for (size_t i = 0; i < input.getNumFrames(); i++){
+		left[i]		= input[i*2]*0.5;
+		right[i]	= input[i*2+1]*0.5;
+
+		curVol += left[i] * left[i];
+		curVol += right[i] * right[i];
+		numCounted+=2;
+	}
+	
+	//this is how we get the mean of rms :)
+	curVol /= (float)numCounted;
+	
+	// this is how we get the root of rms :)
+	curVol = sqrt( curVol );
+	
+	smoothedVol *= 0.93;
+	smoothedVol += 0.07 * curVol;
+	
+	bufferCounter++;
+	
+}
+
+
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key) {
+	
+	//here is how i map controls from the keyboard
+    
+    //increment and decrement sx
+    if (key == 's') {sx += .01;}
+    if (key == 'x') {sx -= .01;}
+    
+    //increment and decrement dc
+    if (key == 'd') {dc += .01;}
+    if (key == 'c') {dc -= .01;}
+
+	if (key == 'a') {az += .01;}
+    if (key == 'z') {az -= .01;}
+
+	if (key == 'f') {fv += .01;}
+    if (key == 'v') {fv -= .01;}
+
+	if (key == 'j') {jm += .01;}
+    if (key == 'm') {jm -= .01;}
+
+	if (key == 'h') {hn += .01;}
+    if (key == 'n') {hn -= .01;}
+        
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key) {
+	
+}
+

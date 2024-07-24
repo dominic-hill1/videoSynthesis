@@ -28,6 +28,8 @@ public:
 
 	ofSerial serial;
 	string receivedData;
+	
+	std::string shm_name;
 	int nano;
     
     void allocateAndDeclareSundries();

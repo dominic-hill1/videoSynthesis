@@ -1,18 +1,15 @@
 OF_GLSL_SHADER_HEADER
-// precision highp float;
+uniform float bfdbbdadea;
+uniform float babceefdcdfffc;
+uniform float eeebfbedafaec;
+
 
 uniform sampler2DRect tex0;
 uniform sampler2DRect maskTex;
 uniform sampler2DRect input1;
 uniform vec2 resolution;
 
-uniform float sx;
-uniform float az;
-uniform float fv;
-uniform float nano1;
-uniform float audio;
-uniform float time1;
-uniform float time2;
+
 
 in vec2 texCoordVarying;
 
@@ -101,9 +98,24 @@ void main()
 
 	
 	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;float fcdcdd = 0.11372549019607843;float ebfbcbcfecf = 0.0;float bdedfffada = 0.047058823529411764;vec4 ddafafcb = vec4(bdedfffada, ebfbcbcfecf, fcdcdd, 1.0);outputColor = ddafafcb;
+	float colory=texCoordVarying.y / windowHeight;
+
+
+
+float bcdcfbabeff = 0;
+vec4 ecbcddbc = vec4(0, 0, 0, 0);
 
 
 
 
+
+
+
+
+
+bcdcfbabeff = oscillator(bfdbbdadea, babceefdcdfffc, eeebfbedafaec, 2);
+bcdcfbabeff = oscillator(bfdbbdadea, babceefdcdfffc, eeebfbedafaec, 2);
+bcdcfbabeff = oscillator(bfdbbdadea, babceefdcdfffc, eeebfbedafaec, 2);
+ecbcddbc = vec4(bcdcfbabeff, bcdcfbabeff, bcdcfbabeff, 1.0);
+outputColor = ecbcddbc;
 }

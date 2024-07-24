@@ -155,6 +155,7 @@ class QDMNodeContentSlider(QDMNodeContentWidget):
 
     def update_label(self, value):
         self.node.value = value/255
+        self.node.sendValue()
         self.label.setText("Value: {0:.6g}".format(value))
 
 class QDMNodeContentOutput(QDMNodeContentWidget):

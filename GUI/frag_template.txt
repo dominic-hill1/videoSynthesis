@@ -1,18 +1,11 @@
-OF_GLSL_SHADER_HEADER
-// precision highp float;
+
 
 uniform sampler2DRect tex0;
 uniform sampler2DRect maskTex;
 uniform sampler2DRect input1;
 uniform vec2 resolution;
 
-uniform float sx;
-uniform float az;
-uniform float fv;
-uniform float nano1;
-uniform float audio;
-uniform float time1;
-uniform float time2;
+
 
 in vec2 texCoordVarying;
 
