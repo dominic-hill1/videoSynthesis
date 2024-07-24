@@ -1,28 +1,28 @@
 {
-    "id": 136735909725568,
+    "id": 132214485891584,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": 136735909725616,
+            "id": "ecbfcaeeeca",
             "title": "Sin Oscillator",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [
                 {
-                    "id": 136735909988768,
+                    "id": 132214486347168,
                     "index": 0,
                     "position": 2,
                     "socket_type": 0
                 },
                 {
-                    "id": 136735909991600,
+                    "id": 132214486350000,
                     "index": 1,
                     "position": 2,
                     "socket_type": 0
                 },
                 {
-                    "id": 136735909991648,
+                    "id": 132214486350048,
                     "index": 2,
                     "position": 2,
                     "socket_type": 0
@@ -30,7 +30,7 @@
             ],
             "outputs": [
                 {
-                    "id": 136735909991696,
+                    "id": 132214486350096,
                     "index": 0,
                     "position": 3,
                     "socket_type": 0
@@ -39,27 +39,33 @@
             "content": {}
         },
         {
-            "id": 136735909991744,
-            "title": "Colour multiplication",
-            "pos_x": -75.0,
-            "pos_y": 0.0,
+            "id": "ddafafcb",
+            "title": "Colour mixer",
+            "pos_x": -16.0,
+            "pos_y": 111.0,
             "inputs": [
                 {
-                    "id": 136735909991840,
+                    "id": 132214486350192,
                     "index": 0,
                     "position": 1,
-                    "socket_type": 1
+                    "socket_type": 0
                 },
                 {
-                    "id": 136735909991936,
+                    "id": 132214486350288,
                     "index": 1,
                     "position": 1,
-                    "socket_type": 1
+                    "socket_type": 0
+                },
+                {
+                    "id": 132214486350336,
+                    "index": 2,
+                    "position": 1,
+                    "socket_type": 0
                 }
             ],
             "outputs": [
                 {
-                    "id": 136735909991984,
+                    "id": 132214486350384,
                     "index": 0,
                     "position": 4,
                     "socket_type": 1
@@ -68,25 +74,25 @@
             "content": {}
         },
         {
-            "id": 136735909992032,
+            "id": "ccdbaeecacbf",
             "title": "Square Oscillator",
             "pos_x": 200.0,
             "pos_y": -150.0,
             "inputs": [
                 {
-                    "id": 136735909992128,
+                    "id": 132214486350576,
                     "index": 0,
                     "position": 2,
                     "socket_type": 0
                 },
                 {
-                    "id": 136735909992176,
+                    "id": 132214486350480,
                     "index": 1,
                     "position": 2,
                     "socket_type": 0
                 },
                 {
-                    "id": 136735909992224,
+                    "id": 132214486350624,
                     "index": 2,
                     "position": 2,
                     "socket_type": 0
@@ -94,7 +100,7 @@
             ],
             "outputs": [
                 {
-                    "id": 136735909992272,
+                    "id": 132214486350672,
                     "index": 0,
                     "position": 3,
                     "socket_type": 0
@@ -103,19 +109,19 @@
             "content": {}
         },
         {
-            "id": 136735909992320,
+            "id": "dfbcfbebdaaafdafccbd",
             "title": "Output",
             "pos_x": 250.0,
             "pos_y": 200.0,
             "inputs": [
                 {
-                    "id": 136735909992416,
+                    "id": 132214486350864,
                     "index": 0,
                     "position": 1,
                     "socket_type": 1
                 },
                 {
-                    "id": 136735909992512,
+                    "id": 132214486350912,
                     "index": 1,
                     "position": 1,
                     "socket_type": 2
@@ -123,26 +129,80 @@
             ],
             "outputs": [],
             "content": {}
+        },
+        {
+            "id": "fcdcdd",
+            "title": "Variable input",
+            "pos_x": -311.0,
+            "pos_y": 309.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 132214486418816,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "ebfbcbcfecf",
+            "title": "Variable input",
+            "pos_x": -311.0,
+            "pos_y": 163.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 132214486419008,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "bdedfffada",
+            "title": "Variable input",
+            "pos_x": -316.0,
+            "pos_y": 11.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 132214486419200,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
         }
     ],
     "edges": [
         {
-            "id": 136735910074480,
+            "id": 132214455175680,
             "edge_type": 2,
-            "start": 136735909991696,
-            "end": 136735909991840
+            "start": 132214486419200,
+            "end": 132214486350192
         },
         {
-            "id": 136735910074528,
+            "id": 132214455175728,
             "edge_type": 2,
-            "start": 136735909991984,
-            "end": 136735909992128
+            "start": 132214486419008,
+            "end": 132214486350288
         },
         {
-            "id": 136735910075296,
+            "id": 132214455176496,
             "edge_type": 2,
-            "start": 136735909992272,
-            "end": 136735909992416
+            "start": 132214486418816,
+            "end": 132214486350336
+        },
+        {
+            "id": 132214455176544,
+            "edge_type": 2,
+            "start": 132214486350384,
+            "end": 132214486350864
         }
     ]
 }

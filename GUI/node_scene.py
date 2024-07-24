@@ -87,14 +87,31 @@ class Scene(Serializable):
         code = ""
 
         while activeNodes != []:
+            nextWave = []
             for node in activeNodes:
-                nextWave = []
                 for inputNode in node.inputNodes:
                     if inputNode != None:
                         nextWave.append(inputNode)
+                code = node.writeCode() + code + "\n"
             print(nextWave)
             activeNodes = nextWave
-            
+
+        print(code)
+
+
+
+        with open('frag_template.txt', 'r') as file:
+            content = file.read()
+            code = content + code + "}"
+        
+        frag_path = "../bin/data/shadersES2/shader1.frag"
+        
+        with open(frag_path, "w") as file:
+            file.write(code)
+
+
+
+
                 
             
                 

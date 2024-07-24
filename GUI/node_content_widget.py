@@ -143,7 +143,7 @@ class QDMNodeContentSlider(QDMNodeContentWidget):
         # Create a slider
         self.slider = QSlider(Qt.Horizontal, self)
         self.slider.setMinimum(0)
-        self.slider.setMaximum(100)
+        self.slider.setMaximum(255)
         self.slider.setValue(0)
         self.slider.setTickPosition(QSlider.TicksBelow)
         self.slider.setTickInterval(10)
@@ -154,8 +154,8 @@ class QDMNodeContentSlider(QDMNodeContentWidget):
         self.setLayout(layout)
 
     def update_label(self, value):
-        self.node.value = value
-        self.label.setText(f"Value: {value}")
+        self.node.value = value/255
+        self.label.setText("Value: {0:.6g}".format(value))
 
 class QDMNodeContentOutput(QDMNodeContentWidget):
     def initUI(self):

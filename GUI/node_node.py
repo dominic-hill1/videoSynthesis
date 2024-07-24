@@ -1,4 +1,6 @@
 from collections import OrderedDict
+import uuid
+
 from node_serializable import Serializable
 from node_graphics_node import QDMGraphicsNode
 # from node_content_widget import QDMNodeContentWidget
@@ -25,6 +27,16 @@ class Node(Serializable):
         self.outputNodes = []
 
         self.type = None
+
+        self.id = self.generate_id()
+
+
+    def generate_id(self):
+        # Generate a UUID and remove dashes
+        unique_id = str(uuid.uuid4()).replace('-', '')
+        # Keep only the alphabetic characters
+        char_id = ''.join(filter(str.isalpha, unique_id))
+        return char_id
 
 
     def __str__(self):
@@ -108,11 +120,19 @@ class SinOscNode(OscNode):
         self.title = "Sin Oscillator"
         super().__init__(scene)
 
+    def writeCode(self):
+        code = f"float {self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1);"
+        return code
+
 class SquareOscNode(OscNode):
     def __init__(self, scene):
         self.oscType = 1
         self.title = "Square Oscillator"
         super().__init__(scene)
+
+    def writeCode(self):
+        code = f"float {self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 2);"
+        return code
 
 
 class ColorMixerNode(Node):
@@ -135,6 +155,9 @@ class ColorMixerNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeCode(self):
+        code = f"vec4 {self.id} = vec4({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1.0);"
+        return code
     
 class ColorAddNode(Node):
     def __init__(self, scene):
@@ -155,6 +178,10 @@ class ColorAddNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeCode(self):
+        code = f"vec4 {self.id} = vec4(addColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
+        return code
+
 class ColorMultNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
@@ -173,6 +200,10 @@ class ColorMultNode(Node):
         self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+
+    def writeCode(self):
+        code = f"vec4 {self.id} = vec4(mulitplyColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
+        return code
 
 
 class ColorDisplaceNode(Node):
@@ -196,6 +227,11 @@ class ColorDisplaceNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
+    def writeCode(self):
+        code = f"vec4 {self.id} = colorDisplaceHsb({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, {self.inputNodes[3].id});"
+        return code
+    
+
 class LumaKeyNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
@@ -216,6 +252,10 @@ class LumaKeyNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=COLOR_TYPE))
 
+    def writeCode(self):
+        code = f"vec4 {self.id} = vec4(lumaKey({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}), 1.0);"
+        return code
+
 
 class FeedbackZoomNode(Node):
     def __init__(self, scene):
@@ -233,6 +273,8 @@ class FeedbackZoomNode(Node):
 
         self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FeedbackZoomNode))
+
+        # TODO: Implement writeCode
 
 
 class SliderNode(Node):
@@ -253,6 +295,12 @@ class SliderNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
 
+    def writeCode(self):
+        code = f"float {self.id} = {self.value};"
+        return code
+
+
+
 class OutputNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
@@ -271,3 +319,7 @@ class OutputNode(Node):
 
         self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
         self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FEEDBACK_TYPE))
+
+    def writeCode(self):
+        code = f"outputColor = {self.inputNodes[0].id};"
+        return code

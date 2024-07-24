@@ -93,6 +93,9 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 }
 
 
+
+
+
 void main()
 {
 
@@ -101,9 +104,74 @@ void main()
 
 	
 	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;float fcdcdd = 0.11372549019607843;float ebfbcbcfecf = 0.0;float bdedfffada = 0.047058823529411764;vec4 ddafafcb = vec4(bdedfffada, ebfbcbcfecf, fcdcdd, 1.0);outputColor = ddafafcb;
+	float colory=texCoordVarying.y / windowHeight;
+
+	// feedback
+	vec2 feedbackCoords = texCoordVarying;
+	feedbackCoords = feedbackZoom(feedbackCoords, 1.0+0.1*-az/10);
+	// feedbackCoords.x += az;
+	vec4 feedbackColor = texture(tex0, feedbackCoords);
+
+	float hOsc = oscillator(1, colorx*fv/10, audio , 0);
+	float vOsc = oscillator(1, 1/(colory*(1/hOsc)), time2, 0);
+	float zOsc = oscillator(1, 1/(colorx*(hOsc/vOsc*hOsc)), 0, 1); 
+	// float vOsc = oscillator((1.0-sx), colory*(nano1/10+(10.0 * hOsc)), time1/2, 0);
+
+	// float hOsc = oscillator(1, colorx*audio*fv*10, time1, 0);
+
+	// float oscOut = hOsc;
+
+	// vec4 oscColor = vec4(oscOut, oscOut, oscOut, 1.0);
+	vec4 oscColor = vec4(hOsc/zOsc, vOsc, zOsc/hOsc, 1.0);
+
+	// feedback
+	// vec2 feedbackCoords = texCoordVarying;
+	// feedbackCoords = feedbackZoom(feedbackCoords, 1.0+0.1*-az/10);
+	// // feedbackCoords.x += az;
+	// vec4 feedbackColor = texture(tex0, feedbackCoords);
+
+	// colors
+	// feedbackColor = colorDisplaceHsb(feedbackColor, .05, 1, .01);
+
+	// vec2 input1Coords = texCoordVarying;
+	// vec2 input1Coords = texCoordVarying * oscOut;
+	// vec4 input1Color = texture(input1, input1Coords);
+
+	// Swap and invert channels
+	// input1Color.r = 1.0-input1Color.g;
+	// input1Color.g = 1.0-input1Color.b;
+
+	// input1Color.r=fract(abs(input1Color.r+2.0*sx/10*oscColor.r));
+	// input1Color.g=fract(abs(input1Color.g+2.0*sx/10*oscColor.g));
+	// input1Color.b=fract(abs(input1Color.b+2.0*sx/10*oscColor.b));
+
+	oscColor = colorDisplaceHsb(oscColor, oscColor.g*sx, oscColor.b*sx, oscColor.r*sx);
+	// input1Color = colorDisplaceHsb(input1Color, oscColor.r*sx, oscColor.g*sx, oscColor.b*sx);
 
 
+	// Mixing
+	vec4 outColor = vec4(0, 0, 0, 1);
+
+	outColor = oscColor;
+
+	// Lerping
+	// outColor = mix(input1Color, oscColor, nano1);
+
+	// Add or subtract
+	// outColor.rgb = addColor(input1Color, oscColor);
+	// outColor.rgb = multiplyColor(input1Color, oscColor);
+
+	// lumakey
+	outColor.rgb = lumaKey(outColor, feedbackColor, audio*fv);
+	// outColor.rgb = lumaKey(input1Color, feedbackColor, fv);
+	// outColor.rgb = lumaKey(input1Color, feedbackColor, audio*10 + 0.01);
 
 
+	
+	outputColor = outColor;
+
+
+	// outputColor = input1Color;
+
+	// outputColor = texture(tex0, feedbackCoords);
 }

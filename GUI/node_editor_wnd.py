@@ -45,9 +45,12 @@ class NodeEditorWnd(QWidget):
 
     def addNodes(self):
         self.nodes.append(SinOscNode(self.scene))
-        self.nodes.append(ColorMultNode(self.scene))
+        self.nodes.append(ColorMixerNode(self.scene))
         self.nodes.append(SquareOscNode(self.scene))
         self.nodes.append(OutputNode(self.scene))
+        self.nodes.append(SliderNode(self.scene))
+        self.nodes.append(SliderNode(self.scene))
+        self.nodes.append(SliderNode(self.scene))
         # node4 = ColorMixerNode(self.scene)
         # node5 = SliderNode(self.scene)
         # node6 = OutputNode(self.scene)
