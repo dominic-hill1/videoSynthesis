@@ -3,6 +3,7 @@ from collections import OrderedDict
 
 from node_serializable import Serializable
 from node_graphics_scene import QDMGraphicsScene
+from node_node import *
 
 class Scene(Serializable):
     def __init__(self):
@@ -54,3 +55,51 @@ class Scene(Serializable):
     def deserialize(self, data, hashmap=[]):
         print("Deserialising")
         return False
+    
+    def compile(self):
+        # Get list of connections for each node
+        for node in self.nodes:
+            # node.inputNodes = [[], [], [], []]
+            node.inputNodes = [None, None, None, None]
+            node.outputNodes = []
+        print(self.edges)
+        for edge in self.edges:
+            if edge.start_socket.input == False: # output to input
+                edge.start_socket.node.outputNodes.append(edge.end_socket.node)
+                # edge.end_socket.node.inputNodes[edge.end_socket.index].append(edge.start_socket.node)
+                edge.end_socket.node.inputNodes[edge.end_socket.index] = edge.start_socket.node
+                print(edge.end_socket.node)
+            else: # input to output
+                # edge.start_socket.node.inputNodes[edge.start_socket.index].append(edge.end_socket.node)
+                edge.start_socket.node.inputNodes[edge.start_socket.index] = edge.end_socket.node
+                edge.end_socket.node.outputNodes.append(edge.start_socket.node)
+                print(edge.end_socket.node)
+        for node in self.nodes:
+            print("Inputs", node.inputNodes)
+            print("Outputs", node.outputNodes)
+
+        # Find output node to start algorithm
+        for node in self.nodes:
+            if isinstance(node, OutputNode):
+                output = node
+        
+        activeNodes = [output]
+        code = ""
+
+        while activeNodes != []:
+            for node in activeNodes:
+                nextWave = []
+                for inputNode in node.inputNodes:
+                    if inputNode != None:
+                        nextWave.append(inputNode)
+            print(nextWave)
+            activeNodes = nextWave
+            
+                
+            
+                
+
+
+
+
+

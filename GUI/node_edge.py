@@ -46,6 +46,7 @@ class Edge(Serializable):
         self.grEdge.update()
 
     def remove_from_sockets(self):
+        
         if self.start_socket is not None:
             self.start_socket.edge = None
         if self.end_socket is not None:

@@ -14,8 +14,13 @@ class NodeEditorWnd(QWidget):
 
         self.stylesheet_filename = 'qss/nodestyle.qss'
         self.loadStylesheet(self.stylesheet_filename)
+    
+        self.nodes = []
+        self.edges = []
 
         self.initUI()
+
+ 
 
     def initUI(self):
         self.setGeometry(200, 200, 800, 600)
@@ -32,41 +37,43 @@ class NodeEditorWnd(QWidget):
         self.addNodes()
 
         # Create graphics view
-        self.view = QDMGraphicsView(self.scene.grScene, self)
+        self.view = QDMGraphicsView(self.scene.grScene, parent=self)
         self.layout.addWidget(self.view)
 
         self.setWindowTitle("Video synthesiser")
         self.show()
 
     def addNodes(self):
-        node1 = SinOscNode(self.scene)
-        node2 = ColorMultNode(self.scene)
-        node3 = SquareOscNode(self.scene)
-        node4 = ColorMixerNode(self.scene)
-        node5 = SliderNode(self.scene)
-        node6 = OutputNode(self.scene)
-        node7 = FeedbackZoomNode(self.scene)
-        node8 = LumaKeyNode(self.scene)
-        node9 = ColorDisplaceNode(self.scene)
-        node10 = SliderNode(self.scene)
-        node11 = SliderNode(self.scene)
-        node12 = ColorMixerNode(self.scene)
+        self.nodes.append(SinOscNode(self.scene))
+        self.nodes.append(ColorMultNode(self.scene))
+        self.nodes.append(SquareOscNode(self.scene))
+        self.nodes.append(OutputNode(self.scene))
+        # node4 = ColorMixerNode(self.scene)
+        # node5 = SliderNode(self.scene)
+        # node6 = OutputNode(self.scene)
+        # node7 = FeedbackZoomNode(self.scene)
+        # node8 = LumaKeyNode(self.scene)
+        # node9 = ColorDisplaceNode(self.scene)
+        # node10 = SliderNode(self.scene)
+        # node11 = SliderNode(self.scene)
+        # node12 = ColorMixerNode(self.scene)
 
-        node1.setPos(-350, -250)
-        node2.setPos(-75, 0)
-        node3.setPos(200, -150)
-        node4.setPos(300, 300)
-        node5.setPos(100, 300)
-        node6.setPos(300, 200)
-        node7.setPos(100, 100)
-        node8.setPos(200, 150)
-        node9.setPos(200, 150)
-        node10.setPos(200, 150)
-        node11.setPos(200, 150)
-        node12.setPos(200, 150)
+        self.nodes[0].setPos(-350, -250)
+        self.nodes[1].setPos(-75, 0)
+        self.nodes[2].setPos(200, -150)
+        self.nodes[3].setPos(250, 200)
+        # node4.setPos(300, 300)
+        # node5.setPos(100, 300)
+        # node6.setPos(300, 200)
+        # node7.setPos(100, 100)
+        # node8.setPos(200, 150)
+        # node9.setPos(200, 150)
+        # node10.setPos(200, 150)
+        # node11.setPos(200, 150)
+        # node12.setPos(200, 150)
 
-        edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
-        edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[2], edge_type=EDGE_TYPE_BEZIER)
+        # self.edges.append(Edge(self.scene, self.nodes[0].outputs[0], self.nodes[1].inputs[0], edge_type=EDGE_TYPE_BEZIER))
+        # self.edges.append(Edge(self.scene, self.nodes[1].outputs[0], self.nodes[2].inputs[2], edge_type=EDGE_TYPE_BEZIER))
         
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)
@@ -100,3 +107,21 @@ class NodeEditorWnd(QWidget):
         file.open(QFile.ReadOnly | QFile.Text)
         stylesheet = file.readAll()
         QApplication.instance().setStyleSheet(str(stylesheet, encoding='utf-8'))
+
+    # def compile(self):
+    #     for node in self.nodes:
+    #         node.inputNodes = [[], [], [], []]
+    #         node.outputNodes = []
+    #     print(self.edges)
+    #     for edge in self.edges:
+    #         if edge.start_socket.input == False: # output to input
+    #             edge.start_socket.node.outputNodes.append(edge.end_socket.node)
+    #             edge.end_socket.node.inputNodes[edge.end_socket.index].append(edge.start_socket.node)
+    #             print(edge.end_socket.node)
+    #         else: # input to output
+    #             edge.start_socket.node.inputNodes[edge.start_socket.index].append(edge.end_socket.node)
+    #             edge.end_socket.node.outputNodes.append(edge.start_socket.node)
+    #             print(edge.end_socket.node)
+    #     for node in self.nodes:
+    #         print("Inputs", node.inputNodes)
+    #         print("Outputs", node.outputNodes)

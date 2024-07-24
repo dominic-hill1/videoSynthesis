@@ -12,8 +12,9 @@ COLOR_TYPE = 1
 FEEDBACK_TYPE = 2
 
 class Socket(Serializable):
-    def __init__(self, node, index=0, position=LEFT_TOP, socket_type=0):
+    def __init__(self, node, input=True, index=0, position=LEFT_TOP, socket_type=0):
         super().__init__()
+        self.input = input
         self.node = node
         self.index = index
         self.position = position

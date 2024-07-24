@@ -18,6 +18,7 @@ DEBUG = True
 class QDMGraphicsView(QGraphicsView):
     def __init__(self, grScene, parent=None):
         super().__init__(parent)
+        self.editor = parent
         self.grScene = grScene
         self.initUI()
         self.setScene(self.grScene)
@@ -177,6 +178,8 @@ class QDMGraphicsView(QGraphicsView):
                 super().keyPressEvent(event)
         elif event.key() == Qt.Key_S and event.modifiers() & Qt.ControlModifier:
             self.grScene.scene.saveToFile("graph.json.txt")
+            self.grScene.scene.compile()
+
         elif event.key() == Qt.Key_L and event.modifiers() & Qt.ControlModifier:
             self.grScene.scene.loadFromFile("graph.json.txt")
         else:
@@ -240,6 +243,16 @@ class QDMGraphicsView(QGraphicsView):
                 self.dragEdge.end_socket.setConnectedEdge(self.dragEdge)
                 if DEBUG: print("View::edgeDragEnd ~ Assigned start and end sockets to dragEdge")
                 self.dragEdge.updatePositions()
+
+
+                # if self.dragEdge.start_socket.input == False: # output to input
+                #     self.dragEdge.start_socket.node.outputNodes.append(self.dragEdge.end_socket.node)
+                #     self.dragEdge.end_socket.node.inputNodes[self.dragEdge.end_socket.index].append(self.dragEdge.start_socket.node)
+                # else: # input to output
+                #     self.dragEdge.start_socket.node.inputNodes[self.dragEdge.start_socket.index].append(self.dragEdge.end_socket.node)
+                #     self.dragEdge.end_socket.node.outputNodes.append(self.dragEdge.start_socket.node)
+                    
+                
                 return True
         
         if DEBUG: print("View::edgeDragEnd - End Dragging edge")

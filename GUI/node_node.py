@@ -8,6 +8,8 @@ from node_socket import Socket, LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM, 
 DEBUG = False
 
 
+
+
 class Node(Serializable):
     def __init__(self, scene):
         super().__init__()
@@ -17,6 +19,12 @@ class Node(Serializable):
 
         self.inputs = []
         self.outputs = []
+
+        # self.inputNodes = [[], [], [], []]
+        self.inputNodes = [None, None, None, None]
+        self.outputNodes = []
+
+        self.type = None
 
 
     def __str__(self):
@@ -87,11 +95,11 @@ class OscNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=2, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
 
 
 class SinOscNode(OscNode):
@@ -121,11 +129,11 @@ class ColorMixerNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=2, position=LEFT_TOP, socket_type=FLOAT_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
     
 class ColorAddNode(Node):
@@ -142,10 +150,10 @@ class ColorAddNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
 class ColorMultNode(Node):
     def __init__(self, scene):
@@ -161,10 +169,10 @@ class ColorMultNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=COLOR_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
 
 class ColorDisplaceNode(Node):
@@ -181,12 +189,12 @@ class ColorDisplaceNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_TOP, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=3, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=2, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=3, position=LEFT_TOP, socket_type=FLOAT_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
 class LumaKeyNode(Node):
     def __init__(self, scene):
@@ -202,11 +210,11 @@ class LumaKeyNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=2, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_TOP, socket_type=COLOR_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=COLOR_TYPE))
 
 
 class FeedbackZoomNode(Node):
@@ -223,8 +231,8 @@ class FeedbackZoomNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=FeedbackZoomNode))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FeedbackZoomNode))
 
 
 class SliderNode(Node):
@@ -243,7 +251,7 @@ class SliderNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.outputs.append(Socket(node=self, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
 
 class OutputNode(Node):
     def __init__(self, scene):
@@ -261,5 +269,5 @@ class OutputNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, index=1, position=LEFT_TOP, socket_type=FEEDBACK_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FEEDBACK_TYPE))
