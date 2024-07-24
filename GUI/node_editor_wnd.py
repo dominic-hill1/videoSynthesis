@@ -48,6 +48,9 @@ class NodeEditorWnd(QWidget):
         node7 = FeedbackZoomNode(self.scene)
         node8 = LumaKeyNode(self.scene)
         node9 = ColorDisplaceNode(self.scene)
+        node10 = SliderNode(self.scene)
+        node11 = SliderNode(self.scene)
+        node12 = ColorMixerNode(self.scene)
 
         node1.setPos(-350, -250)
         node2.setPos(-75, 0)
@@ -57,6 +60,10 @@ class NodeEditorWnd(QWidget):
         node6.setPos(300, 200)
         node7.setPos(100, 100)
         node8.setPos(200, 150)
+        node9.setPos(200, 150)
+        node10.setPos(200, 150)
+        node11.setPos(200, 150)
+        node12.setPos(200, 150)
 
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[2], edge_type=EDGE_TYPE_BEZIER)

@@ -202,9 +202,9 @@ class LumaKeyNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
         self.inputs.append(Socket(node=self, index=1, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, index=2, position=LEFT_BOTTOM, socket_type=COLOR_TYPE))
 
         self.outputs.append(Socket(node=self, index=0, position=RIGHT_TOP, socket_type=COLOR_TYPE))
 
