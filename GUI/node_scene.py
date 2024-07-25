@@ -173,6 +173,7 @@ class Scene(Serializable):
         for node in self.nodes:
             if isinstance(node, SliderNode):
                 ret += f"uniform float {node.id};\n"
+        ret += f"uniform float time;\n"
 
         return ret
     

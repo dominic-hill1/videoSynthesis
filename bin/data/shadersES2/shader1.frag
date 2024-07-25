@@ -1,10 +1,14 @@
 OF_GLSL_SHADER_HEADER
-uniform float ccfacceaececbe;
-uniform float cddbcbdcbcebfdceefb;
-uniform float becabcfdcf;
-uniform float ababdfafde;
-uniform float addaedecbe;
-uniform float eeabafddf;
+uniform float abeaacdcdec;
+uniform float ecfaaecbf;
+uniform float baceaabfb;
+uniform float abbffaaeeaefac;
+uniform float ebbfeedbccbef;
+uniform float badadaaeaabdbef;
+uniform float dbafeadcee;
+uniform float acadefbffef;
+uniform float aedfaabcbebcd;
+uniform float time;
 
 
 uniform sampler2DRect tex0;
@@ -101,29 +105,94 @@ void main()
 
 	
 	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;vec4 bacbccbebccedc = vec4(0, 0, 0, 0);
-
-float adaabfabcfed = 0;
-vec4 dbeabdcbbbf = vec4(0, 0, 0, 0);
-
+	float colory=texCoordVarying.y / windowHeight;float aeffcce = 0;
+float cdbdcfbefaecf = 0;
+vec4 afddbcbbd = vec4(0, 0, 0, 0);
 
 
+vec4 dcdbdbbdfcadfe = vec4(0, 0, 0, 0);
+vec4 bfedacbbcdefee = vec4(0, 0, 0, 0);
+
+float ceefeaafea = 0;
+float dfdeadbcbbfba = 0;
 
 
-
-
-
-
-
-
-
-adaabfabcfed = becabcfdcf / cddbcbdcbcebfdceefb;
-dbeabdcbbbf = vec4(eeabafddf, addaedecbe, ababdfafde, 1.0);
+vec4 dabffbeba = vec4(0, 0, 0, 0);
 
 
 
-vec2 aeaefbeabceecabc = texCoordVarying;aeaefbeabceecabc = feedbackZoom(aeaefbeabceecabc, adaabfabcfed);vec4 aeaefbeabceec = texture(tex0, aeaefbeabceecabc);
-dbeabdcbbbf = vec4(eeabafddf, addaedecbe, ababdfafde, 1.0);
-bacbccbebccedc = vec4(mulitplyColor(dbeabdcbbbf, aeaefbeabceec), 1.0);
-outputColor = bacbccbebccedc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+
+
+
+dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+
+
+
+
+
+dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+
+
+
+
+
+dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+
+
+aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
+ceefeaafea = abbffaaeeaefac * colory;
+
+aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
+ceefeaafea = abbffaaeeaefac * colory;
+
+
+dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
+ceefeaafea = abbffaaeeaefac * colory;
+
+
+dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
+ceefeaafea = abbffaaeeaefac * colory;
+
+cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
+cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
+aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
+cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
+aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
+cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
+
+
+
+dabffbeba = vec4(aeffcce, cdbdcfbefaecf, cdbdcfbefaecf, 1.0);
+
+dcdbdbbdfcadfe = vec4(cdbdcfbefaecf, aeffcce, cdbdcfbefaecf, 1.0);
+afddbcbbd = colorDisplaceHsb(dabffbeba, aedfaabcbebcd, acadefbffef, dbafeadcee);
+vec2 baefabdcacaabc = texCoordVarying;baefabdcacaabc = feedbackZoom(baefabdcacaabc, badadaaeaabdbef);vec4 baefabdcaca = texture(tex0, baefabdcacaabc);
+
+bfedacbbcdefee = vec4(lumaKey(afddbcbbd, baefabdcaca, dbafeadcee), 1.0);
+outputColor = bfedacbbcdefee;
 }

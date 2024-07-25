@@ -11,7 +11,7 @@ Sidebar{
     /* border-radius: 10px; */
 }
 Sidebar QPushButton {
-    background-color: #ffffff;
+    background-color: #708090;
     border: 1px solid #aaaaaa;  
     border-radius: 5px;
     padding: 10px; 

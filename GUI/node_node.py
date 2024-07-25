@@ -378,6 +378,28 @@ class ColorXNode(Node):
         def writeCode(self):
             return ""
         
+class TimeNode(Node):
+        def __init__(self, scene):
+            super().__init__(scene)
+
+            self.title = "Time"
+
+            self.grNode = QDMGraphicsNode(self)
+            self.grNode.height = 120
+            self.content = QDMNodeContentTime(self)
+            self.grNode.initContent()
+
+            self.scene.addNode(self)
+            self.scene.grScene.addItem(self.grNode)
+
+            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+            self.id = "time"
+
+        def writeInitCode(self):
+            return ""
+        def writeCode(self):
+            return ""
+        
 class ColorYNode(Node):
         def __init__(self, scene):
             super().__init__(scene)

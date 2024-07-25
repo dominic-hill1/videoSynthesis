@@ -209,6 +209,15 @@ class QDMNodeContentColorY(QDMNodeContentWidget):
         self.setLayout(layout)
 
 
+class QDMNodeContentTime(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("time", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
 class QDMNodeContentAdd(QDMNodeContentWidget):
     def initUI(self):
         layout = QVBoxLayout()
