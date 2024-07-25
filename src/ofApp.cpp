@@ -17,7 +17,7 @@
 // float hn = 0;
 
 
-float acceadbfa = 0;float aebaedefbf = 0;float beabaabeaddccd = 0;
+float bafaafefaacadf = 0;float fddcbbdebcd = 0;float addbffaaedbdaa = 0;
 
 int width=0;
 int height=0;
@@ -120,7 +120,7 @@ void ofApp::update() {
 	using namespace boost::interprocess;
 
     // Open the shared memory object created by Python
-    shared_memory_object shm(open_only, "psm_38f5043a", read_only);  // Replace with the actual name printed by the Python script
+    shared_memory_object shm(open_only, "psm_08de5801", read_only);  // Replace with the actual name printed by the Python script
 
     // Map the whole shared memory in this process
     mapped_region region(shm, read_only);
@@ -128,15 +128,18 @@ void ofApp::update() {
     // Read data from the shared memory
     char* receivedData = static_cast<char*>(region.get_address());
 
-	char* reload = "RELOAD";
+	std::string reload = "RELOAD";
+	std::string str;
+    str = receivedData;  // Assign char* to std::string
+
     std::cout << "Read from shared memory: " << receivedData << std::endl;
-	if (strcmp(receivedData, reload) == 0){
+	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
-		 shader1.setUniform1f("acceadbfa", acceadbfa);
-std::cout << acceadbfa << std::endl;shader1.setUniform1f("aebaedefbf", aebaedefbf);
-std::cout << aebaedefbf << std::endl;shader1.setUniform1f("beabaabeaddccd", beabaabeaddccd);
-std::cout << beabaabeaddccd << std::endl;
+		 shader1.setUniform1f("bafaafefaacadf", bafaafefaacadf);
+std::cout << bafaafefaacadf << std::endl;shader1.setUniform1f("fddcbbdebcd", fddcbbdebcd);
+std::cout << fddcbbdebcd << std::endl;shader1.setUniform1f("addbffaaedbdaa", addbffaaedbdaa);
+std::cout << addbffaaedbdaa << std::endl;
 	}else{
 		std::istringstream stream(receivedData);
 		std::string varName;
@@ -152,7 +155,7 @@ std::cout << beabaabeaddccd << std::endl;
 			std::cerr << "Out of range: " << e.what() << std::endl;
 		}
 
-		if (varName == "acceadbfa"){acceadbfa= varValue;}if (varName == "aebaedefbf"){aebaedefbf= varValue;}if (varName == "beabaabeaddccd"){beabaabeaddccd= varValue;}
+		if (varName == "bafaafefaacadf"){bafaafefaacadf= varValue;}if (varName == "fddcbbdebcd"){fddcbbdebcd= varValue;}if (varName == "addbffaaedbdaa"){addbffaaedbdaa= varValue;}
 	}
 
 	// std::cout << "Read from shared memory: " << receivedData << std::endl;
@@ -204,10 +207,10 @@ void ofApp::draw() {
 	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);
 
-	shader1.setUniform1f("acceadbfa", acceadbfa);
-std::cout << acceadbfa << std::endl;shader1.setUniform1f("aebaedefbf", aebaedefbf);
-std::cout << aebaedefbf << std::endl;shader1.setUniform1f("beabaabeaddccd", beabaabeaddccd);
-std::cout << beabaabeaddccd << std::endl;
+	shader1.setUniform1f("bafaafefaacadf", bafaafefaacadf);
+std::cout << bafaafefaacadf << std::endl;shader1.setUniform1f("fddcbbdebcd", fddcbbdebcd);
+std::cout << fddcbbdebcd << std::endl;shader1.setUniform1f("addbffaaedbdaa", addbffaaedbdaa);
+std::cout << addbffaaedbdaa << std::endl;
 
 
 

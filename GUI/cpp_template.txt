@@ -128,9 +128,12 @@ void ofApp::update() {
     // Read data from the shared memory
     char* receivedData = static_cast<char*>(region.get_address());
 
-	char* reload = "RELOAD";
+	std::string reload = "RELOAD";
+	std::string str;
+    str = receivedData;  // Assign char* to std::string
+
     std::cout << "Read from shared memory: " << receivedData << std::endl;
-	if (strcmp(receivedData, reload) == 0){
+	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
 		 // SET VARIABLES HERE

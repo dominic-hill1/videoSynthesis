@@ -8,6 +8,8 @@ if __name__ == '__main__':
 
     wnd = NodeEditorWnd()
 
+    app.aboutToQuit.connect(wnd.cleanupResources)
+
     sys.exit(app.exec_())
 
 

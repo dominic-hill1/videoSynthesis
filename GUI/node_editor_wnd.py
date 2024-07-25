@@ -114,6 +114,12 @@ class NodeEditorWnd(QWidget):
         QApplication.instance().setStyleSheet(str(stylesheet, encoding='utf-8'))
 
 
+    def cleanupResources(self):
+        self.scene.glslThread.join()
+        # Close the shared memory
+        self.scene.shared_mem.close()
+        # Unlink (delete) the shared memory
+        self.scene.shared_mem.unlink()
 
 
 

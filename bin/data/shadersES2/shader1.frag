@@ -1,7 +1,7 @@
 OF_GLSL_SHADER_HEADER
-uniform float acceadbfa;
-uniform float aebaedefbf;
-uniform float beabaabeaddccd;
+uniform float bafaafefaacadf;
+uniform float fddcbbdebcd;
+uniform float addbffaaedbdaa;
 
 
 uniform sampler2DRect tex0;
@@ -102,12 +102,12 @@ void main()
 
 
 
-float efeeccddbdbbef = 0;
-vec4 fedefabacaab = vec4(0, 0, 0, 0);
-float dddfaaddab = 0;
+float edaeddbafeaa = 0;
+vec4 caedcdbbbeddbdac = vec4(0, 0, 0, 0);
+float edffdbabdede = 0;
 
 
 
-fedefabacaab = vec4(beabaabeaddccd, aebaedefbf, acceadbfa, 1.0);
-outputColor = fedefabacaab;
+caedcdbbbeddbdac = vec4(addbffaaedbdaa, bafaafefaacadf, fddcbbdebcd, 1.0);
+outputColor = caedcdbbbeddbdac;
 }
