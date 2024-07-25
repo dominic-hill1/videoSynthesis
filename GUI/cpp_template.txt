@@ -128,25 +128,33 @@ void ofApp::update() {
     // Read data from the shared memory
     char* receivedData = static_cast<char*>(region.get_address());
 
-
+	char* reload = "RELOAD";
     std::cout << "Read from shared memory: " << receivedData << std::endl;
-	std::istringstream stream(receivedData);
-	std::string varName;
-	std::string value;
-	float varValue;
-	stream >> varName;
-	stream >> value;
-    try{
-	    varValue = std::stof(value);
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "Invalid argument: " << e.what() << std::endl;
-    } catch (const std::out_of_range& e) {
-        std::cerr << "Out of range: " << e.what() << std::endl;
-    }
+	if (strcmp(receivedData, reload) == 0){
+		 std::cout << "RELOADING" << std::endl;
+		 shader1.load("shadersES2/shader1");
+		 // SET VARIABLES HERE
+	}else{
+		std::istringstream stream(receivedData);
+		std::string varName;
+		std::string value;
+		float varValue;
+		stream >> varName;
+		stream >> value;
+		try{
+			varValue = std::stof(value);
+		} catch (const std::invalid_argument& e) {
+			std::cerr << "Invalid argument: " << e.what() << std::endl;
+		} catch (const std::out_of_range& e) {
+			std::cerr << "Out of range: " << e.what() << std::endl;
+		}
+
+		// IF STATEMENTS HERE
+	}
 
 	// std::cout << "Read from shared memory: " << receivedData << std::endl;
 
-	// IF STATEMENTS HERE
+	
 
 	// while (serial.available() > 0) {
 	// 	char byteData = serial.readByte();

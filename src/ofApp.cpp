@@ -17,7 +17,7 @@
 // float hn = 0;
 
 
-float bfdbbdadea = 0;float babceefdcdfffc = 0;float eeebfbedafaec = 0;
+float acceadbfa = 0;float aebaedefbf = 0;float beabaabeaddccd = 0;
 
 int width=0;
 int height=0;
@@ -120,7 +120,7 @@ void ofApp::update() {
 	using namespace boost::interprocess;
 
     // Open the shared memory object created by Python
-    shared_memory_object shm(open_only, "psm_b41ae1ef", read_only);  // Replace with the actual name printed by the Python script
+    shared_memory_object shm(open_only, "psm_38f5043a", read_only);  // Replace with the actual name printed by the Python script
 
     // Map the whole shared memory in this process
     mapped_region region(shm, read_only);
@@ -128,25 +128,36 @@ void ofApp::update() {
     // Read data from the shared memory
     char* receivedData = static_cast<char*>(region.get_address());
 
-
+	char* reload = "RELOAD";
     std::cout << "Read from shared memory: " << receivedData << std::endl;
-	std::istringstream stream(receivedData);
-	std::string varName;
-	std::string value;
-	float varValue;
-	stream >> varName;
-	stream >> value;
-    try{
-	    varValue = std::stof(value);
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "Invalid argument: " << e.what() << std::endl;
-    } catch (const std::out_of_range& e) {
-        std::cerr << "Out of range: " << e.what() << std::endl;
-    }
+	if (strcmp(receivedData, reload) == 0){
+		 std::cout << "RELOADING" << std::endl;
+		 shader1.load("shadersES2/shader1");
+		 shader1.setUniform1f("acceadbfa", acceadbfa);
+std::cout << acceadbfa << std::endl;shader1.setUniform1f("aebaedefbf", aebaedefbf);
+std::cout << aebaedefbf << std::endl;shader1.setUniform1f("beabaabeaddccd", beabaabeaddccd);
+std::cout << beabaabeaddccd << std::endl;
+	}else{
+		std::istringstream stream(receivedData);
+		std::string varName;
+		std::string value;
+		float varValue;
+		stream >> varName;
+		stream >> value;
+		try{
+			varValue = std::stof(value);
+		} catch (const std::invalid_argument& e) {
+			std::cerr << "Invalid argument: " << e.what() << std::endl;
+		} catch (const std::out_of_range& e) {
+			std::cerr << "Out of range: " << e.what() << std::endl;
+		}
+
+		if (varName == "acceadbfa"){acceadbfa= varValue;}if (varName == "aebaedefbf"){aebaedefbf= varValue;}if (varName == "beabaabeaddccd"){beabaabeaddccd= varValue;}
+	}
 
 	// std::cout << "Read from shared memory: " << receivedData << std::endl;
 
-	if (varName == "bfdbbdadea"){bfdbbdadea= varValue;}if (varName == "babceefdcdfffc"){babceefdcdfffc= varValue;}if (varName == "eeebfbedafaec"){eeebfbedafaec= varValue;}
+	
 
 	// while (serial.available() > 0) {
 	// 	char byteData = serial.readByte();
@@ -193,10 +204,10 @@ void ofApp::draw() {
 	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);
 
-	shader1.setUniform1f("bfdbbdadea", bfdbbdadea);
-std::cout << bfdbbdadea << std::endl;shader1.setUniform1f("babceefdcdfffc", babceefdcdfffc);
-std::cout << babceefdcdfffc << std::endl;shader1.setUniform1f("eeebfbedafaec", eeebfbedafaec);
-std::cout << eeebfbedafaec << std::endl;
+	shader1.setUniform1f("acceadbfa", acceadbfa);
+std::cout << acceadbfa << std::endl;shader1.setUniform1f("aebaedefbf", aebaedefbf);
+std::cout << aebaedefbf << std::endl;shader1.setUniform1f("beabaabeaddccd", beabaabeaddccd);
+std::cout << beabaabeaddccd << std::endl;
 
 
 

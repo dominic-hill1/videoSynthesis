@@ -2,6 +2,9 @@ import json
 from collections import OrderedDict
 from multiprocessing import shared_memory
 import numpy as np
+import subprocess
+import ctypes
+
 
 from node_serializable import Serializable
 from node_graphics_scene import QDMGraphicsScene
@@ -14,7 +17,8 @@ class Scene(Serializable):
         self.edges = []
         self.scene_width, self.scene_height = 64000, 64000
         self.initUI()
-        self.shm_name = self.init_comms()
+        self.shared_mem, self.shm_name = self.init_shared_mem()
+        self.compiled = False
 
     def initUI(self):
         self.grScene = QDMGraphicsScene(self)
@@ -43,18 +47,12 @@ class Scene(Serializable):
             data = json.loads(raw_data, encoding='utf-8')
             self.deserialize(data)
 
-    def init_comms(self):
+    def init_shared_mem(self):
         # Create a shared memory block
         shm = shared_memory.SharedMemory(create=True, size=1024)
         print("Shared memory name:", shm.name)
+        return shm, shm.name
 
-        with open("../bin/data/shm_name.txt", "w") as file:
-            file.write(shm.name)
-
-        return shm.name
-        # # Write a string to shared memory
-        # message = "Hello from Python"
-        # buffer[:len(message)] = message.encode('utf-8')
     
     def serialize(self):
         nodes, edges = [], []
@@ -129,10 +127,23 @@ class Scene(Serializable):
         with open(frag_path, "w") as file:
             file.write(code)
 
+    
+        string = "RELOAD"
+        self.shm = shared_memory.SharedMemory(name=self.shm_name)
+        self.size = 1024
+        self.buffer = self.shm.buf
+        if len(string) >= self.size:
+            raise ValueError("String is too large to fit in the shared memory block.")
+        self.buffer[:len(string)] = string.encode('utf-8')
+        self.buffer[len(string):len(string)+1] = b'\0'  # Null-ter
         
-        
-        self.init_cpp()
+  
         self.init_shader_vars()
+
+        if self.compiled == False:
+            self.init_cpp()
+            self.runGLSL()
+            self.compiled = True
     
     def init_cpp(self):
         initCode = ""
@@ -162,6 +173,38 @@ class Scene(Serializable):
                 ret += f"uniform float {node.id};\n"
 
         return ret
+    
+    def runGLSL(self):
+        # Combine the commands into a single shell command
+        command = 'cd .. && make && make run'
+
+        # Start the command in the background
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+
+    def writeToSharedMemory(self, string):
+        print("Writing")
+        try:
+            # Ensure the data fits into the shared memory
+            if len(string) > self.shared_mem.size:
+                raise ValueError("Data is too large to fit into the shared memory.")
+            # Write data to shared memory
+            # Get a pointer to the shared memory buffer
+            buffer = (ctypes.c_char * 1024).from_buffer(self.shared_mem.buf)
+            
+            # Write data to shared memory
+            ctypes.memmove(buffer, string.encode(), len(string))
+            print("Writing to shared memory")
+        except:
+        
+            print("ERROR CLOSING SARED MEMORY")
+    
+            # Close the shared memory
+            self.shared_mem.close()
+            # Unlink (delete) the shared memory
+            self.shared_mem.unlink()
+            # Start a new shared memory
+            self.shared_mem = shared_memory.SharedMemory(name=self.shm_name, create=True, size=1024)
 
 
 

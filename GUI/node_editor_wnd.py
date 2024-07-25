@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+import subprocess
 
 from node_scene import Scene
 from node_node import *
@@ -20,6 +21,7 @@ class NodeEditorWnd(QWidget):
 
         self.initUI()
 
+    
  
 
     def initUI(self):
@@ -110,6 +112,11 @@ class NodeEditorWnd(QWidget):
         file.open(QFile.ReadOnly | QFile.Text)
         stylesheet = file.readAll()
         QApplication.instance().setStyleSheet(str(stylesheet, encoding='utf-8'))
+
+
+
+
+
 
     # def compile(self):
     #     for node in self.nodes:

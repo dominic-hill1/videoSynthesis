@@ -1,7 +1,7 @@
 OF_GLSL_SHADER_HEADER
-uniform float bfdbbdadea;
-uniform float babceefdcdfffc;
-uniform float eeebfbedafaec;
+uniform float acceadbfa;
+uniform float aebaedefbf;
+uniform float beabaabeaddccd;
 
 
 uniform sampler2DRect tex0;
@@ -102,20 +102,12 @@ void main()
 
 
 
-float bcdcfbabeff = 0;
-vec4 ecbcddbc = vec4(0, 0, 0, 0);
+float efeeccddbdbbef = 0;
+vec4 fedefabacaab = vec4(0, 0, 0, 0);
+float dddfaaddab = 0;
 
 
 
-
-
-
-
-
-
-bcdcfbabeff = oscillator(bfdbbdadea, babceefdcdfffc, eeebfbedafaec, 2);
-bcdcfbabeff = oscillator(bfdbbdadea, babceefdcdfffc, eeebfbedafaec, 2);
-bcdcfbabeff = oscillator(bfdbbdadea, babceefdcdfffc, eeebfbedafaec, 2);
-ecbcddbc = vec4(bcdcfbabeff, bcdcfbabeff, bcdcfbabeff, 1.0);
-outputColor = ecbcddbc;
+fedefabacaab = vec4(beabaabeaddccd, aebaedefbf, acceadbfa, 1.0);
+outputColor = fedefabacaab;
 }

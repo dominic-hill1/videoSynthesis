@@ -330,13 +330,14 @@ class SliderNode(Node):
     def sendValue(self):
         # self.scene.comms.write(f"{self.id} {self.value}")
         string = f"{self.id} {self.value}"
-        self.shm = shared_memory.SharedMemory(name=self.scene.shm_name)
-        self.size = 1024
-        self.buffer = self.shm.buf
-        if len(string) >= self.size:
-            raise ValueError("String is too large to fit in the shared memory block.")
-        self.buffer[:len(string)] = string.encode('utf-8')
-        self.buffer[len(string):len(string)+1] = b'\0'  # Null-ter
+        self.scene.writeToSharedMemory(string)
+        # self.shm = shared_memory.SharedMemory(name=self.scene.shm_name)
+        # self.size = 1024
+        # self.buffer = self.shm.buf
+        # if len(string) >= self.size:
+        #     raise ValueError("String is too large to fit in the shared memory block.")
+        # self.buffer[:len(string)] = string.encode('utf-8')
+        # self.buffer[len(string):len(string)+1] = b'\0'  # Null-ter
 
 
 
