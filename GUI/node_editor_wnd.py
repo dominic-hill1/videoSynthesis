@@ -7,6 +7,7 @@ from node_scene import Scene
 from node_node import *
 from node_edge import Edge, EDGE_TYPE_BEZIER
 from node_graphics_view import QDMGraphicsView
+from node_sidebar import Sidebar
 
 
 class NodeEditorWnd(QWidget):
@@ -25,14 +26,16 @@ class NodeEditorWnd(QWidget):
  
 
     def initUI(self):
-        self.setGeometry(200, 200, 800, 600)
+        # self.setGeometry(200, 200, 800, 600)
 
-        self.layout = QVBoxLayout()
+        self.layout = QHBoxLayout()
         self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(0)
         self.setLayout(self.layout)
 
         # Create graphics scene
         self.scene = Scene()
+        self.sidebar = Sidebar(self)
         # self.grScene = self.scene.grScene
 
 
@@ -40,15 +43,18 @@ class NodeEditorWnd(QWidget):
 
         # Create graphics view
         self.view = QDMGraphicsView(self.scene.grScene, parent=self)
+        # self.view.setGeometry(0, 0, 1920, 1080)
+        # self.sidebar.setGeometry(1700, 0, 1920, 1080)
         self.layout.addWidget(self.view)
+        self.layout.addWidget(self.sidebar)
 
         self.setWindowTitle("Video synthesiser")
         self.show()
 
     def addNodes(self):
-        self.nodes.append(SinOscNode(self.scene))
-        self.nodes.append(ColorMixerNode(self.scene))
-        self.nodes.append(SquareOscNode(self.scene))
+        # self.nodes.append(SinOscNode(self.scene))
+        # self.nodes.append(ColorMixerNode(self.scene))
+        # self.nodes.append(SquareOscNode(self.scene))
         self.nodes.append(OutputNode(self.scene))
         self.nodes.append(LargeSliderNode(self.scene))
         self.nodes.append(LargeSliderNode(self.scene))
@@ -56,9 +62,9 @@ class NodeEditorWnd(QWidget):
         self.nodes.append(SmallSliderNode(self.scene))
         self.nodes.append(SmallSliderNode(self.scene))
         self.nodes.append(SmallSliderNode(self.scene))
-        self.nodes.append(ColorXNode(self.scene))
-        self.nodes.append(AddNode(self.scene))
-        self.nodes.append(MultiplyNode(self.scene))
+        # self.nodes.append(ColorXNode(self.scene))
+        # self.nodes.append(AddNode(self.scene))
+        # self.nodes.append(MultiplyNode(self.scene))
         # node4 = ColorMixerNode(self.scene)
         # node5 = SliderNode(self.scene)
         # node6 = OutputNode(self.scene)
@@ -69,10 +75,16 @@ class NodeEditorWnd(QWidget):
         # node11 = SliderNode(self.scene)
         # node12 = ColorMixerNode(self.scene)
 
-        self.nodes[0].setPos(-350, -250)
-        self.nodes[1].setPos(-75, 0)
-        self.nodes[2].setPos(200, -150)
-        self.nodes[3].setPos(250, 200)
+        self.nodes[0].setPos(350, 250)
+        self.nodes[1].setPos(-350, -250)
+        self.nodes[2].setPos(-350, -250)
+        self.nodes[3].setPos(-350, -250)
+        self.nodes[4].setPos(-350, -250)
+        self.nodes[5].setPos(-350, -250)
+        self.nodes[6].setPos(-350, -250)
+        # self.nodes[1].setPos(-75, 0)
+        # self.nodes[2].setPos(200, -150)
+        # self.nodes[3].setPos(250, 200)
         # node4.setPos(300, 300)
         # node5.setPos(100, 300)
         # node6.setPos(300, 200)
@@ -85,6 +97,9 @@ class NodeEditorWnd(QWidget):
 
         # self.edges.append(Edge(self.scene, self.nodes[0].outputs[0], self.nodes[1].inputs[0], edge_type=EDGE_TYPE_BEZIER))
         # self.edges.append(Edge(self.scene, self.nodes[1].outputs[0], self.nodes[2].inputs[2], edge_type=EDGE_TYPE_BEZIER))
+
+    def addNode(self, node):
+        self.node.append(node)
         
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)

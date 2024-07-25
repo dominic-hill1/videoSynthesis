@@ -125,8 +125,11 @@ class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.zoom_label = QLabel("Zoom factor", self)
+        self.zoom_label = QLabel("Colour", self)
         self.zoom_label.move(5, 10)
+
+        self.zoom_label = QLabel("Zoom factor", self)
+        self.zoom_label.move(5, 50)
 
         self.out_label = QLabel("Output", self)
         self.out_label.move(110, 45)
@@ -195,6 +198,16 @@ class QDMNodeContentColorX(QDMNodeContentWidget):
         layout.addWidget(self.label)
         self.setLayout(layout)
 
+class QDMNodeContentColorY(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("y-coordinate of pixel", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
 
 class QDMNodeContentAdd(QDMNodeContentWidget):
     def initUI(self):
@@ -215,7 +228,27 @@ class QDMNodeContentMultiply(QDMNodeContentWidget):
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
-    
+
+
+class QDMNodeContentDivide(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("Divide two signals", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+
+class QDMNodeContentNegate(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+        # Create a label to display the slider value
+        self.label = QLabel("Make input negative", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
 
 class QDMNodeContentOutput(QDMNodeContentWidget):
     def initUI(self):
@@ -225,5 +258,5 @@ class QDMNodeContentOutput(QDMNodeContentWidget):
         self.out_label.move(5, 10)
 
 
-        self.feedback_label = QLabel("Feedback", self)
-        self.feedback_label.move(5, 50)
+        # self.feedback_label = QLabel("Feedback", self)
+        # self.feedback_label.move(5, 50)

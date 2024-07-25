@@ -1,301 +1,238 @@
 {
-    "id": 129884283882368,
+    "id": 138698189623344,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": "ebdfdbdefdefe",
-            "title": "Sin Oscillator",
-            "pos_x": 87.0,
-            "pos_y": 294.0,
-            "inputs": [
-                {
-                    "id": 129884284112896,
-                    "index": 0,
-                    "position": 2,
-                    "socket_type": 0
-                },
-                {
-                    "id": 129884284115728,
-                    "index": 1,
-                    "position": 2,
-                    "socket_type": 0
-                },
-                {
-                    "id": 129884284115776,
-                    "index": 2,
-                    "position": 2,
-                    "socket_type": 0
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 129884284115824,
-                    "index": 0,
-                    "position": 3,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "dcfeccbeaefdaeaeef",
-            "title": "Colour mixer",
-            "pos_x": -75.0,
-            "pos_y": 0.0,
-            "inputs": [
-                {
-                    "id": 129884284115920,
-                    "index": 0,
-                    "position": 1,
-                    "socket_type": 0
-                },
-                {
-                    "id": 129884284116016,
-                    "index": 1,
-                    "position": 1,
-                    "socket_type": 0
-                },
-                {
-                    "id": 129884284116064,
-                    "index": 2,
-                    "position": 1,
-                    "socket_type": 0
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 129884284116112,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 1
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "aebeabeeec",
-            "title": "Square Oscillator",
-            "pos_x": 330.0,
-            "pos_y": 406.0,
-            "inputs": [
-                {
-                    "id": 129884284116304,
-                    "index": 0,
-                    "position": 2,
-                    "socket_type": 0
-                },
-                {
-                    "id": 129884284116208,
-                    "index": 1,
-                    "position": 2,
-                    "socket_type": 0
-                },
-                {
-                    "id": 129884284116352,
-                    "index": 2,
-                    "position": 2,
-                    "socket_type": 0
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 129884284116400,
-                    "index": 0,
-                    "position": 3,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "cadfbabbdab",
+            "id": "adeacadfeea",
             "title": "Output",
-            "pos_x": 250.0,
-            "pos_y": 200.0,
+            "pos_x": 584.0,
+            "pos_y": 165.0,
             "inputs": [
                 {
-                    "id": 129884284116592,
+                    "id": 138698189873808,
                     "index": 0,
                     "position": 1,
                     "socket_type": 1
-                },
-                {
-                    "id": 129884284116640,
-                    "index": 1,
-                    "position": 1,
-                    "socket_type": 2
                 }
             ],
             "outputs": [],
             "content": {}
         },
         {
-            "id": "fcaeedeedc",
+            "id": "ccfacceaececbe",
             "title": "Variable input (0-100)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 138698189878896,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "cddbcbdcbcebfdceefb",
+            "title": "Variable input (0-100)",
+            "pos_x": -149.0,
+            "pos_y": 307.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 138698189879088,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "becabcfdcf",
+            "title": "Variable input (0-100)",
+            "pos_x": -156.0,
+            "pos_y": 444.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 138698189879280,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "ababdfafde",
+            "title": "Variable input (0-1)",
+            "pos_x": -362.0,
+            "pos_y": 224.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 138698189879472,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "addaedecbe",
+            "title": "Variable input (0-1)",
+            "pos_x": -392.0,
+            "pos_y": 89.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 138698189879664,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "eeabafddf",
+            "title": "Variable input (0-1)",
+            "pos_x": -392.0,
+            "pos_y": -57.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 138698189879856,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "dbeabdcbbbf",
+            "title": "Colour mixer",
+            "pos_x": 0.0,
+            "pos_y": 0.0,
+            "inputs": [
+                {
+                    "id": 138698119102416,
+                    "index": 0,
+                    "position": 1,
+                    "socket_type": 0
+                },
+                {
+                    "id": 138698119102368,
+                    "index": 1,
+                    "position": 1,
+                    "socket_type": 0
+                },
+                {
+                    "id": 138698119151680,
+                    "index": 2,
+                    "position": 1,
+                    "socket_type": 0
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 138698119151728,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 1
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "adaabfabcfed",
+            "title": "Division",
+            "pos_x": 106.0,
+            "pos_y": 356.0,
+            "inputs": [
+                {
+                    "id": 138698117847968,
+                    "index": 0,
+                    "position": 2,
+                    "socket_type": 0
+                },
+                {
+                    "id": 138698117851184,
+                    "index": 1,
+                    "position": 2,
+                    "socket_type": 0
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 138698117852240,
+                    "index": 0,
+                    "position": 3,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "aeaefbeabceec",
+            "title": "Zooming feedback",
             "pos_x": 242.0,
-            "pos_y": 65.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284118944,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "eccdbccbbcdfdd",
-            "title": "Variable input (0-100)",
-            "pos_x": 53.0,
-            "pos_y": 542.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284119136,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "dacadfdec",
-            "title": "Variable input (0-100)",
-            "pos_x": -405.0,
-            "pos_y": 424.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284119328,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "aecdbbabadff",
-            "title": "Variable input (0-1)",
-            "pos_x": -201.0,
-            "pos_y": 181.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284119520,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "adebbaafbeda",
-            "title": "Variable input (0-1)",
-            "pos_x": -183.0,
-            "pos_y": 453.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284119712,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "fbdfeaccaac",
-            "title": "Variable input (0-1)",
-            "pos_x": -386.0,
-            "pos_y": 92.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284119904,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "colorx",
-            "title": "ColorX",
-            "pos_x": -405.0,
-            "pos_y": 244.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 129884284120096,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "dbbdaabdcfccea",
-            "title": "Addition",
-            "pos_x": -72.0,
-            "pos_y": -165.0,
+            "pos_y": 176.0,
             "inputs": [
                 {
-                    "id": 129884284120288,
+                    "id": 138698117852480,
                     "index": 0,
-                    "position": 2,
-                    "socket_type": 0
+                    "position": 1,
+                    "socket_type": 1
                 },
                 {
-                    "id": 129884284120336,
+                    "id": 138698117852720,
                     "index": 1,
-                    "position": 2,
+                    "position": 1,
                     "socket_type": 0
                 }
             ],
             "outputs": [
                 {
-                    "id": 129884284120384,
+                    "id": 138698117852384,
                     "index": 0,
-                    "position": 3,
-                    "socket_type": 0
+                    "position": 4,
+                    "socket_type": 1
                 }
             ],
             "content": {}
         },
         {
-            "id": "dffbbfbfcaae",
-            "title": "Multiplication",
-            "pos_x": -178.0,
-            "pos_y": 312.0,
+            "id": "bacbccbebccedc",
+            "title": "Colour multiplication",
+            "pos_x": 483.0,
+            "pos_y": -27.0,
             "inputs": [
                 {
-                    "id": 129884284120576,
+                    "id": 138698117846912,
                     "index": 0,
-                    "position": 2,
-                    "socket_type": 0
+                    "position": 1,
+                    "socket_type": 1
                 },
                 {
-                    "id": 129884284120624,
+                    "id": 138698117847488,
                     "index": 1,
-                    "position": 2,
-                    "socket_type": 0
+                    "position": 1,
+                    "socket_type": 1
                 }
             ],
             "outputs": [
                 {
-                    "id": 129884284120672,
+                    "id": 138698117841440,
                     "index": 0,
-                    "position": 3,
-                    "socket_type": 0
+                    "position": 4,
+                    "socket_type": 1
                 }
             ],
             "content": {}
@@ -303,76 +240,64 @@
     ],
     "edges": [
         {
-            "id": 129884284236128,
+            "id": 138698119154464,
             "edge_type": 2,
-            "start": 129884284120096,
-            "end": 129884284120624
+            "start": 138698189879856,
+            "end": 138698119102416
         },
         {
-            "id": 129884284236944,
+            "id": 138698119154944,
             "edge_type": 2,
-            "start": 129884284119520,
-            "end": 129884284115776
+            "start": 138698189879664,
+            "end": 138698119102368
         },
         {
-            "id": 129884284236992,
+            "id": 138698117852528,
             "edge_type": 2,
-            "start": 129884284120672,
-            "end": 129884284115728
+            "start": 138698189879088,
+            "end": 138698117851184
         },
         {
-            "id": 129884284237088,
+            "id": 138698117852672,
             "edge_type": 2,
-            "start": 129884284119712,
-            "end": 129884284112896
+            "start": 138698189879280,
+            "end": 138698117847968
         },
         {
-            "id": 129884284237280,
+            "id": 138698117852912,
             "edge_type": 2,
-            "start": 129884284116592,
-            "end": 129884284116112
+            "start": 138698117852240,
+            "end": 138698117852720
         },
         {
-            "id": 129884284237232,
+            "id": 138698117853056,
             "edge_type": 2,
-            "start": 129884284119328,
-            "end": 129884284120576
+            "start": 138698117852480,
+            "end": 138698119151728
         },
         {
-            "id": 129884284239056,
+            "id": 138698117855120,
             "edge_type": 2,
-            "start": 129884284116016,
-            "end": 129884284119904
+            "start": 138698189879472,
+            "end": 138698119151680
         },
         {
-            "id": 129884284237184,
+            "id": 138698117845664,
             "edge_type": 2,
-            "start": 129884284120672,
-            "end": 129884284116208
+            "start": 138698117852384,
+            "end": 138698117847488
         },
         {
-            "id": 129884284236176,
+            "id": 138698117845808,
             "edge_type": 2,
-            "start": 129884284116304,
-            "end": 129884284115824
+            "start": 138698119151728,
+            "end": 138698117846912
         },
         {
-            "id": 129884284237136,
+            "id": 138698117845568,
             "edge_type": 2,
-            "start": 129884284116352,
-            "end": 129884284119136
-        },
-        {
-            "id": 129884284239104,
-            "edge_type": 2,
-            "start": 129884284116400,
-            "end": 129884284116064
-        },
-        {
-            "id": 129884167866352,
-            "edge_type": 2,
-            "start": 129884284116400,
-            "end": 129884284115920
+            "start": 138698117841440,
+            "end": 138698189873808
         }
     ]
 }

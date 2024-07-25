@@ -277,7 +277,7 @@ class LumaKeyNode(Node):
         code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
         return code
     def writeCode(self):
-        code = f"{self.id} = vec4(lumaKey({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}), 1.0);"
+        code = f"{self.id} = vec4(lumaKey({self.inputNodes[2].id}, {self.inputNodes[1].id}, {self.inputNodes[0].id}), 1.0);"
         return code
 
 
@@ -295,10 +295,20 @@ class FeedbackZoomNode(Node):
         self.scene.addNode(self)
         self.scene.grScene.addItem(self.grNode)
 
-        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
-        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FeedbackZoomNode))
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
         # TODO: Implement writeCode
+
+    def writeInitCode(self):
+        return ""
+    def writeCode(self):
+        code = f"vec2 {self.id}abc = texCoordVarying;"
+        code += f"{self.id}abc = feedbackZoom({self.id}abc, {self.inputNodes[1].id});"
+        code += f"vec4 {self.id} = texture(tex0, {self.id}abc);"
+        return code
+
 
 class SliderNode(Node):
     def writeInitCode(self):
@@ -350,7 +360,7 @@ class ColorXNode(Node):
         def __init__(self, scene):
             super().__init__(scene)
 
-            self.title = "ColorX"
+            self.title = "X-Coordinate"
 
             self.grNode = QDMGraphicsNode(self)
             self.grNode.height = 120
@@ -362,6 +372,28 @@ class ColorXNode(Node):
 
             self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
             self.id = "colorx"
+
+        def writeInitCode(self):
+            return ""
+        def writeCode(self):
+            return ""
+        
+class ColorYNode(Node):
+        def __init__(self, scene):
+            super().__init__(scene)
+
+            self.title = "Y-Coordinate"
+
+            self.grNode = QDMGraphicsNode(self)
+            self.grNode.height = 120
+            self.content = QDMNodeContentColorY(self)
+            self.grNode.initContent()
+
+            self.scene.addNode(self)
+            self.scene.grScene.addItem(self.grNode)
+
+            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+            self.id = "colory"
 
         def writeInitCode(self):
             return ""
@@ -421,6 +453,57 @@ class MultiplyNode(Node):
     def writeCode(self):
         code = f"{self.id} = {self.inputNodes[0].id} * {self.inputNodes[1].id};"
         return code
+    
+class DivideNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Division"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentDivide(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
+
+    def writeInitCode(self):
+        code = f"float {self.id} = 0;"
+        return code
+    def writeCode(self):
+        code = f"{self.id} = {self.inputNodes[0].id} / {self.inputNodes[1].id};"
+        return code
+    
+class NegateNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Negate"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentNegate(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
+
+    def writeInitCode(self):
+        code = f"float {self.id} = 0;"
+        return code
+    def writeCode(self):
+        code = f"{self.id} = -{self.inputNodes[0].id};"
+        return code
 
 class OutputNode(Node):
     def __init__(self, scene):
@@ -431,7 +514,7 @@ class OutputNode(Node):
         self.value = 0
 
         self.grNode = QDMGraphicsNode(self)
-        self.grNode.height = 120
+        self.grNode.height = 80
         self.content = QDMNodeContentOutput(self)
         self.grNode.initContent()
 
@@ -439,7 +522,6 @@ class OutputNode(Node):
         self.scene.grScene.addItem(self.grNode)
 
         self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
-        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FEEDBACK_TYPE))
 
 
 

@@ -190,8 +190,8 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	// time1 += hn;
-	// time2 += jm;
+	time1 += 1;
+	time2 += 0.5;
 
 	framebuffer0.begin();
 	shader1.begin();
