@@ -127,7 +127,7 @@ class SinOscNode(OscNode):
         code = f"float {self.id} = 0;"
         return code
     def writeCode(self):
-        code = f"{self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 1);"
+        code = f"{self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 0);"
         return code
 
 class SquareOscNode(OscNode):
@@ -300,18 +300,26 @@ class FeedbackZoomNode(Node):
 
         # TODO: Implement writeCode
 
-
 class SliderNode(Node):
+    def writeInitCode(self):
+        return ""
+    def writeCode(self):
+        return ""
+    def sendValue(self):
+        string = f"{self.id} {self.value:.10f}"
+        self.scene.writeToSharedMemory(string)
+
+class SmallSliderNode(SliderNode):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Variable input"
+        self.title = "Variable input (0-1)"
 
         self.value = 0
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 120
-        self.content = QDMNodeContentSlider(self)
+        self.content = QDMNodeContentSliderSmall(self)
         self.grNode.initContent()
 
         self.scene.addNode(self)
@@ -319,28 +327,100 @@ class SliderNode(Node):
 
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
 
+
+class LargeSliderNode(SliderNode):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Variable input (0-100)"
+
+        self.value = 0
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentSliderLarge(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+
+class ColorXNode(Node):
+        def __init__(self, scene):
+            super().__init__(scene)
+
+            self.title = "ColorX"
+
+            self.grNode = QDMGraphicsNode(self)
+            self.grNode.height = 120
+            self.content = QDMNodeContentColorX(self)
+            self.grNode.initContent()
+
+            self.scene.addNode(self)
+            self.scene.grScene.addItem(self.grNode)
+
+            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+            self.id = "colorx"
+
+        def writeInitCode(self):
+            return ""
+        def writeCode(self):
+            return ""
+    
+
+  
+
+class AddNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Addition"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentAdd(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
+
     def writeInitCode(self):
-        code = ""
+        code = f"float {self.id} = 0;"
         return code
     def writeCode(self):
-        # code = f"{self.id} = {self.value};"
-        # return code
-        return ""
-    
-    def sendValue(self):
-        # self.scene.comms.write(f"{self.id} {self.value}")
-        string = f"{self.id} {self.value}"
-        self.scene.writeToSharedMemory(string)
-        # self.shm = shared_memory.SharedMemory(name=self.scene.shm_name)
-        # self.size = 1024
-        # self.buffer = self.shm.buf
-        # if len(string) >= self.size:
-        #     raise ValueError("String is too large to fit in the shared memory block.")
-        # self.buffer[:len(string)] = string.encode('utf-8')
-        # self.buffer[len(string):len(string)+1] = b'\0'  # Null-ter
+        code = f"{self.id} = {self.inputNodes[0].id} + {self.inputNodes[1].id};"
+        return code
+class MultiplyNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
 
+        self.title = "Multiplication"
 
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentMultiply(self)
+        self.grNode.initContent()
 
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
+
+    def writeInitCode(self):
+        code = f"float {self.id} = 0;"
+        return code
+    def writeCode(self):
+        code = f"{self.id} = {self.inputNodes[0].id} * {self.inputNodes[1].id};"
+        return code
 
 class OutputNode(Node):
     def __init__(self, scene):

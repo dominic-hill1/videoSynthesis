@@ -21,6 +21,7 @@ class Scene(Serializable):
         self.initUI()
         self.shared_mem, self.shm_name, self.shm_buffer = self.init_shared_mem()
         self.compiled = False
+        self.glslThread = None
 
     def initUI(self):
         self.grScene = QDMGraphicsScene(self)

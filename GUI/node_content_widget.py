@@ -131,7 +131,7 @@ class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
         self.out_label = QLabel("Output", self)
         self.out_label.move(110, 45)
 
-class QDMNodeContentSlider(QDMNodeContentWidget):
+class QDMNodeContentSliderSmall(QDMNodeContentWidget):
     def initUI(self):
         layout = QVBoxLayout()
 
@@ -143,7 +143,34 @@ class QDMNodeContentSlider(QDMNodeContentWidget):
         # Create a slider
         self.slider = QSlider(Qt.Horizontal, self)
         self.slider.setMinimum(0)
-        self.slider.setMaximum(255)
+        self.slider.setMaximum(1000)
+        self.slider.setValue(0)
+        self.slider.setTickPosition(QSlider.TicksBelow)
+        self.slider.setTickInterval(100)
+
+        self.slider.valueChanged.connect(self.update_label)
+        layout.addWidget(self.slider)
+
+        self.setLayout(layout)
+
+    def update_label(self, value):
+        self.node.value = value/1000
+        self.node.sendValue()
+        self.label.setText("Value: {0:.6g}".format(value/1000))
+
+class QDMNodeContentSliderLarge(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("Value: 0", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+
+        # Create a slider
+        self.slider = QSlider(Qt.Horizontal, self)
+        self.slider.setMinimum(0)
+        self.slider.setMaximum(100)
         self.slider.setValue(0)
         self.slider.setTickPosition(QSlider.TicksBelow)
         self.slider.setTickInterval(10)
@@ -154,9 +181,41 @@ class QDMNodeContentSlider(QDMNodeContentWidget):
         self.setLayout(layout)
 
     def update_label(self, value):
-        self.node.value = value/255
+        self.node.value = value
         self.node.sendValue()
         self.label.setText("Value: {0:.6g}".format(value))
+
+class QDMNodeContentColorX(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("x-coordinate of pixel", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+
+class QDMNodeContentAdd(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("Add two signals", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+class QDMNodeContentMultiply(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("Multiply two signals", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+    
 
 class QDMNodeContentOutput(QDMNodeContentWidget):
     def initUI(self):

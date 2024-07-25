@@ -50,9 +50,15 @@ class NodeEditorWnd(QWidget):
         self.nodes.append(ColorMixerNode(self.scene))
         self.nodes.append(SquareOscNode(self.scene))
         self.nodes.append(OutputNode(self.scene))
-        self.nodes.append(SliderNode(self.scene))
-        self.nodes.append(SliderNode(self.scene))
-        self.nodes.append(SliderNode(self.scene))
+        self.nodes.append(LargeSliderNode(self.scene))
+        self.nodes.append(LargeSliderNode(self.scene))
+        self.nodes.append(LargeSliderNode(self.scene))
+        self.nodes.append(SmallSliderNode(self.scene))
+        self.nodes.append(SmallSliderNode(self.scene))
+        self.nodes.append(SmallSliderNode(self.scene))
+        self.nodes.append(ColorXNode(self.scene))
+        self.nodes.append(AddNode(self.scene))
+        self.nodes.append(MultiplyNode(self.scene))
         # node4 = ColorMixerNode(self.scene)
         # node5 = SliderNode(self.scene)
         # node6 = OutputNode(self.scene)
@@ -115,11 +121,16 @@ class NodeEditorWnd(QWidget):
 
 
     def cleanupResources(self):
-        self.scene.glslThread.join()
-        # Close the shared memory
-        self.scene.shared_mem.close()
-        # Unlink (delete) the shared memory
-        self.scene.shared_mem.unlink()
+        print("QUITTING")
+        try:
+            self.scene.glslThread.join()
+            # Close the shared memory
+            self.scene.shared_mem.close()
+            # Unlink (delete) the shared memory
+            self.scene.shared_mem.unlink()
+        except:
+            pass
+        
 
 
 

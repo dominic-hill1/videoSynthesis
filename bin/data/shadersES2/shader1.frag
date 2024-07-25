@@ -1,7 +1,10 @@
 OF_GLSL_SHADER_HEADER
-uniform float bafaafefaacadf;
-uniform float fddcbbdebcd;
-uniform float addbffaaedbdaa;
+uniform float fcaeedeedc;
+uniform float eccdbccbbcdfdd;
+uniform float dacadfdec;
+uniform float aecdbbabadff;
+uniform float adebbaafbeda;
+uniform float fbdfeaccaac;
 
 
 uniform sampler2DRect tex0;
@@ -98,16 +101,42 @@ void main()
 
 	
 	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;
+	float colory=texCoordVarying.y / windowHeight;float dffbbfbfcaae = 0;
+float dbbdaabdcfccea = 0;
 
 
 
-float edaeddbafeaa = 0;
-vec4 caedcdbbbeddbdac = vec4(0, 0, 0, 0);
-float edffdbabdede = 0;
 
 
 
-caedcdbbbeddbdac = vec4(addbffaaedbdaa, bafaafefaacadf, fddcbbdebcd, 1.0);
-outputColor = caedcdbbbeddbdac;
+
+
+float aebeabeeec = 0;
+vec4 dcfeccbeaefdaeaeef = vec4(0, 0, 0, 0);
+float ebdfdbdefdefe = 0;
+
+
+
+
+
+
+
+dffbbfbfcaae = dacadfdec * colorx;
+
+
+
+
+dffbbfbfcaae = dacadfdec * colorx;
+
+
+dffbbfbfcaae = dacadfdec * colorx;
+ebdfdbdefdefe = oscillator(adebbaafbeda, dffbbfbfcaae, aecdbbabadff, 0);
+
+dffbbfbfcaae = dacadfdec * colorx;
+ebdfdbdefdefe = oscillator(adebbaafbeda, dffbbfbfcaae, aecdbbabadff, 0);
+aebeabeeec = oscillator(ebdfdbdefdefe, dffbbfbfcaae, eccdbccbbcdfdd, 2);
+
+aebeabeeec = oscillator(ebdfdbdefdefe, dffbbfbfcaae, eccdbccbbcdfdd, 2);
+dcfeccbeaefdaeaeef = vec4(aebeabeeec, fbdfeaccaac, aebeabeeec, 1.0);
+outputColor = dcfeccbeaefdaeaeef;
 }
