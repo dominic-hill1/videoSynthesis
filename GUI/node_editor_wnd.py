@@ -107,7 +107,7 @@ class NodeEditorWnd(QWidget):
         # self.edges.append(Edge(self.scene, self.nodes[1].outputs[0], self.nodes[2].inputs[2], edge_type=EDGE_TYPE_BEZIER))
 
     def addNode(self, node):
-        self.node.append(node)
+        self.nodes.append(node)
         
     def addDebugContent(self):
         greenBrush = QBrush(Qt.green)

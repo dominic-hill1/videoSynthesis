@@ -10,6 +10,7 @@ import threading
 from node_serializable import Serializable
 from node_graphics_scene import QDMGraphicsScene
 from node_node import *
+from node_edge import Edge
 from circular_buffer import CircularBuffer
 
 class Scene(Serializable):
@@ -38,6 +39,10 @@ class Scene(Serializable):
 
     def removeEdge(self, edge):
         self.edges.remove(edge)
+
+    def clear(self):
+        while len(self.nodes) > 0:
+            self.nodes[0].remove()
 
     def saveToFile(self, filename):
         with open(filename, "w") as file:
@@ -70,8 +75,23 @@ class Scene(Serializable):
             ('edges', edges)
         ])
 
-    def deserialize(self, data, hashmap=[]):
-        print("Deserialising")
+    def deserialize(self, data, hashmap={}):
+        print("Deserialising data", data)
+
+        # self.clear()
+
+        # hashmap = {}
+
+        # # Create nodes
+        # for node_data in data['nodes']:
+        #     Node(self).deserialize(node_data, hashmap)
+
+        # # Create edges
+        # for edge_data in data['edges']:
+        #     Edge(self).deserialize(edge_data, hashmap)
+
+        # return True
+
         return False
     
     def compile(self):

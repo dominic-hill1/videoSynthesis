@@ -94,7 +94,10 @@ class Node(Serializable):
         ])
 
     def deserialize(self, data, hashmap=[]):
-        return False
+        # self.id = data["id"]
+        # hashmap[data['id']] = self
+        # self.title = data['title']
+        pass
 
 class OscNode(Node):
     def __init__(self, scene):

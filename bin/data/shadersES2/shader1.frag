@@ -1,13 +1,14 @@
 OF_GLSL_SHADER_HEADER
-uniform float abeaacdcdec;
-uniform float ecfaaecbf;
-uniform float baceaabfb;
-uniform float abbffaaeeaefac;
-uniform float ebbfeedbccbef;
-uniform float badadaaeaabdbef;
-uniform float dbafeadcee;
-uniform float acadefbffef;
-uniform float aedfaabcbebcd;
+uniform float eddebeeabdaabf;
+uniform float eaccbacad;
+uniform float bdbbadbffefbb;
+uniform float cabdefbeed;
+uniform float bdbbbaeccbddd;
+uniform float fcdbfdcbb;
+uniform float adaacfcdadbee;
+uniform float fdfdfbbfbcbac;
+uniform float ebeaeffffeecb;
+uniform float bfdbdaacbbebe;
 uniform float time;
 
 
@@ -105,22 +106,19 @@ void main()
 
 	
 	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;float aeffcce = 0;
-float cdbdcfbefaecf = 0;
-vec4 afddbcbbd = vec4(0, 0, 0, 0);
+	float colory=texCoordVarying.y / windowHeight;vec4 caefbcabcede = vec4(0, 0, 0, 0);
+
+vec4 cbffaafffc = vec4(0, 0, 0, 0);
 
 
-vec4 dcdbdbbdfcadfe = vec4(0, 0, 0, 0);
-vec4 bfedacbbcdefee = vec4(0, 0, 0, 0);
+vec4 eadfacc = vec4(0, 0, 0, 0);
+float afafdabcfcceeae = 0;
 
-float ceefeaafea = 0;
-float dfdeadbcbbfba = 0;
+float bcadfbeefcad = 0;
+float abbeaecee = 0;
 
-
-vec4 dabffbeba = vec4(0, 0, 0, 0);
-
-
-
+vec4 faefceedaace = vec4(0, 0, 0, 0);
+float caacaeacebdab = 0;
 
 
 
@@ -137,62 +135,51 @@ vec4 dabffbeba = vec4(0, 0, 0, 0);
 
 
 
-dfdeadbcbbfba = ebbfeedbccbef * colorx;
-
-
-
-
-dfdeadbcbbfba = ebbfeedbccbef * colorx;
 
 
 
 
 
 
-dfdeadbcbbfba = ebbfeedbccbef * colorx;
+
+
+abbeaecee = bdbbbaeccbddd * colory;
+
+
+abbeaecee = bdbbbaeccbddd * colory;
+
+
+abbeaecee = bdbbbaeccbddd * colory;
 
 
 
 
+afafdabcfcceeae = cabdefbeed * colorx;
 
 
-dfdeadbcbbfba = ebbfeedbccbef * colorx;
+afafdabcfcceeae = cabdefbeed * colorx;
 
 
+abbeaecee = bdbbbaeccbddd * colory;
 
-aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
-ceefeaafea = abbffaaeeaefac * colory;
+caacaeacebdab = oscillator(eaccbacad, abbeaecee, time, 0);
+caacaeacebdab = oscillator(eaccbacad, abbeaecee, time, 0);
+caacaeacebdab = oscillator(eaccbacad, abbeaecee, time, 0);
 
-aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
-ceefeaafea = abbffaaeeaefac * colory;
+abbeaecee = bdbbbaeccbddd * colory;
 
+bcadfbeefcad = oscillator(bdbbadbffefbb, afafdabcfcceeae, time, 2);
+bcadfbeefcad = oscillator(bdbbadbffefbb, afafdabcfcceeae, time, 2);
+caacaeacebdab = oscillator(eaccbacad, abbeaecee, time, 0);
 
-dfdeadbcbbfba = ebbfeedbccbef * colorx;
-
-aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
-ceefeaafea = abbffaaeeaefac * colory;
-
-
-dfdeadbcbbfba = ebbfeedbccbef * colorx;
-
-aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
-ceefeaafea = abbffaaeeaefac * colory;
-
-cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
-cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
-aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
-cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
-aeffcce = oscillator(acadefbffef, dfdeadbcbbfba, time, 2);
-cdbdcfbefaecf = oscillator(aedfaabcbebcd, ceefeaafea, aeffcce, 0);
+faefceedaace = vec4(caacaeacebdab, caacaeacebdab, caacaeacebdab, 1.0);
 
 
+caacaeacebdab = oscillator(eaccbacad, abbeaecee, time, 0);
+eadfacc = vec4(caacaeacebdab, bcadfbeefcad, bcadfbeefcad, 1.0);
+vec2 efdcacfdacafabc = texCoordVarying;efdcacfdacafabc = feedbackZoom(efdcacfdacafabc, fdfdfbbfbcbac);vec4 efdcacfdacaf = texture(tex0, efdcacfdacafabc);
+caefbcabcede = colorDisplaceHsb(eadfacc, caacaeacebdab, ebeaeffffeecb, adaacfcdadbee);
 
-dabffbeba = vec4(aeffcce, cdbdcfbefaecf, cdbdcfbefaecf, 1.0);
-
-dcdbdbbdfcadfe = vec4(cdbdcfbefaecf, aeffcce, cdbdcfbefaecf, 1.0);
-afddbcbbd = colorDisplaceHsb(dabffbeba, aedfaabcbebcd, acadefbffef, dbafeadcee);
-vec2 baefabdcacaabc = texCoordVarying;baefabdcacaabc = feedbackZoom(baefabdcacaabc, badadaaeaabdbef);vec4 baefabdcaca = texture(tex0, baefabdcacaabc);
-
-bfedacbbcdefee = vec4(lumaKey(afddbcbbd, baefabdcaca, dbafeadcee), 1.0);
-outputColor = bfedacbbcdefee;
+cbffaafffc = vec4(lumaKey(efdcacfdacaf, caefbcabcede, fcdbfdcbb), 1.0);
+outputColor = cbffaafffc;
 }
