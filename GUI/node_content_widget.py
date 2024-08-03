@@ -218,6 +218,32 @@ class QDMNodeContentTime(QDMNodeContentWidget):
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
+
+class QDMNodeContentAudio(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("Audio volume", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.label2 = QLabel("normalised 0-1", self)
+        self.label2.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label2)
+        self.setLayout(layout)
+
+class QDMNodeContentCamera(QDMNodeContentWidget):
+    def initUI(self):
+        layout = QVBoxLayout()
+
+        # Create a label to display the slider value
+        self.label = QLabel("Webcam input", self)
+        self.label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(self.label)
+        self.setLayout(layout)
+
+
+
 class QDMNodeContentAdd(QDMNodeContentWidget):
     def initUI(self):
         layout = QVBoxLayout()

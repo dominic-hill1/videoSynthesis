@@ -403,6 +403,52 @@ class TimeNode(Node):
         def writeCode(self):
             return ""
         
+class AudioNode(Node):
+        def __init__(self, scene):
+            super().__init__(scene)
+
+            self.title = "Audio"
+
+            self.grNode = QDMGraphicsNode(self)
+            self.grNode.height = 120
+            self.content = QDMNodeContentAudio(self)
+            self.grNode.initContent()
+
+            self.scene.addNode(self)
+            self.scene.grScene.addItem(self.grNode)
+
+            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+            self.id = "audio"
+
+        def writeInitCode(self):
+            return ""
+        def writeCode(self):
+            return ""
+        
+
+class CameraNode(Node):
+        def __init__(self, scene):
+            super().__init__(scene)
+
+            self.title = "Webcam"
+
+            self.grNode = QDMGraphicsNode(self)
+            self.grNode.height = 120
+            self.content = QDMNodeContentCamera(self)
+            self.grNode.initContent()
+
+            self.scene.addNode(self)
+            self.scene.grScene.addItem(self.grNode)
+
+            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+
+        def writeInitCode(self):
+            code = f"vec2 {self.id}abc = texCoordVarying;"
+            code += f"vec4 {self.id} = texture(input1, {self.id}abc);"
+            return code
+        def writeCode(self):
+            return ""
+        
 class ColorYNode(Node):
         def __init__(self, scene):
             super().__init__(scene)

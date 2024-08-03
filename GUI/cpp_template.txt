@@ -204,6 +204,8 @@ void ofApp::draw() {
 	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);
 	shader1.setUniform1f("time", time1);
+	shader1.setUniform1f("audio", scaledVol);
+	std::cout << scaledVol << std::endl;
 
 	// SET VARIABLES HERE
 

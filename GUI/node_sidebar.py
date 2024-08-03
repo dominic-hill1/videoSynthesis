@@ -33,8 +33,12 @@ class Sidebar(QWidget):
         self.button15 = QPushButton('Multiplication')
         self.button16 = QPushButton('Division')
         self.button17 = QPushButton('Negation')
+        self.button18 = QPushButton('Camera input')
+        self.button19 = QPushButton('Audio input')
         self.layout.addWidget(self.button1)
         self.layout.addWidget(self.button2)
+        self.layout.addWidget(self.button18)
+        self.layout.addWidget(self.button19)
         self.layout.addWidget(self.button3)
         self.layout.addWidget(self.button4)
         self.layout.addWidget(self.button5)
@@ -50,6 +54,7 @@ class Sidebar(QWidget):
         self.layout.addWidget(self.button15)
         self.layout.addWidget(self.button16)
         self.layout.addWidget(self.button17)
+        
         self.button1.clicked.connect(lambda: self.editor.addNode(SinOscNode(self.editor.scene)))
         self.button2.clicked.connect(lambda: self.editor.addNode(SquareOscNode(self.editor.scene)))
         self.button3.clicked.connect(lambda: self.editor.addNode(ColorMixerNode(self.editor.scene)))
@@ -67,6 +72,8 @@ class Sidebar(QWidget):
         self.button15.clicked.connect(lambda: self.editor.addNode(MultiplyNode(self.editor.scene)))
         self.button16.clicked.connect(lambda: self.editor.addNode(DivideNode(self.editor.scene)))
         self.button17.clicked.connect(lambda: self.editor.addNode(NegateNode(self.editor.scene)))
+        self.button18.clicked.connect(lambda: self.editor.addNode(CameraNode(self.editor.scene)))
+        self.button19.clicked.connect(lambda: self.editor.addNode(AudioNode(self.editor.scene)))
 
 
 

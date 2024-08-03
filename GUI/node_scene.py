@@ -1,6 +1,7 @@
 import json
 from collections import OrderedDict
 from multiprocessing import shared_memory
+import time
 import numpy as np
 import subprocess
 import ctypes
@@ -166,6 +167,9 @@ class Scene(Serializable):
 
 
             self.compiled = True
+        
+        time.sleep(0.1)
+        self.writeToSharedMemory("000000000")
     
     def init_cpp(self):
         initCode = ""
@@ -194,6 +198,7 @@ class Scene(Serializable):
             if isinstance(node, SliderNode):
                 ret += f"uniform float {node.id};\n"
         ret += f"uniform float time;\n"
+        ret += f"uniform float audio;\n"
 
         return ret
     
