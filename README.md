@@ -15,26 +15,28 @@ A full-stack application to emulate analogue video synthesis using a node editor
 Oscillators:
 - 3 types (Sin, Square and Circle)
 - 3 inputs (2 for circle):
--   Amplitude
--   Rate
--   Frequency
+  -   Amplitude
+  -   Rate
+  -   Frequency
 - Output: Oscillating number between 0-1
 
 Luma Key:
 - Similar to a green screen effect, but selects on brightness
 - 3 inputs:
--   Default video
--   Alternative Video
--   Sensitivity: control the sensitivity of the effect (0 will show one video, 1 will show the other)
+  -   Default video
+  -   Alternative Video
+  -   Sensitivity: control the sensitivity of the effect (0 will show one video, 1 will show the other)
 - Output: Keyed video
+  
 X-Coordinate:
 - An x-coordinate of a pixel, normalized between 0-1
+
 Y-Coordinate:
 - A y-coordinate of a pixel, normalized between 0-1
 
 
-## Contact Me:
-[Email Me](mailto:dominic.hill.eng@gmail.com)
+## Contact Me
+[Email Me](mailto:dominic.hill.eng@gmail.com)<br>
 [Connect on LinkedIn](https://www.linkedin.com/in/dominichill1)
 
 
