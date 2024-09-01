@@ -64,7 +64,6 @@ class Node(Serializable):
     def updateConnectedEdges(self):
         for socket in self.inputs + self.outputs:
             if socket.hasEdge():
-                # socket.edge.updatePositions()
                 for edge in socket.edges:
                     edge.updatePositions()
     
@@ -147,6 +146,31 @@ class SquareOscNode(OscNode):
     def writeCode(self):
         code = f"{self.id} = oscillator({self.inputNodes[0].id}, {self.inputNodes[1].id}, {self.inputNodes[2].id}, 2);"
         return code
+    
+class CircleOscNode(Node):
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Circular Oscillator"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 160
+        self.content = QDMNodeContentCircleOsc(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+
+    def writeInitCode(self):
+        code = f"float {self.id} = 0;"
+        return code
+    def writeCode(self):
+        code = f"{self.id} = circleOscillator({self.inputNodes[0].id}, {self.inputNodes[1].id});"
+        return code
 
 
 class ColorMixerNode(Node):
@@ -225,7 +249,7 @@ class ColorMultNode(Node):
         code = f"vec4 {self.id} = vec4(0, 0, 0, 0);"
         return code
     def writeCode(self):
-        code = f"{self.id} = vec4(mulitplyColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
+        code = f"{self.id} = vec4(multiplyColor({self.inputNodes[0].id}, {self.inputNodes[1].id}), 1.0);"
         return code
 
 

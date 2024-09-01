@@ -49,7 +49,16 @@ class Edge(Serializable):
         
         if self.start_socket is not None:
             self.start_socket.edge = None
+            try:
+                self.start_socket.edges.remove(self)
+            except ValueError:
+                pass
         if self.end_socket is not None:
+            try:
+                self.end_socket.edges.remove(self)
+            except ValueError:
+                pass
+            
             self.end_socket.edge = None
 
         self.end_socket = None

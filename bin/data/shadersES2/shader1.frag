@@ -1,16 +1,16 @@
 OF_GLSL_SHADER_HEADER
-uniform float ebbbbfebbab;
-uniform float eeeebcbaff;
-uniform float fbefafafcac;
-uniform float bdfffaefae;
-uniform float ceefeabfbebbe;
-uniform float bccaabec;
-uniform float affcefcacfeae;
-uniform float bbcfffdf;
-uniform float fcfecbbeead;
-uniform float bbedecbeeeabffaced;
-uniform float cdcbaabaccc;
-uniform float cddfeeccbde;
+uniform float adcfacaaccdfb;
+uniform float ffaaccfaecfdf;
+uniform float bfffdddbedeceaf;
+uniform float bfdadcefcceccdae;
+uniform float ccafaabecb;
+uniform float bdeeccdacafdfe;
+uniform float babeacaeeced;
+uniform float ddfabfefbbd;
+uniform float bacabcdecba;
+uniform float dacdbcbbaecfcca;
+uniform float fbffafdade;
+uniform float dedadefbaeecbdf;
 uniform float time;
 uniform float audio;
 
@@ -25,6 +25,13 @@ uniform vec2 resolution;
 in vec2 texCoordVarying;
 
 out vec4 outputColor;
+
+float windowWidth = 640;
+float windowHeight = 480;
+
+
+float colorx=texCoordVarying.x / windowWidth;
+float colory=texCoordVarying.y / windowHeight;
 
 float oscillator(in float amp, in float rate, in float frequency, in float waveShape){
 	float osc = 0;
@@ -44,6 +51,11 @@ float oscillator(in float amp, in float rate, in float frequency, in float waveS
 		float osc2 = amp * sin(frequency + rate);
 		osc = mix(osc1, osc2, waveShape);
 	}
+	return osc;
+}
+
+float circleOscillator(in float amp, in float frequency){
+	float osc = fract(distance(vec2(texCoordVarying.x / windowWidth*1.1, texCoordVarying.y / windowHeight*1.1), vec2(0.5, 0.5)) * frequency) * amp;
 	return osc;
 }
  
@@ -104,17 +116,15 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 void main()
 {
 
-	float windowWidth = 720;
-	float windowHeight = 480;
+vec4 eebecaabcee = vec4(0, 0, 0, 0);
 
-	
-	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;vec4 bebcfdbfda = vec4(0, 0, 0, 0);
-float abfddcabcbc = 0;
+vec4 cbbdbbcabafefeb = vec4(0, 0, 0, 0);
+vec4 cdcebfbeec = vec4(0, 0, 0, 0);
 
-
-
-
+float efcfbfdfefbcfe = 0;
+vec4 adfecc = vec4(0, 0, 0, 0);
+float cfeacbcfda = 0;
+vec2 acbccaecfbabc = texCoordVarying;vec4 acbccaecfb = texture(input1, acbccaecfbabc);
 
 
 
@@ -127,6 +137,30 @@ float abfddcabcbc = 0;
 
 
 
-bebcfdbfda = vec4(bbedecbeeeabffaced, cdcbaabaccc, cdcbaabaccc, 1.0);
-outputColor = bebcfdbfda;
+
+
+
+
+
+
+
+efcfbfdfefbcfe = bdeeccdacafdfe * colorx;
+
+efcfbfdfefbcfe = bdeeccdacafdfe * colorx;
+
+
+
+
+vec2 ebabdfbcbabc = texCoordVarying;ebabdfbcbabc = feedbackZoom(ebabdfbcbabc, bacabcdecba);vec4 ebabdfbcb = texture(tex0, ebabdfbcbabc);
+
+cfeacbcfda = circleOscillator(fbffafdade, efcfbfdfefbcfe);
+cfeacbcfda = circleOscillator(fbffafdade, efcfbfdfefbcfe);
+
+eebecaabcee = colorDisplaceHsb(ebabdfbcb, bacabcdecba, ddfabfefbbd, babeacaeeced);
+
+adfecc = vec4(cfeacbcfda, cfeacbcfda, ccafaabecb, 1.0);
+cbbdbbcabafefeb = vec4(lumaKey(acbccaecfb, eebecaabcee, dacdbcbbaecfcca), 1.0);
+
+cdcebfbeec = vec4(lumaKey(adfecc, cbbdbbcabafefeb, dedadefbaeecbdf), 1.0);
+outputColor = cdcebfbeec;
 }

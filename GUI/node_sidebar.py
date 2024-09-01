@@ -18,6 +18,7 @@ class Sidebar(QWidget):
         # Add widgets to the sidebar
         self.button1 = QPushButton('Sin oscillator')
         self.button2 = QPushButton('Square oscillator')
+        self.button20 = QPushButton('Circle oscillator')
         self.button3 = QPushButton('Colour Mixer')
         self.button4 = QPushButton('Colour Addition')
         self.button5 = QPushButton('Colour Multiplication')
@@ -37,6 +38,7 @@ class Sidebar(QWidget):
         self.button19 = QPushButton('Audio input')
         self.layout.addWidget(self.button1)
         self.layout.addWidget(self.button2)
+        self.layout.addWidget(self.button20)
         self.layout.addWidget(self.button18)
         self.layout.addWidget(self.button19)
         self.layout.addWidget(self.button3)
@@ -57,6 +59,7 @@ class Sidebar(QWidget):
         
         self.button1.clicked.connect(lambda: self.editor.addNode(SinOscNode(self.editor.scene)))
         self.button2.clicked.connect(lambda: self.editor.addNode(SquareOscNode(self.editor.scene)))
+        self.button20.clicked.connect(lambda: self.editor.addNode(CircleOscNode(self.editor.scene)))
         self.button3.clicked.connect(lambda: self.editor.addNode(ColorMixerNode(self.editor.scene)))
         self.button4.clicked.connect(lambda: self.editor.addNode(ColorAddNode(self.editor.scene)))
         self.button5.clicked.connect(lambda: self.editor.addNode(ColorMultNode(self.editor.scene)))

@@ -60,6 +60,18 @@ class QDMNodeContentOsc(QDMNodeContentWidget):
         self.out_label = QLabel("Output", self)
         self.out_label.move(110, 13)
 
+class QDMNodeContentCircleOsc(QDMNodeContentWidget):
+    def initUI(self):
+        self.setContentsMargins(0, 0, 0, 0)
+
+        self.red_label = QLabel("Amplitude", self)
+        self.red_label.move(5, 10)
+        self.green_label = QLabel("Frequency", self)
+        self.green_label.move(5, 50)
+
+        self.out_label = QLabel("Output", self)
+        self.out_label.move(110, 85)
+
     
 class QDMNodeContentColorMixer(QDMNodeContentWidget):
 
@@ -173,10 +185,10 @@ class QDMNodeContentSliderLarge(QDMNodeContentWidget):
         # Create a slider
         self.slider = QSlider(Qt.Horizontal, self)
         self.slider.setMinimum(0)
-        self.slider.setMaximum(100)
+        self.slider.setMaximum(10000)
         self.slider.setValue(0)
         self.slider.setTickPosition(QSlider.TicksBelow)
-        self.slider.setTickInterval(10)
+        self.slider.setTickInterval(1000)
 
         self.slider.valueChanged.connect(self.update_label)
         layout.addWidget(self.slider)
@@ -184,9 +196,9 @@ class QDMNodeContentSliderLarge(QDMNodeContentWidget):
         self.setLayout(layout)
 
     def update_label(self, value):
-        self.node.value = value
+        self.node.value = value/100
         self.node.sendValue()
-        self.label.setText("Value: {0:.6g}".format(value))
+        self.label.setText("Value: {0:.6g}".format(value/100))
 
 class QDMNodeContentColorX(QDMNodeContentWidget):
     def initUI(self):

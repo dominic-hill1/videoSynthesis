@@ -11,6 +11,13 @@ in vec2 texCoordVarying;
 
 out vec4 outputColor;
 
+float windowWidth = 640;
+float windowHeight = 480;
+
+
+float colorx=texCoordVarying.x / windowWidth;
+float colory=texCoordVarying.y / windowHeight;
+
 float oscillator(in float amp, in float rate, in float frequency, in float waveShape){
 	float osc = 0;
 	if (waveShape == 0){
@@ -29,6 +36,11 @@ float oscillator(in float amp, in float rate, in float frequency, in float waveS
 		float osc2 = amp * sin(frequency + rate);
 		osc = mix(osc1, osc2, waveShape);
 	}
+	return osc;
+}
+
+float circleOscillator(in float amp, in float frequency){
+	float osc = fract(distance(vec2(texCoordVarying.x / windowWidth*1.1, texCoordVarying.y / windowHeight*1.1), vec2(0.5, 0.5)) * frequency) * amp;
 	return osc;
 }
  
@@ -89,9 +101,3 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 void main()
 {
 
-	float windowWidth = 720;
-	float windowHeight = 480;
-
-	
-	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;
