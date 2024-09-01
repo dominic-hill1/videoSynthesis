@@ -64,7 +64,9 @@ class Node(Serializable):
     def updateConnectedEdges(self):
         for socket in self.inputs + self.outputs:
             if socket.hasEdge():
-                socket.edge.updatePositions()
+                # socket.edge.updatePositions()
+                for edge in socket.edges:
+                    edge.updatePositions()
     
     def remove(self):
         if DEBUG: print("Removing node")

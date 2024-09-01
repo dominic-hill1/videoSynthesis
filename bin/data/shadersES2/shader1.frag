@@ -1,16 +1,16 @@
 OF_GLSL_SHADER_HEADER
-uniform float dbbfbeacdefaf;
-uniform float eaadefdacb;
-uniform float beceaffaf;
-uniform float dcceffedaceaeefa;
-uniform float dfaeffbaddadbcbf;
-uniform float edeefaacaedcbc;
-uniform float dffedeaacd;
-uniform float ebcffbbfbcffd;
-uniform float fbcaeaabfaffea;
-uniform float eaedfabbefde;
-uniform float dcbebfacaacb;
-uniform float afdadabfaaac;
+uniform float ebbbbfebbab;
+uniform float eeeebcbaff;
+uniform float fbefafafcac;
+uniform float bdfffaefae;
+uniform float ceefeabfbebbe;
+uniform float bccaabec;
+uniform float affcefcacfeae;
+uniform float bbcfffdf;
+uniform float fcfecbbeead;
+uniform float bbedecbeeeabffaced;
+uniform float cdcbaabaccc;
+uniform float cddfeeccbde;
 uniform float time;
 uniform float audio;
 
@@ -109,12 +109,8 @@ void main()
 
 	
 	float colorx=texCoordVarying.x / windowWidth;
-	float colory=texCoordVarying.y / windowHeight;float cccdbbdfecda = 0;
-
-vec4 ddcffbddcdb = vec4(0, 0, 0, 0);
-
-vec4 bfacdbeddccc = vec4(0, 0, 0, 0);
-vec2 abbbbeeaefabc = texCoordVarying;vec4 abbbbeeaef = texture(input1, abbbbeeaefabc);
+	float colory=texCoordVarying.y / windowHeight;vec4 bebcfdbfda = vec4(0, 0, 0, 0);
+float abfddcabcbc = 0;
 
 
 
@@ -131,14 +127,6 @@ vec2 abbbbeeaefabc = texCoordVarying;vec4 abbbbeeaef = texture(input1, abbbbeeae
 
 
 
-
-cccdbbdfecda = audio * ebcffbbfbcffd;
-
-
-vec2 bcdbbddfbedbeecfabc = texCoordVarying;bcdbbddfbedbeecfabc = feedbackZoom(bcdbbddfbedbeecfabc, afdadabfaaac);vec4 bcdbbddfbedbeecf = texture(tex0, bcdbbddfbedbeecfabc);
-ddcffbddcdb = colorDisplaceHsb(bcdbbddfbedbeecf, eaedfabbefde, fbcaeaabfaffea, cccdbbdfecda);
-
-
-bfacdbeddccc = vec4(lumaKey(ddcffbddcdb, abbbbeeaef, dcbebfacaacb), 1.0);
-outputColor = bfacdbeddccc;
+bebcfdbfda = vec4(bbedecbeeeabffaced, cdcbaabaccc, cdcbaabaccc, 1.0);
+outputColor = bebcfdbfda;
 }

@@ -17,7 +17,7 @@
 // float hn = 0;
 
 
-float dbbfbeacdefaf = 0;float eaadefdacb = 0;float beceaffaf = 0;float dcceffedaceaeefa = 0;float dfaeffbaddadbcbf = 0;float edeefaacaedcbc = 0;float dffedeaacd = 0;float ebcffbbfbcffd = 0;float fbcaeaabfaffea = 0;float eaedfabbefde = 0;float dcbebfacaacb = 0;float afdadabfaaac = 0;
+float ebbbbfebbab = 0;float eeeebcbaff = 0;float fbefafafcac = 0;float bdfffaefae = 0;float ceefeabfbebbe = 0;float bccaabec = 0;float affcefcacfeae = 0;float bbcfffdf = 0;float fcfecbbeead = 0;float bbedecbeeeabffaced = 0;float cdcbaabaccc = 0;float cddfeeccbde = 0;
 
 int width=0;
 int height=0;
@@ -120,7 +120,7 @@ void ofApp::update() {
 	using namespace boost::interprocess;
 
     // Open the shared memory object created by Python
-    shared_memory_object shm(open_only, "psm_7355e211", read_only);  // Replace with the actual name printed by the Python script
+    shared_memory_object shm(open_only, "psm_5ca463d6", read_only);  // Replace with the actual name printed by the Python script
 
     // Map the whole shared memory in this process
     mapped_region region(shm, read_only);
@@ -136,19 +136,19 @@ void ofApp::update() {
 	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
-		 shader1.setUniform1f("dbbfbeacdefaf", dbbfbeacdefaf);
-std::cout << dbbfbeacdefaf << std::endl;shader1.setUniform1f("eaadefdacb", eaadefdacb);
-std::cout << eaadefdacb << std::endl;shader1.setUniform1f("beceaffaf", beceaffaf);
-std::cout << beceaffaf << std::endl;shader1.setUniform1f("dcceffedaceaeefa", dcceffedaceaeefa);
-std::cout << dcceffedaceaeefa << std::endl;shader1.setUniform1f("dfaeffbaddadbcbf", dfaeffbaddadbcbf);
-std::cout << dfaeffbaddadbcbf << std::endl;shader1.setUniform1f("edeefaacaedcbc", edeefaacaedcbc);
-std::cout << edeefaacaedcbc << std::endl;shader1.setUniform1f("dffedeaacd", dffedeaacd);
-std::cout << dffedeaacd << std::endl;shader1.setUniform1f("ebcffbbfbcffd", ebcffbbfbcffd);
-std::cout << ebcffbbfbcffd << std::endl;shader1.setUniform1f("fbcaeaabfaffea", fbcaeaabfaffea);
-std::cout << fbcaeaabfaffea << std::endl;shader1.setUniform1f("eaedfabbefde", eaedfabbefde);
-std::cout << eaedfabbefde << std::endl;shader1.setUniform1f("dcbebfacaacb", dcbebfacaacb);
-std::cout << dcbebfacaacb << std::endl;shader1.setUniform1f("afdadabfaaac", afdadabfaaac);
-std::cout << afdadabfaaac << std::endl;
+		 shader1.setUniform1f("ebbbbfebbab", ebbbbfebbab);
+std::cout << ebbbbfebbab << std::endl;shader1.setUniform1f("eeeebcbaff", eeeebcbaff);
+std::cout << eeeebcbaff << std::endl;shader1.setUniform1f("fbefafafcac", fbefafafcac);
+std::cout << fbefafafcac << std::endl;shader1.setUniform1f("bdfffaefae", bdfffaefae);
+std::cout << bdfffaefae << std::endl;shader1.setUniform1f("ceefeabfbebbe", ceefeabfbebbe);
+std::cout << ceefeabfbebbe << std::endl;shader1.setUniform1f("bccaabec", bccaabec);
+std::cout << bccaabec << std::endl;shader1.setUniform1f("affcefcacfeae", affcefcacfeae);
+std::cout << affcefcacfeae << std::endl;shader1.setUniform1f("bbcfffdf", bbcfffdf);
+std::cout << bbcfffdf << std::endl;shader1.setUniform1f("fcfecbbeead", fcfecbbeead);
+std::cout << fcfecbbeead << std::endl;shader1.setUniform1f("bbedecbeeeabffaced", bbedecbeeeabffaced);
+std::cout << bbedecbeeeabffaced << std::endl;shader1.setUniform1f("cdcbaabaccc", cdcbaabaccc);
+std::cout << cdcbaabaccc << std::endl;shader1.setUniform1f("cddfeeccbde", cddfeeccbde);
+std::cout << cddfeeccbde << std::endl;
 	}else{
 		std::istringstream stream(receivedData);
 		std::string varName;
@@ -164,7 +164,7 @@ std::cout << afdadabfaaac << std::endl;
 			std::cerr << "Out of range: " << e.what() << std::endl;
 		}
 
-		if (varName == "dbbfbeacdefaf"){dbbfbeacdefaf= varValue;}if (varName == "eaadefdacb"){eaadefdacb= varValue;}if (varName == "beceaffaf"){beceaffaf= varValue;}if (varName == "dcceffedaceaeefa"){dcceffedaceaeefa= varValue;}if (varName == "dfaeffbaddadbcbf"){dfaeffbaddadbcbf= varValue;}if (varName == "edeefaacaedcbc"){edeefaacaedcbc= varValue;}if (varName == "dffedeaacd"){dffedeaacd= varValue;}if (varName == "ebcffbbfbcffd"){ebcffbbfbcffd= varValue;}if (varName == "fbcaeaabfaffea"){fbcaeaabfaffea= varValue;}if (varName == "eaedfabbefde"){eaedfabbefde= varValue;}if (varName == "dcbebfacaacb"){dcbebfacaacb= varValue;}if (varName == "afdadabfaaac"){afdadabfaaac= varValue;}
+		if (varName == "ebbbbfebbab"){ebbbbfebbab= varValue;}if (varName == "eeeebcbaff"){eeeebcbaff= varValue;}if (varName == "fbefafafcac"){fbefafafcac= varValue;}if (varName == "bdfffaefae"){bdfffaefae= varValue;}if (varName == "ceefeabfbebbe"){ceefeabfbebbe= varValue;}if (varName == "bccaabec"){bccaabec= varValue;}if (varName == "affcefcacfeae"){affcefcacfeae= varValue;}if (varName == "bbcfffdf"){bbcfffdf= varValue;}if (varName == "fcfecbbeead"){fcfecbbeead= varValue;}if (varName == "bbedecbeeeabffaced"){bbedecbeeeabffaced= varValue;}if (varName == "cdcbaabaccc"){cdcbaabaccc= varValue;}if (varName == "cddfeeccbde"){cddfeeccbde= varValue;}
 	}
 
 	// std::cout << "Read from shared memory: " << receivedData << std::endl;
@@ -219,19 +219,19 @@ void ofApp::draw() {
 	shader1.setUniform1f("audio", scaledVol);
 	std::cout << scaledVol << std::endl;
 
-	shader1.setUniform1f("dbbfbeacdefaf", dbbfbeacdefaf);
-std::cout << dbbfbeacdefaf << std::endl;shader1.setUniform1f("eaadefdacb", eaadefdacb);
-std::cout << eaadefdacb << std::endl;shader1.setUniform1f("beceaffaf", beceaffaf);
-std::cout << beceaffaf << std::endl;shader1.setUniform1f("dcceffedaceaeefa", dcceffedaceaeefa);
-std::cout << dcceffedaceaeefa << std::endl;shader1.setUniform1f("dfaeffbaddadbcbf", dfaeffbaddadbcbf);
-std::cout << dfaeffbaddadbcbf << std::endl;shader1.setUniform1f("edeefaacaedcbc", edeefaacaedcbc);
-std::cout << edeefaacaedcbc << std::endl;shader1.setUniform1f("dffedeaacd", dffedeaacd);
-std::cout << dffedeaacd << std::endl;shader1.setUniform1f("ebcffbbfbcffd", ebcffbbfbcffd);
-std::cout << ebcffbbfbcffd << std::endl;shader1.setUniform1f("fbcaeaabfaffea", fbcaeaabfaffea);
-std::cout << fbcaeaabfaffea << std::endl;shader1.setUniform1f("eaedfabbefde", eaedfabbefde);
-std::cout << eaedfabbefde << std::endl;shader1.setUniform1f("dcbebfacaacb", dcbebfacaacb);
-std::cout << dcbebfacaacb << std::endl;shader1.setUniform1f("afdadabfaaac", afdadabfaaac);
-std::cout << afdadabfaaac << std::endl;
+	shader1.setUniform1f("ebbbbfebbab", ebbbbfebbab);
+std::cout << ebbbbfebbab << std::endl;shader1.setUniform1f("eeeebcbaff", eeeebcbaff);
+std::cout << eeeebcbaff << std::endl;shader1.setUniform1f("fbefafafcac", fbefafafcac);
+std::cout << fbefafafcac << std::endl;shader1.setUniform1f("bdfffaefae", bdfffaefae);
+std::cout << bdfffaefae << std::endl;shader1.setUniform1f("ceefeabfbebbe", ceefeabfbebbe);
+std::cout << ceefeabfbebbe << std::endl;shader1.setUniform1f("bccaabec", bccaabec);
+std::cout << bccaabec << std::endl;shader1.setUniform1f("affcefcacfeae", affcefcacfeae);
+std::cout << affcefcacfeae << std::endl;shader1.setUniform1f("bbcfffdf", bbcfffdf);
+std::cout << bbcfffdf << std::endl;shader1.setUniform1f("fcfecbbeead", fcfecbbeead);
+std::cout << fcfecbbeead << std::endl;shader1.setUniform1f("bbedecbeeeabffaced", bbedecbeeeabffaced);
+std::cout << bbedecbeeeabffaced << std::endl;shader1.setUniform1f("cdcbaabaccc", cdcbaabaccc);
+std::cout << cdcbaabaccc << std::endl;shader1.setUniform1f("cddfeeccbde", cddfeeccbde);
+std::cout << cddfeeccbde << std::endl;
 
 
 

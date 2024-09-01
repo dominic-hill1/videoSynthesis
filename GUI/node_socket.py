@@ -24,7 +24,8 @@ class Socket(Serializable):
         self.grSocket = QDMGraphicsSocket(self, self.socket_type)
         self.grSocket.setPos(*self.node.getSocketPosition(index, position))
 
-        self.edge = None
+        # self.edge = None
+        self.edges = []
 
     
     def __str__(self):
@@ -34,10 +35,12 @@ class Socket(Serializable):
         return self.node.getSocketPosition(self.index, self.position)
 
     def setConnectedEdge(self, edge=None):
-        self.edge = edge
+        # self.edge = edge
+        self.edges.append(edge)
 
     def hasEdge(self):
-        return self.edge is not None
+        # return self.edge is not None
+        return self.edges != []
     
 
     def serialize(self):
