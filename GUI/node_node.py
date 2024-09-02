@@ -12,20 +12,26 @@ from node_socket import Socket, LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM, 
 
 DEBUG = False
 
-
-
-
 class Node(Serializable):
+    """
+    An abstact class to be used to define nodes.
+    Nodes are defined using titles, sockets, content, and code. 
+
+    Each node has "code" that is written when the graph is compiled into GLSL code.
+    This code consists of a function call (of that module) with its input nodes as parameters,
+    saved to a variable name which is a unique ID for the node. 
+    This variable name can then be called by other nodes.
+    """
     def __init__(self, scene):
         super().__init__()
         self.scene = scene
 
         self.socket_spacing = 40
 
+        # Input edges
         self.inputs = []
         self.outputs = []
 
-        # self.inputNodes = [[], [], [], []]
         self.inputNodes = [None, None, None, None]
         self.outputNodes = []
 
@@ -35,9 +41,10 @@ class Node(Serializable):
 
 
     def generate_id(self):
-        # Generate a UUID and remove dashes
+        """
+        Generate a unique ID for each node, which can be used as a variable name in its GLSL code
+        """
         unique_id = str(uuid.uuid4()).replace('-', '')
-        # Keep only the alphabetic characters
         char_id = ''.join(filter(str.isalpha, unique_id))
         return char_id
 
@@ -53,6 +60,9 @@ class Node(Serializable):
         self.grNode.setPos(x, y)
 
     def getSocketPosition(self, index, position):
+        """
+        Return position of a socket on a node
+        """
         x = 0 if position in (LEFT_TOP, LEFT_BOTTOM) else self.grNode.width
 
         if position in (LEFT_BOTTOM, RIGHT_BOTTOM):
@@ -95,16 +105,14 @@ class Node(Serializable):
         ])
 
     def deserialize(self, data, hashmap=[]):
-        # self.id = data["id"]
-        # hashmap[data['id']] = self
-        # self.title = data['title']
         pass
 
 class OscNode(Node):
+    """
+    Superclass to represent sin and square oscillator nodes
+    """
     def __init__(self, scene):
         super().__init__(scene)
-
-        # self.title = "Sin oscillator"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 200
@@ -122,6 +130,9 @@ class OscNode(Node):
 
 
 class SinOscNode(OscNode):
+    """
+    Class to represent a sin oscillator node
+    """
     def __init__(self, scene):
         self.oscType = 0
         self.title = "Sin Oscillator"
@@ -135,6 +146,9 @@ class SinOscNode(OscNode):
         return code
 
 class SquareOscNode(OscNode):
+    """
+    Class to represent a square oscillator node
+    """
     def __init__(self, scene):
         self.oscType = 1
         self.title = "Square Oscillator"
@@ -148,6 +162,9 @@ class SquareOscNode(OscNode):
         return code
     
 class CircleOscNode(Node):
+    """
+    Class to represent circle oscillator node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -174,6 +191,9 @@ class CircleOscNode(Node):
 
 
 class ColorMixerNode(Node):
+    """
+    Class to represent a colour mixer node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -201,6 +221,9 @@ class ColorMixerNode(Node):
         return code
     
 class ColorAddNode(Node):
+    """
+    Class to represent a colour addition node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -227,6 +250,9 @@ class ColorAddNode(Node):
         return code
 
 class ColorMultNode(Node):
+    """
+    Class to represent a colour multiplication node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -254,6 +280,9 @@ class ColorMultNode(Node):
 
 
 class ColorDisplaceNode(Node):
+    """
+    Class to represent a colour displacement node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -283,6 +312,9 @@ class ColorDisplaceNode(Node):
     
 
 class LumaKeyNode(Node):
+    """
+    Class to represent luma keying node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -311,6 +343,9 @@ class LumaKeyNode(Node):
 
 
 class FeedbackZoomNode(Node):
+    """
+    Class to represent a zooming feedback node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -340,15 +375,24 @@ class FeedbackZoomNode(Node):
 
 
 class SliderNode(Node):
+    """
+    Superclass to represent slider nodes
+    """
     def writeInitCode(self):
         return ""
     def writeCode(self):
         return ""
     def sendValue(self):
+        """
+        Get value from slider and change it to shared memory (to c++ backend)
+        """
         string = f"{self.id} {self.value:.10f}"
         self.scene.writeToSharedMemory(string)
 
 class SmallSliderNode(SliderNode):
+    """
+    Class to represent a 0-1 slider node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -368,6 +412,9 @@ class SmallSliderNode(SliderNode):
 
 
 class LargeSliderNode(SliderNode):
+    """
+    Class to represent a 0-100 slider node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -386,121 +433,137 @@ class LargeSliderNode(SliderNode):
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
 
 class ColorXNode(Node):
-        def __init__(self, scene):
-            super().__init__(scene)
+    """
+    Class to represent an x-coordinate node
+    """
+    def __init__(self, scene):
+        super().__init__(scene)
 
-            self.title = "X-Coordinate"
+        self.title = "X-Coordinate"
 
-            self.grNode = QDMGraphicsNode(self)
-            self.grNode.height = 120
-            self.content = QDMNodeContentColorX(self)
-            self.grNode.initContent()
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentColorX(self)
+        self.grNode.initContent()
 
-            self.scene.addNode(self)
-            self.scene.grScene.addItem(self.grNode)
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
 
-            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
-            self.id = "colorx"
-
-        def writeInitCode(self):
-            return ""
-        def writeCode(self):
-            return ""
-        
-class TimeNode(Node):
-        def __init__(self, scene):
-            super().__init__(scene)
-
-            self.title = "Time"
-
-            self.grNode = QDMGraphicsNode(self)
-            self.grNode.height = 120
-            self.content = QDMNodeContentTime(self)
-            self.grNode.initContent()
-
-            self.scene.addNode(self)
-            self.scene.grScene.addItem(self.grNode)
-
-            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
-            self.id = "time"
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.id = "colorx"
 
         def writeInitCode(self):
             return ""
-        def writeCode(self):
-            return ""
-        
-class AudioNode(Node):
-        def __init__(self, scene):
-            super().__init__(scene)
-
-            self.title = "Audio"
-
-            self.grNode = QDMGraphicsNode(self)
-            self.grNode.height = 120
-            self.content = QDMNodeContentAudio(self)
-            self.grNode.initContent()
-
-            self.scene.addNode(self)
-            self.scene.grScene.addItem(self.grNode)
-
-            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
-            self.id = "audio"
-
-        def writeInitCode(self):
-            return ""
-        def writeCode(self):
-            return ""
-        
-
-class CameraNode(Node):
-        def __init__(self, scene):
-            super().__init__(scene)
-
-            self.title = "Webcam"
-
-            self.grNode = QDMGraphicsNode(self)
-            self.grNode.height = 120
-            self.content = QDMNodeContentCamera(self)
-            self.grNode.initContent()
-
-            self.scene.addNode(self)
-            self.scene.grScene.addItem(self.grNode)
-
-            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
-
-        def writeInitCode(self):
-            code = f"vec2 {self.id}abc = texCoordVarying;"
-            code += f"vec4 {self.id} = texture(input1, {self.id}abc);"
-            return code
         def writeCode(self):
             return ""
         
 class ColorYNode(Node):
-        def __init__(self, scene):
-            super().__init__(scene)
+    """
+    Class to represent an y-coordinate node
+    """
+    def __init__(self, scene):
+        super().__init__(scene)
 
-            self.title = "Y-Coordinate"
+        self.title = "Y-Coordinate"
 
-            self.grNode = QDMGraphicsNode(self)
-            self.grNode.height = 120
-            self.content = QDMNodeContentColorY(self)
-            self.grNode.initContent()
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentColorY(self)
+        self.grNode.initContent()
 
-            self.scene.addNode(self)
-            self.scene.grScene.addItem(self.grNode)
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
 
-            self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
-            self.id = "colory"
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.id = "colory"
 
-        def writeInitCode(self):
-            return ""
-        def writeCode(self):
-            return ""
+    def writeInitCode(self):
+        return ""
+    def writeCode(self):
+        return ""
+        
+class TimeNode(Node):
+    """
+    Class to represent a time node
+    """
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Time"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentTime(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.id = "time"
+
+    def writeInitCode(self):
+        return ""
+    def writeCode(self):
+        return ""
+        
+class AudioNode(Node):
+    """
+    Class to represent an audio node
+    """
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Audio"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentAudio(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
+        self.id = "audio"
+
+    def writeInitCode(self):
+        return ""
+    def writeCode(self):
+        return ""
     
 
-  
+class CameraNode(Node):
+    """
+    Class to represent a camera node
+    """
+    def __init__(self, scene):
+        super().__init__(scene)
+
+        self.title = "Webcam"
+
+        self.grNode = QDMGraphicsNode(self)
+        self.grNode.height = 120
+        self.content = QDMNodeContentCamera(self)
+        self.grNode.initContent()
+
+        self.scene.addNode(self)
+        self.scene.grScene.addItem(self.grNode)
+
+        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
+
+    def writeInitCode(self):
+        code = f"vec2 {self.id}abc = texCoordVarying;"
+        code += f"vec4 {self.id} = texture(input1, {self.id}abc);"
+        return code
+    def writeCode(self):
+        return ""
+    
 
 class AddNode(Node):
+    """
+    Class to represent an addition node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -525,7 +588,12 @@ class AddNode(Node):
     def writeCode(self):
         code = f"{self.id} = {self.inputNodes[0].id} + {self.inputNodes[1].id};"
         return code
+    
+
 class MultiplyNode(Node):
+    """
+    Class to represent a multiplication node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -552,6 +620,9 @@ class MultiplyNode(Node):
         return code
     
 class DivideNode(Node):
+    """
+    Class to represent a division node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -578,6 +649,9 @@ class DivideNode(Node):
         return code
     
 class NegateNode(Node):
+    """
+    Class to represent a negation node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -603,6 +677,9 @@ class NegateNode(Node):
         return code
 
 class OutputNode(Node):
+    """
+    Class to represent an output node
+    """
     def __init__(self, scene):
         super().__init__(scene)
 
@@ -619,8 +696,6 @@ class OutputNode(Node):
         self.scene.grScene.addItem(self.grNode)
 
         self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_TOP, socket_type=COLOR_TYPE))
-
-
 
     def writeInitCode(self):
         return ""

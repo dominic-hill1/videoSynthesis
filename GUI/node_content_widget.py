@@ -3,50 +3,30 @@ from PyQt5.QtWidgets import *
 from node_serializable import Serializable
 from PyQt5.QtCore import *
 
-from node_socket import LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM
-
 
 class QDMNodeContentWidget(QWidget, Serializable):
+    """
+    A class to represent the content held within a node.
+    This class defines how the middle area of each node will behave
+    """
     def __init__(self, node, parent=None):
         super().__init__(parent)
         self.node = node
-
         self.initUI()
 
 
-#     def initUI(self):
-#         self.layout = QVBoxLayout()
-#         self.setContentsMargins(0, 0, 0, 0)
-#         self.setLayout(self.layout)
-
-#         self.wdg_label = QLabel("Some title")
-#         self.layout.addWidget(self.wdg_label)
-#         self.layout.addWidget(QDMTextEdit("foo"))
-
-
-
     def serialize(self):
-        return OrderedDict([
-            
+        return OrderedDict([   
         ])
 
     def deserialize(self):
         return False
 
 
-# class QDMTextEdit(QTextEdit):
-    
-#     def focusInEvent(self, event):
-#         print("Focus in")
-#         self.parentWidget().setEditingFlag(True)
-#         super().focusInEvent(event)
-
-#     def focusOutEvent(self, event):
-#         print("Focus out")
-#         self.parentWidget().setEditingFlag(False)
-#         super().focusOutEvent(event)
-
 class QDMNodeContentOsc(QDMNodeContentWidget):
+    """
+    Set labels for sin and square oscillators
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -61,6 +41,9 @@ class QDMNodeContentOsc(QDMNodeContentWidget):
         self.out_label.move(110, 13)
 
 class QDMNodeContentCircleOsc(QDMNodeContentWidget):
+    """
+    Set labels for circle oscillators
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -74,7 +57,9 @@ class QDMNodeContentCircleOsc(QDMNodeContentWidget):
 
     
 class QDMNodeContentColorMixer(QDMNodeContentWidget):
-
+    """
+    Set labels for color mixers
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -89,7 +74,9 @@ class QDMNodeContentColorMixer(QDMNodeContentWidget):
         self.out_label.move(110, 130)
 
 class QDMNodeContentColorAdd(QDMNodeContentWidget):
-
+    """
+    Set labels for colour addition modules
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -102,6 +89,9 @@ class QDMNodeContentColorAdd(QDMNodeContentWidget):
         self.out_label.move(110, 85)
 
 class QDMNodeContentLumaKey(QDMNodeContentWidget):
+    """
+    Set labels for luma keying modules
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -117,6 +107,9 @@ class QDMNodeContentLumaKey(QDMNodeContentWidget):
 
     
 class QDMNodeContentColorDisplace(QDMNodeContentWidget):
+    """
+    Set labels for colour displacement modules
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -133,7 +126,9 @@ class QDMNodeContentColorDisplace(QDMNodeContentWidget):
         self.out_label.move(110, 168)
 
 class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
-
+    """
+    Set labels for zooming feedback modules
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
@@ -147,6 +142,9 @@ class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
         self.out_label.move(110, 45)
 
 class QDMNodeContentSliderSmall(QDMNodeContentWidget):
+    """
+    Set labels and sliders for slider modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
 
@@ -163,17 +161,23 @@ class QDMNodeContentSliderSmall(QDMNodeContentWidget):
         self.slider.setTickPosition(QSlider.TicksBelow)
         self.slider.setTickInterval(100)
 
-        self.slider.valueChanged.connect(self.update_label)
+        self.slider.valueChanged.connect(self.update)
         layout.addWidget(self.slider)
 
         self.setLayout(layout)
 
-    def update_label(self, value):
+    def update(self, value):
+        """
+        Function to be called when slider is moved to update values and labels
+        """
         self.node.value = value/1000
         self.node.sendValue()
         self.label.setText("Value: {0:.6g}".format(value/1000))
 
 class QDMNodeContentSliderLarge(QDMNodeContentWidget):
+    """
+    Set labels and sliders for slider modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
 
@@ -190,31 +194,36 @@ class QDMNodeContentSliderLarge(QDMNodeContentWidget):
         self.slider.setTickPosition(QSlider.TicksBelow)
         self.slider.setTickInterval(1000)
 
-        self.slider.valueChanged.connect(self.update_label)
+        self.slider.valueChanged.connect(self.update)
         layout.addWidget(self.slider)
 
         self.setLayout(layout)
 
-    def update_label(self, value):
+    def update(self, value):
+        """
+        Function to be called when slider is moved to update values and labels
+        """
         self.node.value = value/100
         self.node.sendValue()
         self.label.setText("Value: {0:.6g}".format(value/100))
 
 class QDMNodeContentColorX(QDMNodeContentWidget):
+    """
+    Set labels for X-coordinate modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("x-coordinate of pixel", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
 
 class QDMNodeContentColorY(QDMNodeContentWidget):
+    """
+    Set labels for Y-coordinate modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("y-coordinate of pixel", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
@@ -222,20 +231,22 @@ class QDMNodeContentColorY(QDMNodeContentWidget):
 
 
 class QDMNodeContentTime(QDMNodeContentWidget):
+    """
+    Set labels for time modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("time", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
 
 class QDMNodeContentAudio(QDMNodeContentWidget):
+    """
+    Set labels for audio modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("Audio volume", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
@@ -245,10 +256,11 @@ class QDMNodeContentAudio(QDMNodeContentWidget):
         self.setLayout(layout)
 
 class QDMNodeContentCamera(QDMNodeContentWidget):
+    """
+    Set labels for camera modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("Webcam input", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
@@ -257,20 +269,22 @@ class QDMNodeContentCamera(QDMNodeContentWidget):
 
 
 class QDMNodeContentAdd(QDMNodeContentWidget):
+    """
+    Set labels for addition modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("Add two signals", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
 
 class QDMNodeContentMultiply(QDMNodeContentWidget):
+    """
+    Set labels for multiplication modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("Multiply two signals", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
@@ -278,10 +292,11 @@ class QDMNodeContentMultiply(QDMNodeContentWidget):
 
 
 class QDMNodeContentDivide(QDMNodeContentWidget):
+    """
+    Set labels for division modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-
-        # Create a label to display the slider value
         self.label = QLabel("Divide two signals", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
@@ -289,21 +304,22 @@ class QDMNodeContentDivide(QDMNodeContentWidget):
 
 
 class QDMNodeContentNegate(QDMNodeContentWidget):
+    """
+    Set labels for negation modules
+    """
     def initUI(self):
         layout = QVBoxLayout()
-        # Create a label to display the slider value
         self.label = QLabel("Make input negative", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
 
 class QDMNodeContentOutput(QDMNodeContentWidget):
+    """
+    Set labels for output modules
+    """
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
         self.out_label = QLabel("Output to screen", self)
         self.out_label.move(5, 10)
-
-
-        # self.feedback_label = QLabel("Feedback", self)
-        # self.feedback_label.move(5, 50)

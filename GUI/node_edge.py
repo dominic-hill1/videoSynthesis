@@ -7,6 +7,10 @@ EDGE_TYPE_BEZIER = 2
 DEBUG = False
 
 class Edge(Serializable):
+    """
+    A class to functionally define an edge.
+    See QDMGraphicsEdge... to see visual definition of an edge
+    """
     def __init__(self, scene, start_socket, end_socket, edge_type=1):
         super().__init__()
         self.scene = scene
@@ -19,12 +23,12 @@ class Edge(Serializable):
         if self.end_socket is not None:
             self.end_socket.edge = self
 
+        # Define graphics for the edge
         self.grEdge = QDMGraphicsEdgeDirect(self) if type==EDGE_TYPE_DIRECT else QDMGraphicsEdgeBezier(self)
         self.updatePositions()
         if DEBUG: print("Edge: ", self.grEdge.posSource, "to", self.grEdge.posDestination)
 
         self.scene.grScene.addItem(self.grEdge)
-
         self.scene.addEdge(self)
 
     
@@ -32,6 +36,9 @@ class Edge(Serializable):
         return "<Edge %s..%s>" % (hex(id(self))[2:5], hex(id(self))[-3:])
 
     def updatePositions(self):
+        """
+        Updates position of edges when a node is moved
+        """
         source_pos = self.start_socket.getSocketPosition()
         source_pos[0] += self.start_socket.node.grNode.pos().x()
         source_pos[1] += self.start_socket.node.grNode.pos().y()
@@ -46,7 +53,6 @@ class Edge(Serializable):
         self.grEdge.update()
 
     def remove_from_sockets(self):
-        
         if self.start_socket is not None:
             self.start_socket.edge = None
             try:

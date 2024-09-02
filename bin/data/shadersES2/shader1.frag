@@ -1,16 +1,16 @@
 OF_GLSL_SHADER_HEADER
-uniform float adcfacaaccdfb;
-uniform float ffaaccfaecfdf;
-uniform float bfffdddbedeceaf;
-uniform float bfdadcefcceccdae;
-uniform float ccafaabecb;
-uniform float bdeeccdacafdfe;
-uniform float babeacaeeced;
-uniform float ddfabfefbbd;
-uniform float bacabcdecba;
-uniform float dacdbcbbaecfcca;
-uniform float fbffafdade;
-uniform float dedadefbaeecbdf;
+uniform float aeedadbdcefa;
+uniform float dabbcaaaabbcc;
+uniform float beeafcda;
+uniform float beacabfdbcce;
+uniform float ccaebadfaef;
+uniform float cdebcaaccbffaa;
+uniform float babcfcacad;
+uniform float fbdebeecff;
+uniform float aedaccfbaafaff;
+uniform float ffdfbddedaeabdaae;
+uniform float ebcfdbdebbbbbd;
+uniform float ebeceebebef;
 uniform float time;
 uniform float audio;
 
@@ -116,15 +116,7 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 void main()
 {
 
-vec4 eebecaabcee = vec4(0, 0, 0, 0);
-
-vec4 cbbdbbcabafefeb = vec4(0, 0, 0, 0);
-vec4 cdcebfbeec = vec4(0, 0, 0, 0);
-
-float efcfbfdfefbcfe = 0;
-vec4 adfecc = vec4(0, 0, 0, 0);
-float cfeacbcfda = 0;
-vec2 acbccaecfbabc = texCoordVarying;vec4 acbccaecfb = texture(input1, acbccaecfbabc);
+vec2 ecedbcfdefabc = texCoordVarying;vec4 ecedbcfdef = texture(input1, ecedbcfdefabc);
 
 
 
@@ -139,28 +131,5 @@ vec2 acbccaecfbabc = texCoordVarying;vec4 acbccaecfb = texture(input1, acbccaecf
 
 
 
-
-
-
-
-
-efcfbfdfefbcfe = bdeeccdacafdfe * colorx;
-
-efcfbfdfefbcfe = bdeeccdacafdfe * colorx;
-
-
-
-
-vec2 ebabdfbcbabc = texCoordVarying;ebabdfbcbabc = feedbackZoom(ebabdfbcbabc, bacabcdecba);vec4 ebabdfbcb = texture(tex0, ebabdfbcbabc);
-
-cfeacbcfda = circleOscillator(fbffafdade, efcfbfdfefbcfe);
-cfeacbcfda = circleOscillator(fbffafdade, efcfbfdfefbcfe);
-
-eebecaabcee = colorDisplaceHsb(ebabdfbcb, bacabcdecba, ddfabfefbbd, babeacaeeced);
-
-adfecc = vec4(cfeacbcfda, cfeacbcfda, ccafaabecb, 1.0);
-cbbdbbcabafefeb = vec4(lumaKey(acbccaecfb, eebecaabcee, dacdbcbbaecfcca), 1.0);
-
-cdcebfbeec = vec4(lumaKey(adfecc, cbbdbbcabafefeb, dedadefbaeecbdf), 1.0);
-outputColor = cdcebfbeec;
+outputColor = ecedbcfdef;
 }
