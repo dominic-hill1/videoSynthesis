@@ -1,16 +1,16 @@
 OF_GLSL_SHADER_HEADER
-uniform float accaacaedfdacf;
-uniform float dbfcafd;
-uniform float adbdfbeffcca;
-uniform float ecedbadd;
-uniform float aabfcaffedcbbd;
-uniform float bbacfcafbdd;
-uniform float ccefbacdcdb;
-uniform float abcacaabcdb;
-uniform float abcdcbccb;
-uniform float dcadafbdbdcdf;
-uniform float deeafee;
-uniform float afacbebaecd;
+uniform float badbeccc;
+uniform float cbedebabbcd;
+uniform float dbabefceece;
+uniform float aaaaadaffdfce;
+uniform float cefcfababeedac;
+uniform float bdfaedfbedbbabe;
+uniform float ebebcbaccbaaaac;
+uniform float cecafcbacc;
+uniform float facfabafaaad;
+uniform float cadfbabbcdefe;
+uniform float cfbfcebefd;
+uniform float bbaadebfaadf;
 uniform float time;
 uniform float audio;
 
@@ -116,7 +116,7 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 void main()
 {
 
-vec2 fdcebedaeabc = texCoordVarying;vec4 fdcebedae = texture(input1, fdcebedaeabc);
+vec2 caecafeafcbeabc = texCoordVarying;vec4 caecafeafcbe = texture(input1, caecafeafcbeabc);
 
 
 
@@ -131,5 +131,6 @@ vec2 fdcebedaeabc = texCoordVarying;vec4 fdcebedae = texture(input1, fdcebedaeab
 
 
 
-outputColor = fdcebedae;
+
+outputColor = caecafeafcbe;
 }
