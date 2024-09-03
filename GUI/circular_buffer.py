@@ -1,4 +1,3 @@
-import multiprocessing.shared_memory as shared_memory
 import ctypes
 
 class CircularBuffer:

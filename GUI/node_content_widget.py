@@ -255,13 +255,13 @@ class QDMNodeContentAudio(QDMNodeContentWidget):
         layout.addWidget(self.label2)
         self.setLayout(layout)
 
-class QDMNodeContentCamera(QDMNodeContentWidget):
+class QDMNodeContentVideoInput(QDMNodeContentWidget):
     """
-    Set labels for camera modules
+    Set labels for video input modules
     """
     def initUI(self):
         layout = QVBoxLayout()
-        self.label = QLabel("Webcam input", self)
+        self.label = QLabel("Video input", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)

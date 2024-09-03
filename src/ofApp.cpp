@@ -17,7 +17,7 @@
 // float hn = 0;
 
 
-float aeedadbdcefa = 0;float dabbcaaaabbcc = 0;float beeafcda = 0;float beacabfdbcce = 0;float ccaebadfaef = 0;float cdebcaaccbffaa = 0;float babcfcacad = 0;float fbdebeecff = 0;float aedaccfbaafaff = 0;float ffdfbddedaeabdaae = 0;float ebcfdbdebbbbbd = 0;float ebeceebebef = 0;
+float accaacaedfdacf = 0;float dbfcafd = 0;float adbdfbeffcca = 0;float ecedbadd = 0;float aabfcaffedcbbd = 0;float bbacfcafbdd = 0;float ccefbacdcdb = 0;float abcacaabcdb = 0;float abcdcbccb = 0;float dcadafbdbdcdf = 0;float deeafee = 0;float afacbebaecd = 0;
 
 int width=0;
 int height=0;
@@ -114,13 +114,13 @@ void ofApp::allocateAndDeclareSundries(){
 }
 //--------------------------------------------------------------
 void ofApp::update() {
-	input1.update();
-	// movie1.update();
+	// input1.update();
+	movie1.update();
 
 	using namespace boost::interprocess;
 
     // Open the shared memory object created by Python
-    shared_memory_object shm(open_only, "psm_fd9aec86", read_only);  // Replace with the actual name printed by the Python script
+    shared_memory_object shm(open_only, "psm_49213e71", read_only);  // Replace with the actual name printed by the Python script
 
     // Map the whole shared memory in this process
     mapped_region region(shm, read_only);
@@ -136,19 +136,19 @@ void ofApp::update() {
 	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
-		 shader1.setUniform1f("aeedadbdcefa", aeedadbdcefa);
-std::cout << aeedadbdcefa << std::endl;shader1.setUniform1f("dabbcaaaabbcc", dabbcaaaabbcc);
-std::cout << dabbcaaaabbcc << std::endl;shader1.setUniform1f("beeafcda", beeafcda);
-std::cout << beeafcda << std::endl;shader1.setUniform1f("beacabfdbcce", beacabfdbcce);
-std::cout << beacabfdbcce << std::endl;shader1.setUniform1f("ccaebadfaef", ccaebadfaef);
-std::cout << ccaebadfaef << std::endl;shader1.setUniform1f("cdebcaaccbffaa", cdebcaaccbffaa);
-std::cout << cdebcaaccbffaa << std::endl;shader1.setUniform1f("babcfcacad", babcfcacad);
-std::cout << babcfcacad << std::endl;shader1.setUniform1f("fbdebeecff", fbdebeecff);
-std::cout << fbdebeecff << std::endl;shader1.setUniform1f("aedaccfbaafaff", aedaccfbaafaff);
-std::cout << aedaccfbaafaff << std::endl;shader1.setUniform1f("ffdfbddedaeabdaae", ffdfbddedaeabdaae);
-std::cout << ffdfbddedaeabdaae << std::endl;shader1.setUniform1f("ebcfdbdebbbbbd", ebcfdbdebbbbbd);
-std::cout << ebcfdbdebbbbbd << std::endl;shader1.setUniform1f("ebeceebebef", ebeceebebef);
-std::cout << ebeceebebef << std::endl;
+		 shader1.setUniform1f("accaacaedfdacf", accaacaedfdacf);
+std::cout << accaacaedfdacf << std::endl;shader1.setUniform1f("dbfcafd", dbfcafd);
+std::cout << dbfcafd << std::endl;shader1.setUniform1f("adbdfbeffcca", adbdfbeffcca);
+std::cout << adbdfbeffcca << std::endl;shader1.setUniform1f("ecedbadd", ecedbadd);
+std::cout << ecedbadd << std::endl;shader1.setUniform1f("aabfcaffedcbbd", aabfcaffedcbbd);
+std::cout << aabfcaffedcbbd << std::endl;shader1.setUniform1f("bbacfcafbdd", bbacfcafbdd);
+std::cout << bbacfcafbdd << std::endl;shader1.setUniform1f("ccefbacdcdb", ccefbacdcdb);
+std::cout << ccefbacdcdb << std::endl;shader1.setUniform1f("abcacaabcdb", abcacaabcdb);
+std::cout << abcacaabcdb << std::endl;shader1.setUniform1f("abcdcbccb", abcdcbccb);
+std::cout << abcdcbccb << std::endl;shader1.setUniform1f("dcadafbdbdcdf", dcadafbdbdcdf);
+std::cout << dcadafbdbdcdf << std::endl;shader1.setUniform1f("deeafee", deeafee);
+std::cout << deeafee << std::endl;shader1.setUniform1f("afacbebaecd", afacbebaecd);
+std::cout << afacbebaecd << std::endl;
 	}else{
 		std::istringstream stream(receivedData);
 		std::string varName;
@@ -164,7 +164,7 @@ std::cout << ebeceebebef << std::endl;
 			std::cerr << "Out of range: " << e.what() << std::endl;
 		}
 
-		if (varName == "aeedadbdcefa"){aeedadbdcefa= varValue;}if (varName == "dabbcaaaabbcc"){dabbcaaaabbcc= varValue;}if (varName == "beeafcda"){beeafcda= varValue;}if (varName == "beacabfdbcce"){beacabfdbcce= varValue;}if (varName == "ccaebadfaef"){ccaebadfaef= varValue;}if (varName == "cdebcaaccbffaa"){cdebcaaccbffaa= varValue;}if (varName == "babcfcacad"){babcfcacad= varValue;}if (varName == "fbdebeecff"){fbdebeecff= varValue;}if (varName == "aedaccfbaafaff"){aedaccfbaafaff= varValue;}if (varName == "ffdfbddedaeabdaae"){ffdfbddedaeabdaae= varValue;}if (varName == "ebcfdbdebbbbbd"){ebcfdbdebbbbbd= varValue;}if (varName == "ebeceebebef"){ebeceebebef= varValue;}
+		if (varName == "accaacaedfdacf"){accaacaedfdacf= varValue;}if (varName == "dbfcafd"){dbfcafd= varValue;}if (varName == "adbdfbeffcca"){adbdfbeffcca= varValue;}if (varName == "ecedbadd"){ecedbadd= varValue;}if (varName == "aabfcaffedcbbd"){aabfcaffedcbbd= varValue;}if (varName == "bbacfcafbdd"){bbacfcafbdd= varValue;}if (varName == "ccefbacdcdb"){ccefbacdcdb= varValue;}if (varName == "abcacaabcdb"){abcacaabcdb= varValue;}if (varName == "abcdcbccb"){abcdcbccb= varValue;}if (varName == "dcadafbdbdcdf"){dcadafbdbdcdf= varValue;}if (varName == "deeafee"){deeafee= varValue;}if (varName == "afacbebaecd"){afacbebaecd= varValue;}
 	}
 
 	// std::cout << "Read from shared memory: " << receivedData << std::endl;
@@ -210,8 +210,8 @@ void ofApp::draw() {
 	// input1.draw(0,0);
 	framebuffer1.draw(0, 0);
 
-	shader1.setUniformTexture("input1", input1.getTexture(), 1); // "1" must be incremented with multiple inputs
-	// shader1.setUniformTexture("input1", movie1.getTexture(), 1); // "1" must be incremented with multiple inputs
+	// shader1.setUniformTexture("input1", input1.getTexture(), 1); // "1" must be incremented with multiple inputs
+	shader1.setUniformTexture("input1", movie1.getTexture(), 1); // "1" must be incremented with multiple inputs
 	// movie1.draw(0, 0, 400, 300);
 	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);
@@ -219,19 +219,19 @@ void ofApp::draw() {
 	shader1.setUniform1f("audio", scaledVol);
 	std::cout << scaledVol << std::endl;
 
-	shader1.setUniform1f("aeedadbdcefa", aeedadbdcefa);
-std::cout << aeedadbdcefa << std::endl;shader1.setUniform1f("dabbcaaaabbcc", dabbcaaaabbcc);
-std::cout << dabbcaaaabbcc << std::endl;shader1.setUniform1f("beeafcda", beeafcda);
-std::cout << beeafcda << std::endl;shader1.setUniform1f("beacabfdbcce", beacabfdbcce);
-std::cout << beacabfdbcce << std::endl;shader1.setUniform1f("ccaebadfaef", ccaebadfaef);
-std::cout << ccaebadfaef << std::endl;shader1.setUniform1f("cdebcaaccbffaa", cdebcaaccbffaa);
-std::cout << cdebcaaccbffaa << std::endl;shader1.setUniform1f("babcfcacad", babcfcacad);
-std::cout << babcfcacad << std::endl;shader1.setUniform1f("fbdebeecff", fbdebeecff);
-std::cout << fbdebeecff << std::endl;shader1.setUniform1f("aedaccfbaafaff", aedaccfbaafaff);
-std::cout << aedaccfbaafaff << std::endl;shader1.setUniform1f("ffdfbddedaeabdaae", ffdfbddedaeabdaae);
-std::cout << ffdfbddedaeabdaae << std::endl;shader1.setUniform1f("ebcfdbdebbbbbd", ebcfdbdebbbbbd);
-std::cout << ebcfdbdebbbbbd << std::endl;shader1.setUniform1f("ebeceebebef", ebeceebebef);
-std::cout << ebeceebebef << std::endl;
+	shader1.setUniform1f("accaacaedfdacf", accaacaedfdacf);
+std::cout << accaacaedfdacf << std::endl;shader1.setUniform1f("dbfcafd", dbfcafd);
+std::cout << dbfcafd << std::endl;shader1.setUniform1f("adbdfbeffcca", adbdfbeffcca);
+std::cout << adbdfbeffcca << std::endl;shader1.setUniform1f("ecedbadd", ecedbadd);
+std::cout << ecedbadd << std::endl;shader1.setUniform1f("aabfcaffedcbbd", aabfcaffedcbbd);
+std::cout << aabfcaffedcbbd << std::endl;shader1.setUniform1f("bbacfcafbdd", bbacfcafbdd);
+std::cout << bbacfcafbdd << std::endl;shader1.setUniform1f("ccefbacdcdb", ccefbacdcdb);
+std::cout << ccefbacdcdb << std::endl;shader1.setUniform1f("abcacaabcdb", abcacaabcdb);
+std::cout << abcacaabcdb << std::endl;shader1.setUniform1f("abcdcbccb", abcdcbccb);
+std::cout << abcdcbccb << std::endl;shader1.setUniform1f("dcadafbdbdcdf", dcadafbdbdcdf);
+std::cout << dcadafbdbdcdf << std::endl;shader1.setUniform1f("deeafee", deeafee);
+std::cout << deeafee << std::endl;shader1.setUniform1f("afacbebaecd", afacbebaecd);
+std::cout << afacbebaecd << std::endl;
 
 
 

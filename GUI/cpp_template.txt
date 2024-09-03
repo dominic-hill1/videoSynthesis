@@ -114,8 +114,8 @@ void ofApp::allocateAndDeclareSundries(){
 }
 //--------------------------------------------------------------
 void ofApp::update() {
-	input1.update();
-	// movie1.update();
+	// input1.update();
+	movie1.update();
 
 	using namespace boost::interprocess;
 
@@ -198,8 +198,8 @@ void ofApp::draw() {
 	// input1.draw(0,0);
 	framebuffer1.draw(0, 0);
 
-	shader1.setUniformTexture("input1", input1.getTexture(), 1); // "1" must be incremented with multiple inputs
-	// shader1.setUniformTexture("input1", movie1.getTexture(), 1); // "1" must be incremented with multiple inputs
+	// shader1.setUniformTexture("input1", input1.getTexture(), 1); // "1" must be incremented with multiple inputs
+	shader1.setUniformTexture("input1", movie1.getTexture(), 1); // "1" must be incremented with multiple inputs
 	// movie1.draw(0, 0, 400, 300);
 	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);

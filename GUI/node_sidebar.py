@@ -34,7 +34,7 @@ class Sidebar(QWidget):
         self.button15 = QPushButton('Multiplication')
         self.button16 = QPushButton('Division')
         self.button17 = QPushButton('Negation')
-        self.button18 = QPushButton('Camera input')
+        self.button18 = QPushButton('Video input')
         self.button19 = QPushButton('Audio input')
         self.layout.addWidget(self.button1)
         self.layout.addWidget(self.button2)
@@ -75,7 +75,7 @@ class Sidebar(QWidget):
         self.button15.clicked.connect(lambda: self.editor.addNode(MultiplyNode(self.editor.scene)))
         self.button16.clicked.connect(lambda: self.editor.addNode(DivideNode(self.editor.scene)))
         self.button17.clicked.connect(lambda: self.editor.addNode(NegateNode(self.editor.scene)))
-        self.button18.clicked.connect(lambda: self.editor.addNode(CameraNode(self.editor.scene)))
+        self.button18.clicked.connect(lambda: self.editor.addNode(VideoInputNode(self.editor.scene)))
         self.button19.clicked.connect(lambda: self.editor.addNode(AudioNode(self.editor.scene)))
 
 

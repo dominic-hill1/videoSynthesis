@@ -2,8 +2,6 @@ import json
 from collections import OrderedDict
 from multiprocessing import shared_memory
 import time
-import numpy as np
-import subprocess
 import ctypes
 import os
 import threading

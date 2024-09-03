@@ -1,16 +1,16 @@
 {
-    "id": 126674895131872,
+    "id": 131147887071184,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": "cecfadbddbabb",
+            "id": "ffcefeadaccffdec",
             "title": "Output",
             "pos_x": 350.0,
             "pos_y": 250.0,
             "inputs": [
                 {
-                    "id": 126674867349504,
+                    "id": 131147887338224,
                     "index": 0,
                     "position": 1,
                     "socket_type": 1
@@ -20,14 +20,14 @@
             "content": {}
         },
         {
-            "id": "aeedadbdcefa",
+            "id": "accaacaedfdacf",
             "title": "Variable input (0-100)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867354592,
+                    "id": 131147887343312,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -36,14 +36,14 @@
             "content": {}
         },
         {
-            "id": "dabbcaaaabbcc",
+            "id": "dbfcafd",
             "title": "Variable input (0-100)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867354784,
+                    "id": 131147887343504,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -52,14 +52,14 @@
             "content": {}
         },
         {
-            "id": "beeafcda",
+            "id": "adbdfbeffcca",
             "title": "Variable input (0-100)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867354976,
+                    "id": 131147887343696,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -68,14 +68,14 @@
             "content": {}
         },
         {
-            "id": "beacabfdbcce",
+            "id": "ecedbadd",
             "title": "Variable input (0-100)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867355168,
+                    "id": 131147887343888,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -84,14 +84,14 @@
             "content": {}
         },
         {
-            "id": "ccaebadfaef",
+            "id": "aabfcaffedcbbd",
             "title": "Variable input (0-100)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867355360,
+                    "id": 131147887344080,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -100,14 +100,14 @@
             "content": {}
         },
         {
-            "id": "cdebcaaccbffaa",
+            "id": "bbacfcafbdd",
             "title": "Variable input (0-100)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867355552,
+                    "id": 131147887344272,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -116,14 +116,14 @@
             "content": {}
         },
         {
-            "id": "babcfcacad",
+            "id": "ccefbacdcdb",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867421344,
+                    "id": 131147887344464,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -132,14 +132,14 @@
             "content": {}
         },
         {
-            "id": "fbdebeecff",
+            "id": "abcacaabcdb",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867421536,
+                    "id": 131147887344656,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -148,14 +148,14 @@
             "content": {}
         },
         {
-            "id": "aedaccfbaafaff",
+            "id": "abcdcbccb",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867421728,
+                    "id": 131147887344848,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -164,14 +164,14 @@
             "content": {}
         },
         {
-            "id": "ffdfbddedaeabdaae",
+            "id": "dcadafbdbdcdf",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867421920,
+                    "id": 131147887345040,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -180,14 +180,14 @@
             "content": {}
         },
         {
-            "id": "ebcfdbdebbbbbd",
+            "id": "deeafee",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867422112,
+                    "id": 131147887345232,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -196,14 +196,14 @@
             "content": {}
         },
         {
-            "id": "ebeceebebef",
+            "id": "afacbebaecd",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867422304,
+                    "id": 131147887345424,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -212,14 +212,14 @@
             "content": {}
         },
         {
-            "id": "ecedbcfdef",
-            "title": "Webcam",
+            "id": "fdcebedae",
+            "title": "Video input",
             "pos_x": 0.0,
             "pos_y": 0.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 126674867487696,
+                    "id": 131147887427200,
                     "index": 0,
                     "position": 4,
                     "socket_type": 1
@@ -230,10 +230,10 @@
     ],
     "edges": [
         {
-            "id": 126674867488176,
+            "id": 131147887493280,
             "edge_type": 2,
-            "start": 126674867487696,
-            "end": 126674867349504
+            "start": 131147887427200,
+            "end": 131147887338224
         }
     ]
 }

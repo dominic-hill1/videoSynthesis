@@ -1,8 +1,5 @@
 from collections import OrderedDict
 import uuid
-import serial
-from multiprocessing import shared_memory
-import numpy as np
 
 from node_serializable import Serializable
 from node_graphics_node import QDMGraphicsNode
@@ -533,18 +530,18 @@ class AudioNode(Node):
         return ""
     
 
-class CameraNode(Node):
+class VideoInputNode(Node):
     """
-    Class to represent a camera node
+    Class to represent a video input node
     """
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Webcam"
+        self.title = "Video input"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 120
-        self.content = QDMNodeContentCamera(self)
+        self.content = QDMNodeContentVideoInput(self)
         self.grNode.initContent()
 
         self.scene.addNode(self)
