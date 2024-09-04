@@ -15,6 +15,7 @@ I've written this so someone without any command line experience can install the
 - Run the command `wget https://raw.githubusercontent.com/dominic-hill1/videoSynthesis/main/install.sh`
 - Run the command `chmod +x install.sh`
 - Run the command `sudo ./install.sh`
+- Occationally you'll get messages asking for confirmation to download something. Press "y" and enter to continue the installation
 
 This should run a script which installs the app and all of its prerequisites.
 This will take a while. It took 10 mins on my machine.
