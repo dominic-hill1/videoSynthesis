@@ -1,4 +1,7 @@
 class Serializable():
+    """
+    Not in use yet
+    """
     def __init__(self):
         self.id = id(self)
 

@@ -1,16 +1,44 @@
 OF_GLSL_SHADER_HEADER
-uniform float badbeccc;
-uniform float cbedebabbcd;
-uniform float dbabefceece;
-uniform float aaaaadaffdfce;
-uniform float cefcfababeedac;
-uniform float bdfaedfbedbbabe;
-uniform float ebebcbaccbaaaac;
-uniform float cecafcbacc;
-uniform float facfabafaaad;
-uniform float cadfbabbcdefe;
-uniform float cfbfcebefd;
-uniform float bbaadebfaadf;
+uniform float ccbbcfdeebe;
+uniform float ddbcabebccbd;
+uniform float edddbcfcbbc;
+uniform float dfbbfaec;
+uniform float fbdeabbedc;
+uniform float fbecefbefaccf;
+uniform float bcabdcbaabfbbeed;
+uniform float edcefcdafceff;
+uniform float bebcceaecdf;
+uniform float fbacdffecb;
+uniform float cbcffedbadaffbbeac;
+uniform float cfeacaefbaabbfec;
+uniform float ecabbaafadefd;
+uniform float fdaffbbddabad;
+uniform float fdedfcebbfaabd;
+uniform float ccfffeadeac;
+uniform float abaacfeba;
+uniform float edfafbfde;
+uniform float afbeaacbacdfaabb;
+uniform float ecdfbdbeac;
+uniform float acdbdcbaedbe;
+uniform float acfdacfaca;
+uniform float accaaabcf;
+uniform float decccfacffdee;
+uniform float aedfddebbeafd;
+uniform float fdaabaaebacedcdf;
+uniform float cdfadaabfcded;
+uniform float dacdffaeeed;
+uniform float eddbfbebeb;
+uniform float afbffcebcee;
+uniform float fabbdbfcef;
+uniform float aeadfffea;
+uniform float eeaabbcecee;
+uniform float fbeaeac;
+uniform float cfdaeecaaefad;
+uniform float fbcaabebebd;
+uniform float fabbefaacabdbbaa;
+uniform float ceabbaccfdf;
+uniform float becaded;
+uniform float fecccefbaaa;
 uniform float time;
 uniform float audio;
 
@@ -116,7 +144,7 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 void main()
 {
 
-vec2 caecafeafcbeabc = texCoordVarying;vec4 caecafeafcbe = texture(input1, caecafeafcbeabc);
+vec2 debfeafbabc = texCoordVarying;vec4 debfeafb = texture(input1, debfeafbabc);
 
 
 
@@ -132,5 +160,32 @@ vec2 caecafeafcbeabc = texCoordVarying;vec4 caecafeafcbe = texture(input1, caeca
 
 
 
-outputColor = caecafeafcbe;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+outputColor = debfeafb;
 }

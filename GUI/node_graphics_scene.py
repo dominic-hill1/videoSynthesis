@@ -5,12 +5,15 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 class QDMGraphicsScene(QGraphicsScene):
+    """
+    A class to graphically define a scene (drawing background grid)
+    """
     def __init__(self, scene, parent=None):
         super().__init__(parent)
         
         self.scene = scene
         
-        # Settings
+        # Define styling variables
         self.gridSize = 20
         self.gridSquares = 5
 
@@ -33,6 +36,9 @@ class QDMGraphicsScene(QGraphicsScene):
         self.setSceneRect(-width // 2, -height//2, width, height)
 
     def drawBackground(self, painter, rect):
+        """
+        Draw background grid
+        """
         super().drawBackground(painter, rect)
 
         # Create grid

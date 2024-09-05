@@ -69,23 +69,25 @@ class Node(Serializable):
         return [x, y]
     
     def updateConnectedEdges(self):
+        """
+        Update edge positions for a node
+        """
         for socket in self.inputs + self.outputs:
             if socket.hasEdge():
                 for edge in socket.edges:
                     edge.updatePositions()
     
     def remove(self):
-        if DEBUG: print("Removing node")
-        if DEBUG: print("Removing all edges from sockets")
+        """
+        Remove node and connected edges
+        """
         for socket in (self.inputs + self.outputs):
             if socket.hasEdge():
-                if DEBUG: print("Removing edge from socket")
-                socket.edge.remove()
-        if DEBUG: print("Removing grNode")
+                for edge in socket.edges:
+                    edge.remove()
         self.scene.grScene.removeItem(self.grNode)
-        if DEBUG: print("Removing node from scene")
         self.scene.removeNode(self)
-        if DEBUG: print("All done")
+
     
     def serialize(self):
         inputs, outputs = [], []
@@ -449,10 +451,10 @@ class ColorXNode(Node):
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=FLOAT_TYPE))
         self.id = "colorx"
 
-        def writeInitCode(self):
-            return ""
-        def writeCode(self):
-            return ""
+    def writeInitCode(self):
+        return ""
+    def writeCode(self):
+        return ""
         
 class ColorYNode(Node):
     """

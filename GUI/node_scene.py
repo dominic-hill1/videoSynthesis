@@ -13,6 +13,11 @@ from node_edge import Edge
 from circular_buffer import CircularBuffer
 
 class Scene(Serializable):
+    """
+    A class to functionally define the scene of the node editor. 
+    Primarily handles compilation of the node structure into C++ and GLSL code
+    Also keeps track of nodes and edges. 
+    """
     def __init__(self):
         super().__init__()
         self.nodes = []
@@ -44,17 +49,26 @@ class Scene(Serializable):
             self.nodes[0].remove()
 
     def saveToFile(self, filename):
+        """
+        Function to save serialised node tree to file. Not currently in use. 
+        """
         with open(filename, "w") as file:
             file.write(json.dumps(self.serialize(), indent=4))
-            print("Saving to", filename, "was successful")
+            # print("Saving to", filename, "was successful")
 
     def loadFromFile(self, filename):
+        """
+        Function to load serialised node tree from file. Not currently in use. 
+        """
         with open(filename, "r") as file:
             raw_data = file.read()
             data = json.loads(raw_data, encoding='utf-8')
             self.deserialize(data)
 
     def init_shared_mem(self):
+        """
+        Initialise shared memory in a circular buffer for communication with backend
+        """
         # Create a shared memory block
         shm = shared_memory.SharedMemory(create=True, size=1024)
         buffer = CircularBuffer(shm, 1024)
@@ -63,6 +77,9 @@ class Scene(Serializable):
 
     
     def serialize(self):
+        """
+        Saving function. Incomplete
+        """
         nodes, edges = [], []
         for node in self.nodes: nodes.append(node.serialize())
         for edge in self.edges: edges.append(edge.serialize())
@@ -75,47 +92,37 @@ class Scene(Serializable):
         ])
 
     def deserialize(self, data, hashmap={}):
-        print("Deserialising data", data)
-
-        # self.clear()
-
-        # hashmap = {}
-
-        # # Create nodes
-        # for node_data in data['nodes']:
-        #     Node(self).deserialize(node_data, hashmap)
-
-        # # Create edges
-        # for edge_data in data['edges']:
-        #     Edge(self).deserialize(edge_data, hashmap)
-
-        # return True
-
+        """
+        Loading function. Incomplete
+        """
         return False
     
     def compile(self):
+        """
+        A function to turn node graph into GLSL code (and some c++ code)
+        How it works:
+            - Create a graph of which nodes are connected to other nodes by looking at edge connections
+            - Each node represents a GLSL function or a GLSL variable. 
+            - Each node is given a unique ID which can be used as a variable name
+            - GLSL code for a node may look like:
+                - UniqueID = oscillator(inputNodeID1, inputNodeID2, inputNodeID3);
+            - So, outputs of a function are saved to a unique ID which can then be used as parameters to other functions
+            - By starting at the output node, and recursively looking at the inputs of nodes, you can write the GLSL code from the bottom to the top
+            - This creates code which is gibberish, but it works
+        """
         # Get list of connections for each node
         for node in self.nodes:
-            # node.inputNodes = [[], [], [], []]
             node.inputNodes = [None, None, None, None]
             node.outputNodes = []
-        print(self.edges)
         for edge in self.edges:
             if edge.start_socket.input == False: # output to input
                 edge.start_socket.node.outputNodes.append(edge.end_socket.node)
-                # edge.end_socket.node.inputNodes[edge.end_socket.index].append(edge.start_socket.node)
                 edge.end_socket.node.inputNodes[edge.end_socket.index] = edge.start_socket.node
-                print(edge.end_socket.node)
             else: # input to output
-                # edge.start_socket.node.inputNodes[edge.start_socket.index].append(edge.end_socket.node)
                 edge.start_socket.node.inputNodes[edge.start_socket.index] = edge.end_socket.node
                 edge.end_socket.node.outputNodes.append(edge.start_socket.node)
-                print(edge.end_socket.node)
-        for node in self.nodes:
-            print("Inputs", node.inputNodes)
-            print("Outputs", node.outputNodes)
 
-        # Find output node to start algorithm
+        # Find output node to start a breadth-first search on the graph, writing code as you go. 
         for node in self.nodes:
             if isinstance(node, OutputNode):
                 output = node
@@ -133,12 +140,14 @@ class Scene(Serializable):
             print(nextWave)
             activeNodes = nextWave
 
-
+        # Some nodes have code that needs to be initialised before the bulk of the code
+        # This is to stop redefining the same variable.
         for node in self.nodes:
             code = node.writeInitCode() + "\n" + code
 
         print(code)
 
+        # Add new code to already existing GLSL code
         with open('frag_template.txt', 'r') as file:
             content = file.read()
             code = content + code + "}"
@@ -147,14 +156,17 @@ class Scene(Serializable):
         
         frag_path = "../bin/data/shadersES2/shader1.frag"
         
+        # Write code to shader file
         with open(frag_path, "w") as file:
             file.write(code)
 
+        # Write message to c++ code to reload shaders
         self.writeToSharedMemory("RELOAD")
         
-  
+    
         self.init_shader_vars()
 
+        # If this is the first compilation, you also need to write so C++ code. 
         if self.compiled == False:
             self.init_cpp()
             # Create a thread to run the command
@@ -163,13 +175,17 @@ class Scene(Serializable):
             # Start the thread
             self.glslThread.start()
 
-
             self.compiled = True
         
         time.sleep(0.1)
-        self.writeToSharedMemory("000000000")
+        self.writeToSharedMemory("000000000") # Clear shared memory buffer
     
     def init_cpp(self):
+        """
+        A function to write code for c++ openframeworks. 
+        Sliders hold variables that need to be passed in via c++ to the shader.
+        These sliders need to be defined here, and some other variables such as time
+        """
         initCode = ""
         variableCode = ""
         ifStatements = ""
@@ -178,7 +194,7 @@ class Scene(Serializable):
                 initCode += f"float {node.id} = 0;"
                 ifStatements += "if (varName == " + '"' + node.id + '"' + "){" + node.id + "= varValue;}"
                 variableCode += 'shader1.setUniform1f("' + node.id + '", ' + node.id + ');\n'
-                variableCode += f"std::cout << {node.id} << std::endl;"
+                # variableCode += f"std::cout << {node.id} << std::endl;"
 
         with open("cpp_template.txt", 'r') as file:
             content = file.read()
@@ -191,6 +207,7 @@ class Scene(Serializable):
             file.write(content)
         
     def init_shader_vars(self):
+        # Define inputs to GLSL shader (variables passed from C++ code)
         ret = "OF_GLSL_SHADER_HEADER\n"
         for node in self.nodes:
             if isinstance(node, SliderNode):
@@ -201,30 +218,24 @@ class Scene(Serializable):
         return ret
     
     def runGLSL(self):
-        # Combine the commands into a single shell command
         command = 'cd .. && make && make run'
-
-        # Start the command in the background
-        # process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         os.system(command)
 
 
     def writeToSharedMemory(self, string):
-        print("Writing")
+        # print("Writing")
         try:
             # Ensure the data fits into the shared memory
             if len(string) > self.shared_mem.size:
                 raise ValueError("Data is too large to fit into the shared memory.")
-            # Write data to shared memory
             # Get a pointer to the shared memory buffer
-            
             buffer = (ctypes.c_char * 1024).from_buffer(self.shared_mem.buf)
             
             # Write data to shared memory
             ctypes.memmove(buffer, string.encode(), len(string))
-            print("Writing to shared memory")
+            # print("Writing to shared memory")
         except:
-            print("ERROR CLOSING SARED MEMORY")
+            print("ERROR CLOSING SHARED MEMORY")
     
             # Close the shared memory
             self.shared_mem.close()

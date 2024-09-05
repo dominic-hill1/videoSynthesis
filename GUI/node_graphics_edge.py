@@ -8,9 +8,13 @@ from node_socket import *
 EDGE_CP_ROUNDNESS = 100
 
 class QDMGraphicsEdge(QGraphicsPathItem):
+    """
+    A class to graphically define an edge (line) in the node editor
+    """
     def __init__(self, edge, parent=None):
         super().__init__(parent)
 
+        # Define colours, styles, positions
         self.edge = edge
         self._color = QColor("#001000")
         self._color_selected = QColor("#00ff00")
@@ -38,6 +42,7 @@ class QDMGraphicsEdge(QGraphicsPathItem):
 
 
     def paint(self, painter, QStyleOptionGraphicsItem, widget=None):
+        # Draw edge
         self.setPath(self.calcPath())
 
         if self.edge.end_socket is None:
@@ -60,6 +65,9 @@ class QDMGraphicsEdge(QGraphicsPathItem):
     
 
 class QDMGraphicsEdgeDirect(QDMGraphicsEdge):
+    """
+    A subclass to define an edge with a straight line
+    """
     def calcPath(self):
         path = QPainterPath(QPointF(self.posSource[0], self.posSource[1]))
         path.lineTo(self.posDestination[0], self.posDestination[1])
@@ -67,7 +75,12 @@ class QDMGraphicsEdgeDirect(QDMGraphicsEdge):
 
 
 class QDMGraphicsEdgeBezier(QDMGraphicsEdge):
+    """
+    A subclass to define an edge with a curved line
+    """
     def calcPath(self):
+        # Calculate maths for bezier curve. 
+        # Credit to Pavel Křupala for this code
         s = self.posSource
         d = self.posDestination
 
@@ -95,9 +108,6 @@ class QDMGraphicsEdgeBezier(QDMGraphicsEdge):
                     (d[1] - s[1]) if (d[1] - s[1] != 0) else 0.000001
                 )
             ) * EDGE_CP_ROUNDNESS
-
-
-
 
         path = QPainterPath(QPointF(self.posSource[0], self.posSource[1]))
         path.cubicTo(s[0] + cpx_s, s[1] + cpy_s, d[0] + cpx_d, d[1] + cpy_d, self.posDestination[0], self.posDestination[1])

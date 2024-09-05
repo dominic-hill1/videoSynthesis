@@ -1,6 +1,9 @@
 import ctypes
 
 class CircularBuffer:
+    """
+    A class for a circular buffer used in shared memory to communicate variables in real time
+    """
     def __init__(self, shared_mem, size):
         self.shared_mem = shared_mem
         self.size = size
@@ -18,9 +21,6 @@ class CircularBuffer:
         for byte in data:
             self.buffer[self.head] = byte
             self.head = (self.head + 1) % self.size
-            # if self.full:
-            #     self.tail = (self.tail + 1) % self.size
-            # self.full = self.head == self.tail
         self.head = 0
    
 
@@ -43,23 +43,3 @@ class CircularBuffer:
     def cleanup(self):
         self.shared_mem.close()
         self.shared_mem.unlink()
-
-# if __name__ == "__main__":
-#     shared_memory_name = "circular_buffer_memory"
-#     buffer_size = 1024  # Buffer size of 1KB
-
-#     # Create shared memory
-#     shm = shared_memory.SharedMemory(name=shared_memory_name, create=True, size=buffer_size)
-#     buffer = CircularBuffer(shm, buffer_size)
-    
-    # try:
-    #     # Write data to the buffer
-    #     data_to_write = b"Hello, Circular Buffer!"
-    #     buffer.write(data_to_write)
-        
-    #     # Read data from the buffer
-    #     read_data = buffer.read(len(data_to_write))
-    #     print(f"Read data: {read_data.decode()}")
-
-    # finally:
-    #     buffer.cleanup()

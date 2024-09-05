@@ -12,6 +12,9 @@ COLOR_TYPE = 1
 FEEDBACK_TYPE = 2
 
 class Socket(Serializable):
+    """
+    A class to functionally define a socket, handling connected edges. 
+    """
     def __init__(self, node, input=True, index=0, position=LEFT_TOP, socket_type=0):
         super().__init__()
         self.input = input
@@ -24,7 +27,6 @@ class Socket(Serializable):
         self.grSocket = QDMGraphicsSocket(self, self.socket_type)
         self.grSocket.setPos(*self.node.getSocketPosition(index, position))
 
-        # self.edge = None
         self.edges = []
 
     
@@ -35,11 +37,9 @@ class Socket(Serializable):
         return self.node.getSocketPosition(self.index, self.position)
 
     def setConnectedEdge(self, edge=None):
-        # self.edge = edge
         self.edges.append(edge)
 
     def hasEdge(self):
-        # return self.edge is not None
         return self.edges != []
     
 

@@ -9,25 +9,14 @@ FEEDBACK_TYPE = 2
 
 class QDMGraphicsSocket(QGraphicsItem):
     def __init__(self, socket, socket_type=FLOAT_TYPE):
+        """
+        A class to graphically define a socket (inputs and outputs to nodes)
+        """
         self.socket = socket
         super().__init__(socket.node.grNode)
 
         self.radius = 6
         self.outline_width = 1.0
-
-
-        self._colors = [
-            QColor("#FFFF7700"),
-            QColor("#FFFF0000"),
-            QColor("#FF00FF00"),
-            QColor("#FF0000FF"),
-            QColor("#FF52e220"),
-            QColor("#FF0056A6") ,
-            QColor("#FFA86DB1"),
-            QColor("#FFB54747"),
-            QColor("#FFDBE220"),
-
-        ]
 
         if socket_type == FLOAT_TYPE:
             self._color_background = QColor("#FFFF7700")
@@ -35,8 +24,6 @@ class QDMGraphicsSocket(QGraphicsItem):
             self._color_background = QColor("#ED254E")
         else: 
             self._color_background = QColor("#48A9A6")
-
-        # self._color_background = self._colors[socket_type]
 
         self._color_outline = QColor("FF000000")
 

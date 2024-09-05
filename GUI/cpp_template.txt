@@ -9,13 +9,6 @@
 #define MIDI_MAGIC 63.50f
 #define CONTROL_THRESHOLD .04f
 
-// float az = 0;
-// float sx = 0;
-// float dc = 0;
-// float fv = 0;
-// float jm = 0;
-// float hn = 0;
-
 
 // INSTANTIATE VARIABLES HERE
 
@@ -132,7 +125,7 @@ void ofApp::update() {
 	std::string str;
     str = receivedData;  // Assign char* to std::string
 
-    std::cout << "Read from shared memory: " << receivedData << std::endl;
+    // std::cout << "Read from shared memory: " << receivedData << std::endl;
 	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
@@ -155,29 +148,7 @@ void ofApp::update() {
 		// IF STATEMENTS HERE
 	}
 
-	// std::cout << "Read from shared memory: " << receivedData << std::endl;
 
-	
-
-	// while (serial.available() > 0) {
-	// 	char byteData = serial.readByte();
-	// 	if (byteData == '\n') { // Check for the end of the message
-	// 		std::istringstream stream(receivedData);
-	// 		std::string varName;
-	// 		std::string varValue;
-	// 		stream >> varName;
-	// 		stream >> varValue
-
-			
-	// 		if (varName == fedaafbfbccbc){fedaafbfbccbc= varValue}if (varName == daaabffdbda){daaabffdbda= varValue}if (varName == dcbcad){dcbcad= varValue}
-	
-
-
-	// 		receivedData = ""; // Clear the string for new data
-	// 	} else {
-	// 		receivedData += byteData; // Append the byte to the string
-	// 	}
-	// }
 
 	scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
 
@@ -190,18 +161,14 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	time1 += 1;
-	// time2 += 0.5;
+	time1 += 0.01;
 
 	framebuffer0.begin();
 	shader1.begin();
-	// input1.draw(0,0);
 	framebuffer1.draw(0, 0);
 
 	// shader1.setUniformTexture("input1", input1.getTexture(), 1); // "1" must be incremented with multiple inputs
 	shader1.setUniformTexture("input1", movie1.getTexture(), 1); // "1" must be incremented with multiple inputs
-	// movie1.draw(0, 0, 400, 300);
-	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);
 	shader1.setUniform1f("time", time1);
 	shader1.setUniform1f("audio", scaledVol);
@@ -209,31 +176,7 @@ void ofApp::draw() {
 
 	// SET VARIABLES HERE
 
-
-
-
-	// shader1.setUniform1f("sx",sx* 10);
-	// shader1.setUniform1f("az",az * 10);
-	// shader1.setUniform1f("fv",fv * 10);
-	// // shader1.setUniform1f("audio", scaledVol);
-	// shader1.setUniform1f("audio", 0);
-	// shader1.setUniform1f("time1",time1);
-	// shader1.setUniform1f("time2", time2);
-	// // shader1.setUniform1f("nano1", nano);
-	// shader1.setUniform1f("nano1", az * 10);
-
-
-
 	shader1.end();
-
-
-	// ofSetColor(127 + 127 * sin(time1), 200, 127 - 127 * sin(time2), 255);
-	// // ofDrawEllipse(mouseX, mouseY, 20+80*abs(sin(time1)), 20+80*abs(sin(time2)));
-	// ofDrawEllipse(720/2, 480/2, 20+80*abs(sin(time1)), 20+80*abs(sin(time2)));
-	// ofSetColor(0);
-	// ofDrawEllipse(720/2, 480/2, 18+80*abs(sin(time1)), 18+80*abs(sin(time2)));
-	// // ofDrawEllipse(mouseX, mouseY, 18+80*abs(sin(time1)), 18+80*abs(sin(time2)));
-
 
 	framebuffer0.end();
 	
@@ -243,12 +186,6 @@ void ofApp::draw() {
 	framebuffer0.draw(0, 0);
 	framebuffer1.end();
 
-	// movie1.draw(0, 480);
-	
-
-    ofSetColor(255);
-    // string msg="fps="+ofToString(ofGetFrameRate(),2)+" sx = " +ofToString(sx,2)+" time = " +ofToString(time1,2) + " audio = " +ofToString(scaledVol,2) +  " az = " +ofToString(az,2) + " fv = " +ofToString(fv,2);
-    // ofDrawBitmapString(msg,10,10);
 }
 
 //--------------------------------------------------------------
@@ -260,10 +197,8 @@ void ofApp::audioIn(ofSoundBuffer & input){
 	
 	float curVol = 0.0;
 	
-	// samples are "interleaved"
 	int numCounted = 0;	
 
-	//lets go through each sample and calculate the root mean square which is a rough way to calculate volume	
 	for (size_t i = 0; i < input.getNumFrames(); i++){
 		left[i]		= input[i*2]*0.5;
 		right[i]	= input[i*2+1]*0.5;
@@ -273,10 +208,7 @@ void ofApp::audioIn(ofSoundBuffer & input){
 		numCounted+=2;
 	}
 	
-	//this is how we get the mean of rms :)
 	curVol /= (float)numCounted;
-	
-	// this is how we get the root of rms :)
 	curVol = sqrt( curVol );
 	
 	smoothedVol *= 0.93;
@@ -290,28 +222,6 @@ void ofApp::audioIn(ofSoundBuffer & input){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 	
-// 	//here is how i map controls from the keyboard
-    
-//     //increment and decrement sx
-//     if (key == 's') {sx += .01;}
-//     if (key == 'x') {sx -= .01;}
-    
-//     //increment and decrement dc
-//     if (key == 'd') {dc += .01;}
-//     if (key == 'c') {dc -= .01;}
-
-// 	if (key == 'a') {az += .01;}
-//     if (key == 'z') {az -= .01;}
-
-// 	if (key == 'f') {fv += .01;}
-//     if (key == 'v') {fv -= .01;}
-
-// 	if (key == 'j') {jm += .01;}
-//     if (key == 'm') {jm -= .01;}
-
-// 	if (key == 'h') {hn += .01;}
-//     if (key == 'n') {hn -= .01;}
-        
 }
 
 //--------------------------------------------------------------

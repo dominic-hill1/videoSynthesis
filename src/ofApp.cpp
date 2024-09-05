@@ -9,15 +9,8 @@
 #define MIDI_MAGIC 63.50f
 #define CONTROL_THRESHOLD .04f
 
-// float az = 0;
-// float sx = 0;
-// float dc = 0;
-// float fv = 0;
-// float jm = 0;
-// float hn = 0;
 
-
-float badbeccc = 0;float cbedebabbcd = 0;float dbabefceece = 0;float aaaaadaffdfce = 0;float cefcfababeedac = 0;float bdfaedfbedbbabe = 0;float ebebcbaccbaaaac = 0;float cecafcbacc = 0;float facfabafaaad = 0;float cadfbabbcdefe = 0;float cfbfcebefd = 0;float bbaadebfaadf = 0;
+float ccbbcfdeebe = 0;float ddbcabebccbd = 0;float edddbcfcbbc = 0;float dfbbfaec = 0;float fbdeabbedc = 0;float fbecefbefaccf = 0;float bcabdcbaabfbbeed = 0;float edcefcdafceff = 0;float bebcceaecdf = 0;float fbacdffecb = 0;float cbcffedbadaffbbeac = 0;float cfeacaefbaabbfec = 0;float ecabbaafadefd = 0;float fdaffbbddabad = 0;float fdedfcebbfaabd = 0;float ccfffeadeac = 0;float abaacfeba = 0;float edfafbfde = 0;float afbeaacbacdfaabb = 0;float ecdfbdbeac = 0;float acdbdcbaedbe = 0;float acfdacfaca = 0;float accaaabcf = 0;float decccfacffdee = 0;float aedfddebbeafd = 0;float fdaabaaebacedcdf = 0;float cdfadaabfcded = 0;float dacdffaeeed = 0;float eddbfbebeb = 0;float afbffcebcee = 0;float fabbdbfcef = 0;float aeadfffea = 0;float eeaabbcecee = 0;float fbeaeac = 0;float cfdaeecaaefad = 0;float fbcaabebebd = 0;float fabbefaacabdbbaa = 0;float ceabbaccfdf = 0;float becaded = 0;float fecccefbaaa = 0;
 
 int width=0;
 int height=0;
@@ -120,7 +113,7 @@ void ofApp::update() {
 	using namespace boost::interprocess;
 
     // Open the shared memory object created by Python
-    shared_memory_object shm(open_only, "psm_b7409d9e", read_only);  // Replace with the actual name printed by the Python script
+    shared_memory_object shm(open_only, "psm_00a56908", read_only);  // Replace with the actual name printed by the Python script
 
     // Map the whole shared memory in this process
     mapped_region region(shm, read_only);
@@ -132,23 +125,51 @@ void ofApp::update() {
 	std::string str;
     str = receivedData;  // Assign char* to std::string
 
-    std::cout << "Read from shared memory: " << receivedData << std::endl;
+    // std::cout << "Read from shared memory: " << receivedData << std::endl;
 	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
-		 shader1.setUniform1f("badbeccc", badbeccc);
-std::cout << badbeccc << std::endl;shader1.setUniform1f("cbedebabbcd", cbedebabbcd);
-std::cout << cbedebabbcd << std::endl;shader1.setUniform1f("dbabefceece", dbabefceece);
-std::cout << dbabefceece << std::endl;shader1.setUniform1f("aaaaadaffdfce", aaaaadaffdfce);
-std::cout << aaaaadaffdfce << std::endl;shader1.setUniform1f("cefcfababeedac", cefcfababeedac);
-std::cout << cefcfababeedac << std::endl;shader1.setUniform1f("bdfaedfbedbbabe", bdfaedfbedbbabe);
-std::cout << bdfaedfbedbbabe << std::endl;shader1.setUniform1f("ebebcbaccbaaaac", ebebcbaccbaaaac);
-std::cout << ebebcbaccbaaaac << std::endl;shader1.setUniform1f("cecafcbacc", cecafcbacc);
-std::cout << cecafcbacc << std::endl;shader1.setUniform1f("facfabafaaad", facfabafaaad);
-std::cout << facfabafaaad << std::endl;shader1.setUniform1f("cadfbabbcdefe", cadfbabbcdefe);
-std::cout << cadfbabbcdefe << std::endl;shader1.setUniform1f("cfbfcebefd", cfbfcebefd);
-std::cout << cfbfcebefd << std::endl;shader1.setUniform1f("bbaadebfaadf", bbaadebfaadf);
-std::cout << bbaadebfaadf << std::endl;
+		 shader1.setUniform1f("ccbbcfdeebe", ccbbcfdeebe);
+shader1.setUniform1f("ddbcabebccbd", ddbcabebccbd);
+shader1.setUniform1f("edddbcfcbbc", edddbcfcbbc);
+shader1.setUniform1f("dfbbfaec", dfbbfaec);
+shader1.setUniform1f("fbdeabbedc", fbdeabbedc);
+shader1.setUniform1f("fbecefbefaccf", fbecefbefaccf);
+shader1.setUniform1f("bcabdcbaabfbbeed", bcabdcbaabfbbeed);
+shader1.setUniform1f("edcefcdafceff", edcefcdafceff);
+shader1.setUniform1f("bebcceaecdf", bebcceaecdf);
+shader1.setUniform1f("fbacdffecb", fbacdffecb);
+shader1.setUniform1f("cbcffedbadaffbbeac", cbcffedbadaffbbeac);
+shader1.setUniform1f("cfeacaefbaabbfec", cfeacaefbaabbfec);
+shader1.setUniform1f("ecabbaafadefd", ecabbaafadefd);
+shader1.setUniform1f("fdaffbbddabad", fdaffbbddabad);
+shader1.setUniform1f("fdedfcebbfaabd", fdedfcebbfaabd);
+shader1.setUniform1f("ccfffeadeac", ccfffeadeac);
+shader1.setUniform1f("abaacfeba", abaacfeba);
+shader1.setUniform1f("edfafbfde", edfafbfde);
+shader1.setUniform1f("afbeaacbacdfaabb", afbeaacbacdfaabb);
+shader1.setUniform1f("ecdfbdbeac", ecdfbdbeac);
+shader1.setUniform1f("acdbdcbaedbe", acdbdcbaedbe);
+shader1.setUniform1f("acfdacfaca", acfdacfaca);
+shader1.setUniform1f("accaaabcf", accaaabcf);
+shader1.setUniform1f("decccfacffdee", decccfacffdee);
+shader1.setUniform1f("aedfddebbeafd", aedfddebbeafd);
+shader1.setUniform1f("fdaabaaebacedcdf", fdaabaaebacedcdf);
+shader1.setUniform1f("cdfadaabfcded", cdfadaabfcded);
+shader1.setUniform1f("dacdffaeeed", dacdffaeeed);
+shader1.setUniform1f("eddbfbebeb", eddbfbebeb);
+shader1.setUniform1f("afbffcebcee", afbffcebcee);
+shader1.setUniform1f("fabbdbfcef", fabbdbfcef);
+shader1.setUniform1f("aeadfffea", aeadfffea);
+shader1.setUniform1f("eeaabbcecee", eeaabbcecee);
+shader1.setUniform1f("fbeaeac", fbeaeac);
+shader1.setUniform1f("cfdaeecaaefad", cfdaeecaaefad);
+shader1.setUniform1f("fbcaabebebd", fbcaabebebd);
+shader1.setUniform1f("fabbefaacabdbbaa", fabbefaacabdbbaa);
+shader1.setUniform1f("ceabbaccfdf", ceabbaccfdf);
+shader1.setUniform1f("becaded", becaded);
+shader1.setUniform1f("fecccefbaaa", fecccefbaaa);
+
 	}else{
 		std::istringstream stream(receivedData);
 		std::string varName;
@@ -164,32 +185,10 @@ std::cout << bbaadebfaadf << std::endl;
 			std::cerr << "Out of range: " << e.what() << std::endl;
 		}
 
-		if (varName == "badbeccc"){badbeccc= varValue;}if (varName == "cbedebabbcd"){cbedebabbcd= varValue;}if (varName == "dbabefceece"){dbabefceece= varValue;}if (varName == "aaaaadaffdfce"){aaaaadaffdfce= varValue;}if (varName == "cefcfababeedac"){cefcfababeedac= varValue;}if (varName == "bdfaedfbedbbabe"){bdfaedfbedbbabe= varValue;}if (varName == "ebebcbaccbaaaac"){ebebcbaccbaaaac= varValue;}if (varName == "cecafcbacc"){cecafcbacc= varValue;}if (varName == "facfabafaaad"){facfabafaaad= varValue;}if (varName == "cadfbabbcdefe"){cadfbabbcdefe= varValue;}if (varName == "cfbfcebefd"){cfbfcebefd= varValue;}if (varName == "bbaadebfaadf"){bbaadebfaadf= varValue;}
+		if (varName == "ccbbcfdeebe"){ccbbcfdeebe= varValue;}if (varName == "ddbcabebccbd"){ddbcabebccbd= varValue;}if (varName == "edddbcfcbbc"){edddbcfcbbc= varValue;}if (varName == "dfbbfaec"){dfbbfaec= varValue;}if (varName == "fbdeabbedc"){fbdeabbedc= varValue;}if (varName == "fbecefbefaccf"){fbecefbefaccf= varValue;}if (varName == "bcabdcbaabfbbeed"){bcabdcbaabfbbeed= varValue;}if (varName == "edcefcdafceff"){edcefcdafceff= varValue;}if (varName == "bebcceaecdf"){bebcceaecdf= varValue;}if (varName == "fbacdffecb"){fbacdffecb= varValue;}if (varName == "cbcffedbadaffbbeac"){cbcffedbadaffbbeac= varValue;}if (varName == "cfeacaefbaabbfec"){cfeacaefbaabbfec= varValue;}if (varName == "ecabbaafadefd"){ecabbaafadefd= varValue;}if (varName == "fdaffbbddabad"){fdaffbbddabad= varValue;}if (varName == "fdedfcebbfaabd"){fdedfcebbfaabd= varValue;}if (varName == "ccfffeadeac"){ccfffeadeac= varValue;}if (varName == "abaacfeba"){abaacfeba= varValue;}if (varName == "edfafbfde"){edfafbfde= varValue;}if (varName == "afbeaacbacdfaabb"){afbeaacbacdfaabb= varValue;}if (varName == "ecdfbdbeac"){ecdfbdbeac= varValue;}if (varName == "acdbdcbaedbe"){acdbdcbaedbe= varValue;}if (varName == "acfdacfaca"){acfdacfaca= varValue;}if (varName == "accaaabcf"){accaaabcf= varValue;}if (varName == "decccfacffdee"){decccfacffdee= varValue;}if (varName == "aedfddebbeafd"){aedfddebbeafd= varValue;}if (varName == "fdaabaaebacedcdf"){fdaabaaebacedcdf= varValue;}if (varName == "cdfadaabfcded"){cdfadaabfcded= varValue;}if (varName == "dacdffaeeed"){dacdffaeeed= varValue;}if (varName == "eddbfbebeb"){eddbfbebeb= varValue;}if (varName == "afbffcebcee"){afbffcebcee= varValue;}if (varName == "fabbdbfcef"){fabbdbfcef= varValue;}if (varName == "aeadfffea"){aeadfffea= varValue;}if (varName == "eeaabbcecee"){eeaabbcecee= varValue;}if (varName == "fbeaeac"){fbeaeac= varValue;}if (varName == "cfdaeecaaefad"){cfdaeecaaefad= varValue;}if (varName == "fbcaabebebd"){fbcaabebebd= varValue;}if (varName == "fabbefaacabdbbaa"){fabbefaacabdbbaa= varValue;}if (varName == "ceabbaccfdf"){ceabbaccfdf= varValue;}if (varName == "becaded"){becaded= varValue;}if (varName == "fecccefbaaa"){fecccefbaaa= varValue;}
 	}
 
-	// std::cout << "Read from shared memory: " << receivedData << std::endl;
 
-	
-
-	// while (serial.available() > 0) {
-	// 	char byteData = serial.readByte();
-	// 	if (byteData == '\n') { // Check for the end of the message
-	// 		std::istringstream stream(receivedData);
-	// 		std::string varName;
-	// 		std::string varValue;
-	// 		stream >> varName;
-	// 		stream >> varValue
-
-			
-	// 		if (varName == fedaafbfbccbc){fedaafbfbccbc= varValue}if (varName == daaabffdbda){daaabffdbda= varValue}if (varName == dcbcad){dcbcad= varValue}
-	
-
-
-	// 		receivedData = ""; // Clear the string for new data
-	// 	} else {
-	// 		receivedData += byteData; // Append the byte to the string
-	// 	}
-	// }
 
 	scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
 
@@ -202,62 +201,62 @@ std::cout << bbaadebfaadf << std::endl;
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	time1 += 1;
-	// time2 += 0.5;
+	time1 += 0.01;
 
 	framebuffer0.begin();
 	shader1.begin();
-	// input1.draw(0,0);
 	framebuffer1.draw(0, 0);
 
 	// shader1.setUniformTexture("input1", input1.getTexture(), 1); // "1" must be incremented with multiple inputs
 	shader1.setUniformTexture("input1", movie1.getTexture(), 1); // "1" must be incremented with multiple inputs
-	// movie1.draw(0, 0, 400, 300);
-	// az = nano/100;
 	shader1.setUniform2f("resolution", 720, 480);
 	shader1.setUniform1f("time", time1);
 	shader1.setUniform1f("audio", scaledVol);
 	std::cout << scaledVol << std::endl;
 
-	shader1.setUniform1f("badbeccc", badbeccc);
-std::cout << badbeccc << std::endl;shader1.setUniform1f("cbedebabbcd", cbedebabbcd);
-std::cout << cbedebabbcd << std::endl;shader1.setUniform1f("dbabefceece", dbabefceece);
-std::cout << dbabefceece << std::endl;shader1.setUniform1f("aaaaadaffdfce", aaaaadaffdfce);
-std::cout << aaaaadaffdfce << std::endl;shader1.setUniform1f("cefcfababeedac", cefcfababeedac);
-std::cout << cefcfababeedac << std::endl;shader1.setUniform1f("bdfaedfbedbbabe", bdfaedfbedbbabe);
-std::cout << bdfaedfbedbbabe << std::endl;shader1.setUniform1f("ebebcbaccbaaaac", ebebcbaccbaaaac);
-std::cout << ebebcbaccbaaaac << std::endl;shader1.setUniform1f("cecafcbacc", cecafcbacc);
-std::cout << cecafcbacc << std::endl;shader1.setUniform1f("facfabafaaad", facfabafaaad);
-std::cout << facfabafaaad << std::endl;shader1.setUniform1f("cadfbabbcdefe", cadfbabbcdefe);
-std::cout << cadfbabbcdefe << std::endl;shader1.setUniform1f("cfbfcebefd", cfbfcebefd);
-std::cout << cfbfcebefd << std::endl;shader1.setUniform1f("bbaadebfaadf", bbaadebfaadf);
-std::cout << bbaadebfaadf << std::endl;
-
-
-
-
-	// shader1.setUniform1f("sx",sx* 10);
-	// shader1.setUniform1f("az",az * 10);
-	// shader1.setUniform1f("fv",fv * 10);
-	// // shader1.setUniform1f("audio", scaledVol);
-	// shader1.setUniform1f("audio", 0);
-	// shader1.setUniform1f("time1",time1);
-	// shader1.setUniform1f("time2", time2);
-	// // shader1.setUniform1f("nano1", nano);
-	// shader1.setUniform1f("nano1", az * 10);
-
+	shader1.setUniform1f("ccbbcfdeebe", ccbbcfdeebe);
+shader1.setUniform1f("ddbcabebccbd", ddbcabebccbd);
+shader1.setUniform1f("edddbcfcbbc", edddbcfcbbc);
+shader1.setUniform1f("dfbbfaec", dfbbfaec);
+shader1.setUniform1f("fbdeabbedc", fbdeabbedc);
+shader1.setUniform1f("fbecefbefaccf", fbecefbefaccf);
+shader1.setUniform1f("bcabdcbaabfbbeed", bcabdcbaabfbbeed);
+shader1.setUniform1f("edcefcdafceff", edcefcdafceff);
+shader1.setUniform1f("bebcceaecdf", bebcceaecdf);
+shader1.setUniform1f("fbacdffecb", fbacdffecb);
+shader1.setUniform1f("cbcffedbadaffbbeac", cbcffedbadaffbbeac);
+shader1.setUniform1f("cfeacaefbaabbfec", cfeacaefbaabbfec);
+shader1.setUniform1f("ecabbaafadefd", ecabbaafadefd);
+shader1.setUniform1f("fdaffbbddabad", fdaffbbddabad);
+shader1.setUniform1f("fdedfcebbfaabd", fdedfcebbfaabd);
+shader1.setUniform1f("ccfffeadeac", ccfffeadeac);
+shader1.setUniform1f("abaacfeba", abaacfeba);
+shader1.setUniform1f("edfafbfde", edfafbfde);
+shader1.setUniform1f("afbeaacbacdfaabb", afbeaacbacdfaabb);
+shader1.setUniform1f("ecdfbdbeac", ecdfbdbeac);
+shader1.setUniform1f("acdbdcbaedbe", acdbdcbaedbe);
+shader1.setUniform1f("acfdacfaca", acfdacfaca);
+shader1.setUniform1f("accaaabcf", accaaabcf);
+shader1.setUniform1f("decccfacffdee", decccfacffdee);
+shader1.setUniform1f("aedfddebbeafd", aedfddebbeafd);
+shader1.setUniform1f("fdaabaaebacedcdf", fdaabaaebacedcdf);
+shader1.setUniform1f("cdfadaabfcded", cdfadaabfcded);
+shader1.setUniform1f("dacdffaeeed", dacdffaeeed);
+shader1.setUniform1f("eddbfbebeb", eddbfbebeb);
+shader1.setUniform1f("afbffcebcee", afbffcebcee);
+shader1.setUniform1f("fabbdbfcef", fabbdbfcef);
+shader1.setUniform1f("aeadfffea", aeadfffea);
+shader1.setUniform1f("eeaabbcecee", eeaabbcecee);
+shader1.setUniform1f("fbeaeac", fbeaeac);
+shader1.setUniform1f("cfdaeecaaefad", cfdaeecaaefad);
+shader1.setUniform1f("fbcaabebebd", fbcaabebebd);
+shader1.setUniform1f("fabbefaacabdbbaa", fabbefaacabdbbaa);
+shader1.setUniform1f("ceabbaccfdf", ceabbaccfdf);
+shader1.setUniform1f("becaded", becaded);
+shader1.setUniform1f("fecccefbaaa", fecccefbaaa);
 
 
 	shader1.end();
-
-
-	// ofSetColor(127 + 127 * sin(time1), 200, 127 - 127 * sin(time2), 255);
-	// // ofDrawEllipse(mouseX, mouseY, 20+80*abs(sin(time1)), 20+80*abs(sin(time2)));
-	// ofDrawEllipse(720/2, 480/2, 20+80*abs(sin(time1)), 20+80*abs(sin(time2)));
-	// ofSetColor(0);
-	// ofDrawEllipse(720/2, 480/2, 18+80*abs(sin(time1)), 18+80*abs(sin(time2)));
-	// // ofDrawEllipse(mouseX, mouseY, 18+80*abs(sin(time1)), 18+80*abs(sin(time2)));
-
 
 	framebuffer0.end();
 	
@@ -267,12 +266,6 @@ std::cout << bbaadebfaadf << std::endl;
 	framebuffer0.draw(0, 0);
 	framebuffer1.end();
 
-	// movie1.draw(0, 480);
-	
-
-    ofSetColor(255);
-    // string msg="fps="+ofToString(ofGetFrameRate(),2)+" sx = " +ofToString(sx,2)+" time = " +ofToString(time1,2) + " audio = " +ofToString(scaledVol,2) +  " az = " +ofToString(az,2) + " fv = " +ofToString(fv,2);
-    // ofDrawBitmapString(msg,10,10);
 }
 
 //--------------------------------------------------------------
@@ -284,10 +277,8 @@ void ofApp::audioIn(ofSoundBuffer & input){
 	
 	float curVol = 0.0;
 	
-	// samples are "interleaved"
 	int numCounted = 0;	
 
-	//lets go through each sample and calculate the root mean square which is a rough way to calculate volume	
 	for (size_t i = 0; i < input.getNumFrames(); i++){
 		left[i]		= input[i*2]*0.5;
 		right[i]	= input[i*2+1]*0.5;
@@ -297,10 +288,7 @@ void ofApp::audioIn(ofSoundBuffer & input){
 		numCounted+=2;
 	}
 	
-	//this is how we get the mean of rms :)
 	curVol /= (float)numCounted;
-	
-	// this is how we get the root of rms :)
 	curVol = sqrt( curVol );
 	
 	smoothedVol *= 0.93;
@@ -314,28 +302,6 @@ void ofApp::audioIn(ofSoundBuffer & input){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 	
-// 	//here is how i map controls from the keyboard
-    
-//     //increment and decrement sx
-//     if (key == 's') {sx += .01;}
-//     if (key == 'x') {sx -= .01;}
-    
-//     //increment and decrement dc
-//     if (key == 'd') {dc += .01;}
-//     if (key == 'c') {dc -= .01;}
-
-// 	if (key == 'a') {az += .01;}
-//     if (key == 'z') {az -= .01;}
-
-// 	if (key == 'f') {fv += .01;}
-//     if (key == 'v') {fv -= .01;}
-
-// 	if (key == 'j') {jm += .01;}
-//     if (key == 'm') {jm -= .01;}
-
-// 	if (key == 'h') {hn += .01;}
-//     if (key == 'n') {hn -= .01;}
-        
 }
 
 //--------------------------------------------------------------

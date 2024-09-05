@@ -3,11 +3,13 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 class QDMGraphicsNode(QGraphicsItem):
+    """
+    A class to graphically define a node in the node editor.
+    """
     def __init__(self, node, parent=None):
         super().__init__(parent)
-
-        self.node = node
-        # self.content = self.node.content
+        # Define variables for styling
+        self.node = node # Functional node
         
         self._title_color = Qt.white
         self._title_font = QFont("Ubuntu", 10)
@@ -31,15 +33,10 @@ class QDMGraphicsNode(QGraphicsItem):
         # Init sockets
         self.initSockets()
 
-        # # Init content
-        # self.initContent()
-
-
         self.initUI()
 
     def mouseMoveEvent(self, event):
         super().mouseMoveEvent(event)
-        # self.node.updateConnectedEdges()
 
         for node in self.scene().scene.nodes:
             if node.grNode.isSelected():

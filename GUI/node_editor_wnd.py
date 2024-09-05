@@ -51,24 +51,23 @@ class NodeEditorWnd(QWidget):
     def addNodes(self):
         """
         Create initial nodes to be shown on startup
+        20 large slider nodes
+        20 small slider nodes
+        1 output nodes
+        Some nodes for examples
         """
         self.nodes.append(OutputNode(self.scene))
-        self.nodes.append(LargeSliderNode(self.scene))
-        self.nodes.append(LargeSliderNode(self.scene))
-        self.nodes.append(LargeSliderNode(self.scene))
-        self.nodes.append(LargeSliderNode(self.scene))
-        self.nodes.append(LargeSliderNode(self.scene))
-        self.nodes.append(LargeSliderNode(self.scene))
-        self.nodes.append(SmallSliderNode(self.scene))
-        self.nodes.append(SmallSliderNode(self.scene))
-        self.nodes.append(SmallSliderNode(self.scene))
-        self.nodes.append(SmallSliderNode(self.scene))
-        self.nodes.append(SmallSliderNode(self.scene))
-        self.nodes.append(SmallSliderNode(self.scene))
-
+        for i in range(20):
+            self.nodes.append(LargeSliderNode(self.scene))
+            self.nodes.append(SmallSliderNode(self.scene))
+    
         for node in self.nodes:
-            node.setPos(-350, -250)
-        self.nodes[0].setPos(350, 250)
+            if isinstance(node, LargeSliderNode):
+                node.setPos(-150, -250)
+            elif isinstance(node, SmallSliderNode):
+                node.setPos(-350, -250)
+            elif isinstance(node, OutputNode):
+                self.nodes[0].setPos(350, 250)
 
     def addNode(self, node):
         """
@@ -77,7 +76,6 @@ class NodeEditorWnd(QWidget):
         self.nodes.append(node)
 
     def loadStylesheet(self, filename):
-        print("Style loading:", filename)
         file = QFile(filename)
         file.open(QFile.ReadOnly | QFile.Text)
         stylesheet = file.readAll()

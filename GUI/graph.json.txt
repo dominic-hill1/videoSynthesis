@@ -1,16 +1,16 @@
 {
-    "id": 127227787684464,
+    "id": 125476298887120,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": "bdfdecce",
+            "id": "bdabfbfaefccad",
             "title": "Output",
             "pos_x": 350.0,
             "pos_y": 250.0,
             "inputs": [
                 {
-                    "id": 127227787918736,
+                    "id": 125476299154064,
                     "index": 0,
                     "position": 1,
                     "socket_type": 1
@@ -20,14 +20,14 @@
             "content": {}
         },
         {
-            "id": "badbeccc",
+            "id": "ccbbcfdeebe",
             "title": "Variable input (0-100)",
-            "pos_x": -350.0,
+            "pos_x": -150.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787956656,
+                    "id": 125476299159200,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -36,94 +36,14 @@
             "content": {}
         },
         {
-            "id": "cbedebabbcd",
-            "title": "Variable input (0-100)",
-            "pos_x": -350.0,
-            "pos_y": -250.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 127227787956848,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "dbabefceece",
-            "title": "Variable input (0-100)",
-            "pos_x": -350.0,
-            "pos_y": -250.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 127227787957040,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "aaaaadaffdfce",
-            "title": "Variable input (0-100)",
-            "pos_x": -350.0,
-            "pos_y": -250.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 127227787957232,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "cefcfababeedac",
-            "title": "Variable input (0-100)",
-            "pos_x": -350.0,
-            "pos_y": -250.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 127227787957424,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "bdfaedfbedbbabe",
-            "title": "Variable input (0-100)",
-            "pos_x": -350.0,
-            "pos_y": -250.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 127227787957616,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "ebebcbaccbaaaac",
+            "id": "ddbcabebccbd",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787957808,
+                    "id": 125476299159392,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -132,14 +52,30 @@
             "content": {}
         },
         {
-            "id": "cecafcbacc",
+            "id": "edddbcfcbbc",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299159584,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "dfbbfaec",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787958000,
+                    "id": 125476299159776,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -148,14 +84,30 @@
             "content": {}
         },
         {
-            "id": "facfabafaaad",
+            "id": "fbdeabbedc",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299159968,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fbecefbefaccf",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787958192,
+                    "id": 125476299160160,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -164,14 +116,30 @@
             "content": {}
         },
         {
-            "id": "cadfbabbcdefe",
+            "id": "bcabdcbaabfbbeed",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299160352,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "edcefcdafceff",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787958384,
+                    "id": 125476299160544,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -180,14 +148,30 @@
             "content": {}
         },
         {
-            "id": "cfbfcebefd",
+            "id": "bebcceaecdf",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299160736,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fbacdffecb",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787958576,
+                    "id": 125476299160928,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -196,14 +180,30 @@
             "content": {}
         },
         {
-            "id": "bbaadebfaadf",
+            "id": "cbcffedbadaffbbeac",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299161120,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "cfeacaefbaabbfec",
             "title": "Variable input (0-1)",
             "pos_x": -350.0,
             "pos_y": -250.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227787958768,
+                    "id": 125476299161312,
                     "index": 0,
                     "position": 4,
                     "socket_type": 0
@@ -212,30 +212,462 @@
             "content": {}
         },
         {
-            "id": "audio",
-            "title": "Audio",
+            "id": "ecabbaafadefd",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299161504,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fdaffbbddabad",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299227296,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fdedfcebbfaabd",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299227488,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "ccfffeadeac",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299227680,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "abaacfeba",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299227872,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "edfafbfde",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299228064,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "afbeaacbacdfaabb",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299228256,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "ecdfbdbeac",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299228448,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "acdbdcbaedbe",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299228640,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "acfdacfaca",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299228832,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "accaaabcf",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299229024,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "decccfacffdee",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299229216,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "aedfddebbeafd",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299229408,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fdaabaaebacedcdf",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299229600,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "cdfadaabfcded",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299229792,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "dacdffaeeed",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299229984,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "eddbfbebeb",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299230176,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "afbffcebcee",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299230368,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fabbdbfcef",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299230560,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "aeadfffea",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299230752,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "eeaabbcecee",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299230944,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fbeaeac",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299231136,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "cfdaeecaaefad",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299231328,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fbcaabebebd",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299231520,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fabbefaacabdbbaa",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299231712,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "ceabbaccfdf",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299231904,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "becaded",
+            "title": "Variable input (0-100)",
+            "pos_x": -150.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299232096,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "fecccefbaaa",
+            "title": "Variable input (0-1)",
+            "pos_x": -350.0,
+            "pos_y": -250.0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 125476299232288,
+                    "index": 0,
+                    "position": 4,
+                    "socket_type": 0
+                }
+            ],
+            "content": {}
+        },
+        {
+            "id": "debfeafb",
+            "title": "Video input",
             "pos_x": 0.0,
             "pos_y": 0.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 127227788056496,
-                    "index": 0,
-                    "position": 4,
-                    "socket_type": 0
-                }
-            ],
-            "content": {}
-        },
-        {
-            "id": "caecafeafcbe",
-            "title": "Video input",
-            "pos_x": 6.0,
-            "pos_y": 97.0,
-            "inputs": [],
-            "outputs": [
-                {
-                    "id": 127227788056736,
+                    "id": 125476264417152,
                     "index": 0,
                     "position": 4,
                     "socket_type": 1
@@ -246,10 +678,10 @@
     ],
     "edges": [
         {
-            "id": 127227788058320,
+            "id": 125476264417200,
             "edge_type": 2,
-            "start": 127227788056736,
-            "end": 127227787918736
+            "start": 125476264417152,
+            "end": 125476299154064
         }
     ]
 }
