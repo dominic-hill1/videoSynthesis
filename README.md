@@ -41,12 +41,34 @@ If you close the app and want to run it again, the main python file can be found
 
 I know this is an inconvenient installation process. The app works on OpenFrameworks which is a big c++ framework. The next step in the project is migrating away from this framework to make the installation process easier. 
 
+## Getting started
+I'd recommend copying this layout, then messing around with it and expanding.
+![image](https://github.com/user-attachments/assets/306c54be-dd38-437b-9b75-c844568bdf31)
+You can get modules by clicking the buttons in the sidebar to spawn them in. 
+
+You get the sliders by dragging them off the pile already on the canvas. 
+
+Hit `ctrl+s` when it's all set up to show the video output
+
+Let's talk through what's happening here:
+
+- We start with a video module. This plays video clips of 2001 A Space Odyssey on repeat.
+- That signal is passed into a zooming feedback module. This module will perform the equivalent of pointing a camera at its own output screen, where it looks like it repeats forever.
+- This signal is then passed into a colour displacer, which will change the colours of the video signal according to its 3 inputs.
+- This signal is then passed into a luma keying module. This performs the equivalent of a green screen effect, but based on brightness instead of greenness. It will choose between the 2 video inputs based on the brighter pixels on each video.
+- This is then passed to the output, which is shown on your screen
+
+Now move the sliders around and work out how the video changes. Add more modules to the layout and experiment.
+
 ## Usage
 - The node editor is used to define rules for the colour of a pixel depending on the position of that pixel
 - Visuals are made in real time
 - Numeric outputs (yellow nodes) must be connected with numeric inputs
 - Video outputs (red nodes) must be connected with video inputs
+- Only one connection is allowed into an input, but multiple connections can come out of an output
 - Press `ctrl+s` to send changes to output
+- Hold `ctrl+click` and drag to create a line to delete connections
+
 
 ### The modules
 Oscillators:
@@ -58,7 +80,7 @@ Oscillators:
 - Output: Oscillating number between 0-1
 
 Luma Key:
-- Similar to a green screen effect, but selects on brightness
+- Similar to a green screen effect, but selects based on brightness
 - 3 inputs:
   -   Default video
   -   Alternative Video
@@ -70,6 +92,10 @@ X-Coordinate:
 
 Y-Coordinate:
 - A y-coordinate of a pixel, normalized between 0-1
+
+## Acknowledgements
+Thanks to [Pavel Křupala](https://gitlab.com/pavel.krupala) for his node editor tutorials for helping me to get started on the node editor
+Thanks to [Andrei Jay](https://andreijaycreativecoding.com/) for his insight into emulating analogue video synthesis
 
 
 ## Contact Me
