@@ -95,6 +95,7 @@ Y-Coordinate:
 
 ## Acknowledgements
 Thanks to [Pavel Křupala](https://gitlab.com/pavel.krupala) for his node editor tutorials for helping me to get started on the node editor
+
 Thanks to [Andrei Jay](https://andreijaycreativecoding.com/) for his insight into emulating analogue video synthesis
 
 
