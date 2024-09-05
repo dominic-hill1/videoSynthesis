@@ -1,3 +1,4 @@
+⬇️⬇️ Installation instructions below ⬇️⬇️
 # Modular Video Synth
 A full-stack application to emulate analogue video synthesis, using a node editor to generate GLSL shaders
 
