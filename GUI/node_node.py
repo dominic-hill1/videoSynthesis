@@ -362,14 +362,14 @@ class FeedbackZoomNode(Node):
         self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_TOP, socket_type=FLOAT_TYPE))
         self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_BOTTOM, socket_type=COLOR_TYPE))
 
-        # TODO: Implement writeCode
+
 
     def writeInitCode(self):
-        return ""
+        return f"vec2 {self.id}abc = vec2(0, 0);vec4 {self.id} = vec4(0, 0, 0, 0);"
     def writeCode(self):
-        code = f"vec2 {self.id}abc = texCoordVarying;"
+        code = f"{self.id}abc = texCoordVarying;"
         code += f"{self.id}abc = feedbackZoom({self.id}abc, {self.inputNodes[1].id});"
-        code += f"vec4 {self.id} = texture(tex0, {self.id}abc);"
+        code += f"{self.id} = texture(tex0, {self.id}abc);"
         return code
 
 

@@ -69,6 +69,7 @@ class NodeEditorWnd(QWidget):
             elif isinstance(node, OutputNode):
                 self.nodes[0].setPos(350, 250)
 
+
     def addNode(self, node):
         """
         Add a node to the window

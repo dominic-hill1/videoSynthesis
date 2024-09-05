@@ -91,7 +91,6 @@ class QDMGraphicsView(QGraphicsView):
         # Event handling for left mouse button presed
         item = self.getItemAtClick(event)
         self.last_lmb_click_scene_pos = self.mapToScene(event.pos())
-        if DEBUG: print("LMB click on: ", item, self.debug_modifiers(event))
          
         # Logic depending on what item is pressed
         if hasattr(item, "node") or isinstance(item, QDMGraphicsEdge) or item is None: # If node, edge is pressed, pass event to pyqt5 event handling
