@@ -80,9 +80,9 @@ class QDMNodeContentColorAdd(QDMNodeContentWidget):
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.red_label = QLabel("Color 1", self)
+        self.red_label = QLabel("Video 1", self)
         self.red_label.move(5, 10)
-        self.green_label = QLabel("Color 2", self)
+        self.green_label = QLabel("Video 2", self)
         self.green_label.move(5, 50)
 
         self.out_label = QLabel("Output", self)
@@ -95,9 +95,9 @@ class QDMNodeContentLumaKey(QDMNodeContentWidget):
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.amp_label = QLabel("Default colour", self)
+        self.amp_label = QLabel("Default Video", self)
         self.amp_label.move(5, 50)
-        self.rate_label = QLabel("Alternative colour", self)
+        self.rate_label = QLabel("Alternative Video", self)
         self.rate_label.move(5, 88)
         self.freq_label = QLabel("Sensitivity", self)
         self.freq_label.move(5, 126)
@@ -113,13 +113,13 @@ class QDMNodeContentColorDisplace(QDMNodeContentWidget):
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.color_label = QLabel("Colour", self)
+        self.color_label = QLabel("Video", self)
         self.color_label.move(5, 10)
-        self.x_label = QLabel("x", self)
+        self.x_label = QLabel("X", self)
         self.x_label.move(5, 48)
-        self.y_label = QLabel("y", self)
+        self.y_label = QLabel("Y", self)
         self.y_label.move(5, 88)
-        self.z_label = QLabel("z", self)
+        self.z_label = QLabel("Z", self)
         self.z_label.move(5, 128)
 
         self.out_label = QLabel("Output", self)
@@ -132,7 +132,7 @@ class QDMNodeContentFeedbackZoom(QDMNodeContentWidget):
     def initUI(self):
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.zoom_label = QLabel("Colour", self)
+        self.zoom_label = QLabel("Video", self)
         self.zoom_label.move(5, 10)
 
         self.zoom_label = QLabel("Zoom factor", self)
@@ -213,7 +213,7 @@ class QDMNodeContentColorX(QDMNodeContentWidget):
     """
     def initUI(self):
         layout = QVBoxLayout()
-        self.label = QLabel("x-coordinate of pixel", self)
+        self.label = QLabel("X-coordinate of pixel", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
@@ -224,7 +224,7 @@ class QDMNodeContentColorY(QDMNodeContentWidget):
     """
     def initUI(self):
         layout = QVBoxLayout()
-        self.label = QLabel("y-coordinate of pixel", self)
+        self.label = QLabel("Y-coordinate of pixel", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
@@ -236,7 +236,7 @@ class QDMNodeContentTime(QDMNodeContentWidget):
     """
     def initUI(self):
         layout = QVBoxLayout()
-        self.label = QLabel("time", self)
+        self.label = QLabel("Time", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)
@@ -250,7 +250,7 @@ class QDMNodeContentAudio(QDMNodeContentWidget):
         self.label = QLabel("Audio volume", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
-        self.label2 = QLabel("normalised 0-1", self)
+        self.label2 = QLabel("Normalised 0-1", self)
         self.label2.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label2)
         self.setLayout(layout)
@@ -291,17 +291,6 @@ class QDMNodeContentMultiply(QDMNodeContentWidget):
         self.setLayout(layout)
 
 
-class QDMNodeContentDivide(QDMNodeContentWidget):
-    """
-    Set labels for division modules
-    """
-    def initUI(self):
-        layout = QVBoxLayout()
-        self.label = QLabel("Divide two signals", self)
-        self.label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(self.label)
-        self.setLayout(layout)
-
 
 class QDMNodeContentNegate(QDMNodeContentWidget):
     """
@@ -309,7 +298,7 @@ class QDMNodeContentNegate(QDMNodeContentWidget):
     """
     def initUI(self):
         layout = QVBoxLayout()
-        self.label = QLabel("Make input negative", self)
+        self.label = QLabel("Negate input", self)
         self.label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label)
         self.setLayout(layout)

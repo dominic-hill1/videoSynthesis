@@ -285,7 +285,7 @@ class ColorDisplaceNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Colour displacer"
+        self.title = "Colour displacement"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 240
@@ -618,34 +618,6 @@ class MultiplyNode(Node):
         code = f"{self.id} = {self.inputNodes[0].id} * {self.inputNodes[1].id};"
         return code
     
-class DivideNode(Node):
-    """
-    Class to represent a division node
-    """
-    def __init__(self, scene):
-        super().__init__(scene)
-
-        self.title = "Division"
-
-        self.grNode = QDMGraphicsNode(self)
-        self.grNode.height = 120
-        self.content = QDMNodeContentDivide(self)
-        self.grNode.initContent()
-
-        self.scene.addNode(self)
-        self.scene.grScene.addItem(self.grNode)
-
-        self.inputs.append(Socket(node=self, input=True, index=0, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
-        self.inputs.append(Socket(node=self, input=True, index=1, position=LEFT_BOTTOM, socket_type=FLOAT_TYPE))
-
-        self.outputs.append(Socket(node=self, input=False, index=0, position=RIGHT_TOP, socket_type=FLOAT_TYPE))
-
-    def writeInitCode(self):
-        code = f"float {self.id} = 0;"
-        return code
-    def writeCode(self):
-        code = f"{self.id} = {self.inputNodes[0].id} / {self.inputNodes[1].id};"
-        return code
     
 class NegateNode(Node):
     """

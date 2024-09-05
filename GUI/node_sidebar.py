@@ -33,7 +33,6 @@ class Sidebar(QWidget):
         self.button13 = QPushButton('Time')        
         self.button14 = QPushButton('Addition')        
         self.button15 = QPushButton('Multiplication')
-        self.button16 = QPushButton('Division')
         self.button17 = QPushButton('Negation')
         self.button18 = QPushButton('Video input')
         self.button19 = QPushButton('Audio input')
@@ -53,7 +52,6 @@ class Sidebar(QWidget):
         self.layout.addWidget(self.button13)
         self.layout.addWidget(self.button14)
         self.layout.addWidget(self.button15)
-        self.layout.addWidget(self.button16)
         self.layout.addWidget(self.button17)
         
         # Add functions to buttons
@@ -71,7 +69,6 @@ class Sidebar(QWidget):
         self.button13.clicked.connect(lambda: self.editor.addNode(TimeNode(self.editor.scene)))
         self.button14.clicked.connect(lambda: self.editor.addNode(AddNode(self.editor.scene)))
         self.button15.clicked.connect(lambda: self.editor.addNode(MultiplyNode(self.editor.scene)))
-        self.button16.clicked.connect(lambda: self.editor.addNode(DivideNode(self.editor.scene)))
         self.button17.clicked.connect(lambda: self.editor.addNode(NegateNode(self.editor.scene)))
         self.button18.clicked.connect(lambda: self.editor.addNode(VideoInputNode(self.editor.scene)))
         self.button19.clicked.connect(lambda: self.editor.addNode(AudioNode(self.editor.scene)))
