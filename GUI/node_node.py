@@ -196,7 +196,7 @@ class ColorMixerNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Colour mixer"
+        self.title = "Colour Mixer"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 200
@@ -226,7 +226,7 @@ class ColorAddNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Colour addition"
+        self.title = "Colour Addition"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 160
@@ -255,7 +255,7 @@ class ColorMultNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Colour multiplication"
+        self.title = "Colour Multiplication"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 160
@@ -285,7 +285,7 @@ class ColorDisplaceNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Colour displacement"
+        self.title = "Colour Displacement"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 240
@@ -348,7 +348,7 @@ class FeedbackZoomNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Zooming feedback"
+        self.title = "Zooming Feedback"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 120
@@ -395,7 +395,7 @@ class SmallSliderNode(SliderNode):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Variable input (0-1)"
+        self.title = "Variable Input (0-1)"
 
         self.value = 0
 
@@ -417,7 +417,7 @@ class LargeSliderNode(SliderNode):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Variable input (0-100)"
+        self.title = "Variable Input (0-100)"
 
         self.value = 0
 
@@ -539,7 +539,7 @@ class VideoInputNode(Node):
     def __init__(self, scene):
         super().__init__(scene)
 
-        self.title = "Video input"
+        self.title = "Video Input"
 
         self.grNode = QDMGraphicsNode(self)
         self.grNode.height = 120
