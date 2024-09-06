@@ -11,4 +11,3 @@ if __name__ == '__main__':
     # Close application
     app.aboutToQuit.connect(wnd.cleanupResources)
     sys.exit(app.exec_())
-

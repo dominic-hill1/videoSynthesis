@@ -136,7 +136,11 @@ class Scene(Serializable):
                 for inputNode in node.inputNodes:
                     if inputNode != None:
                         nextWave.append(inputNode)
-                code = node.writeCode() + "\n" + code
+                try:
+                    code = node.writeCode() + "\n" + code
+                except AttributeError as e:
+                    print("Please ensure that all input sockets have a connection into them")
+                    raise(e)
             print(nextWave)
             activeNodes = nextWave
 
