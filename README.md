@@ -18,7 +18,7 @@ I've written this so someone without any command line experience can install the
 - Occationally you'll get messages asking for confirmation to download something. Press "y" and enter to continue the installation
 
 This should run a script which installs the app and all of its prerequisites.
-This will take a while. It took 10 mins on my machine.
+**This will take a while**. It took 10 mins on my machine.
 After it finishes running, the app should open.
 If the install script doesn't work, have a look at install.sh and try to find the point where things went wrong or send me a message and I'll try to help out.
 
@@ -32,7 +32,7 @@ If you close the app and want to run it again, run these commands:
   - `chmod +x install.sh`
   - `sudo ./install.sh`
 This should run a script which installs the app and all of its prerequisites.
-This will take a while. It took 10 mins on my machine.
+**This will take a while**. It took 10 mins on my machine.
 After it finishes running, the app should open.
 If the install script doesn't work, have a look at install.sh and try to find the point where things went wrong or send me a message and I'll try to help out.
 
