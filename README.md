@@ -46,7 +46,7 @@ If you close the app and want to run it again, run these commands:
 - `python3 main.py`
 
 
-I know this is an inconvenient installation process. The app works on OpenFrameworks which is a big c++ framework. The next step in the project is migrating away from this framework to make the installation process easier. 
+I know this is an inconvenient installation process. The app works on OpenFrameworks which is a big C++ framework (which needs to compile). The next step in the project is migrating away from this framework to make the installation process easier. 
 
 ## Getting started
 I'd recommend copying this layout, then messing around with it and expanding.
