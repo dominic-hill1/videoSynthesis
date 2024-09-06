@@ -44,7 +44,8 @@ I know this is an inconvenient installation process. The app works on OpenFramew
 
 ## Getting started
 I'd recommend copying this layout, then messing around with it and expanding.
-![image](https://github.com/user-attachments/assets/306c54be-dd38-437b-9b75-c844568bdf31)
+![image](https://github.com/user-attachments/assets/a1a8aa60-df48-4923-a0e2-24f8da429570)
+
 You can get modules by clicking the buttons in the sidebar to spawn them in. 
 
 You get the sliders by dragging them off the pile already on the canvas. 
@@ -59,7 +60,9 @@ Let's talk through what's happening here:
 - This signal is then passed into a luma keying module. This performs the equivalent of a green screen effect, but based on brightness instead of greenness. It will choose between the 2 video inputs based on the brighter pixels on each video.
 - This is then passed to the output, which is shown on your screen
 
-Now move the sliders around and work out how the video changes. Add more modules to the layout and experiment.
+You can move the sliders around and work out how the video changes. 
+
+Next, try to add more modules to the layout and experiment.
 
 ## Usage
 - The node editor is used to define rules for the colour of a pixel depending on the position of that pixel
