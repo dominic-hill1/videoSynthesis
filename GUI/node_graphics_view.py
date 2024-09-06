@@ -231,9 +231,10 @@ class QDMGraphicsView(QGraphicsView):
 
         if type(item) is QDMGraphicsSocket:
             if item.socket != self.last_start_socket: # Edge can't go to same socket it came from
-                if item.socket.hasEdge():
-                    # item.socket.edge.remove()
-                    pass
+                if item.socket.input == True:
+                    for edge in item.socket.edges:
+                        edge.remove()
+                        # item.socket.edges.remove(edge)
                 # Set new socket connection
                 self.dragEdge.start_socket = self.last_start_socket
                 self.dragEdge.end_socket = item.socket

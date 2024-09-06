@@ -1,44 +1,44 @@
 OF_GLSL_SHADER_HEADER
-uniform float fccdedcbdadee;
-uniform float dacfaebcb;
-uniform float abaefcbffaee;
-uniform float cbbaeb;
-uniform float ecbacbcffbefd;
-uniform float feabbdddbff;
-uniform float cbfac;
-uniform float efcefcbefdeaab;
-uniform float cfacecaebe;
-uniform float fabbeedfebcc;
-uniform float abcfbbaaabaca;
-uniform float edeceefbcfac;
-uniform float ebfcbbabfceaf;
-uniform float bcbbaeda;
-uniform float ccaeabeaadcb;
-uniform float edaacdadcd;
-uniform float fbdaebedecfde;
-uniform float dafccebcfdeafdf;
-uniform float ccbfafffbcaefaf;
-uniform float bbfccbfddec;
-uniform float bacfdbefaffcaa;
-uniform float caedbbfdaaa;
-uniform float dcaaddcad;
-uniform float dbedbbfafbbf;
-uniform float cbcdcabeef;
-uniform float afbaadcdfccc;
-uniform float febabbeb;
-uniform float fefcaee;
-uniform float edcedfdefaeaf;
-uniform float cffacbabced;
-uniform float bffccfbcfcece;
-uniform float bafdeabbbdbbe;
-uniform float ebdbcaccebbbc;
-uniform float cbdadedbcfc;
-uniform float cddfabbccb;
-uniform float dfabffefdbf;
-uniform float fdbbaaaaccde;
-uniform float ffbdcfbcbea;
-uniform float fedddaaededcaaea;
-uniform float efbfdfdaded;
+uniform float eebfdddbc;
+uniform float aeefdadddc;
+uniform float cfaffdadeface;
+uniform float eafafebdbb;
+uniform float dcceeebb;
+uniform float dbbcbafe;
+uniform float fbdbeefbfffff;
+uniform float dbadbbbcfac;
+uniform float bbefeeafadcea;
+uniform float efeecadeadfe;
+uniform float bddadcbeeeab;
+uniform float dcaffadfa;
+uniform float ecabeadbbbfea;
+uniform float cfffdbefaeff;
+uniform float cdeebeddbbc;
+uniform float cbbaaedffeecba;
+uniform float abbebeeaaefc;
+uniform float fabccbbefcbdcf;
+uniform float bbdfbaaaeca;
+uniform float aeefaedcebebd;
+uniform float fccacdeeeadafcedd;
+uniform float babae;
+uniform float ceefddaddacbc;
+uniform float dcdcecdafc;
+uniform float dfacaeff;
+uniform float fbdffbdcedbbea;
+uniform float dbacbecccbcfcefdb;
+uniform float aebaacaeaacfb;
+uniform float bdabdeadafdbbcefdeccfa;
+uniform float fafbaeadcadebbfdeb;
+uniform float edafdbedce;
+uniform float eafaddfedcdb;
+uniform float beaedcacffafb;
+uniform float dfeceabedbc;
+uniform float cbbabaacf;
+uniform float dceccefdefdfeb;
+uniform float fdcccaa;
+uniform float daeccffaae;
+uniform float bcffaafaadff;
+uniform float edebdffdaaf;
 uniform float time;
 uniform float audio;
 
@@ -144,6 +144,10 @@ vec3 lumaKey(in vec4 defaultColor, in vec4 alternativeColor, in float lumaKeyVal
 void main()
 {
 
+vec4 abfbaefadbf = vec4(0, 0, 0, 0);
+vec4 bbaaefacfdb = vec4(0, 0, 0, 0);
+vec2 dafcaafcacffeabc = vec2(0, 0);vec4 dafcaafcacffe = vec4(0, 0, 0, 0);
+vec2 bbefbffabdabeebabc = texCoordVarying;vec4 bbefbffabdabeeb = texture(input1, bbefbffabdabeebabc);
 
 
 
@@ -185,4 +189,15 @@ void main()
 
 
 
+
+
+
+
+
+dafcaafcacffeabc = texCoordVarying;dafcaafcacffeabc = feedbackZoom(dafcaafcacffeabc, edebdffdaaf);dafcaafcacffe = texture(tex0, dafcaafcacffeabc);
+
+bbaaefacfdb = colorDisplaceHsb(dafcaafcacffe, daeccffaae, dceccefdefdfeb, dfeceabedbc);
+
+abfbaefadbf = vec4(lumaKey(bbefbffabdabeeb, bbaaefacfdb, eafaddfedcdb), 1.0);
+outputColor = abfbaefadbf;
 }

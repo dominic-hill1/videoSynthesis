@@ -10,7 +10,7 @@
 #define CONTROL_THRESHOLD .04f
 
 
-float fccdedcbdadee = 0;float dacfaebcb = 0;float abaefcbffaee = 0;float cbbaeb = 0;float ecbacbcffbefd = 0;float feabbdddbff = 0;float cbfac = 0;float efcefcbefdeaab = 0;float cfacecaebe = 0;float fabbeedfebcc = 0;float abcfbbaaabaca = 0;float edeceefbcfac = 0;float ebfcbbabfceaf = 0;float bcbbaeda = 0;float ccaeabeaadcb = 0;float edaacdadcd = 0;float fbdaebedecfde = 0;float dafccebcfdeafdf = 0;float ccbfafffbcaefaf = 0;float bbfccbfddec = 0;float bacfdbefaffcaa = 0;float caedbbfdaaa = 0;float dcaaddcad = 0;float dbedbbfafbbf = 0;float cbcdcabeef = 0;float afbaadcdfccc = 0;float febabbeb = 0;float fefcaee = 0;float edcedfdefaeaf = 0;float cffacbabced = 0;float bffccfbcfcece = 0;float bafdeabbbdbbe = 0;float ebdbcaccebbbc = 0;float cbdadedbcfc = 0;float cddfabbccb = 0;float dfabffefdbf = 0;float fdbbaaaaccde = 0;float ffbdcfbcbea = 0;float fedddaaededcaaea = 0;float efbfdfdaded = 0;
+float eebfdddbc = 0;float aeefdadddc = 0;float cfaffdadeface = 0;float eafafebdbb = 0;float dcceeebb = 0;float dbbcbafe = 0;float fbdbeefbfffff = 0;float dbadbbbcfac = 0;float bbefeeafadcea = 0;float efeecadeadfe = 0;float bddadcbeeeab = 0;float dcaffadfa = 0;float ecabeadbbbfea = 0;float cfffdbefaeff = 0;float cdeebeddbbc = 0;float cbbaaedffeecba = 0;float abbebeeaaefc = 0;float fabccbbefcbdcf = 0;float bbdfbaaaeca = 0;float aeefaedcebebd = 0;float fccacdeeeadafcedd = 0;float babae = 0;float ceefddaddacbc = 0;float dcdcecdafc = 0;float dfacaeff = 0;float fbdffbdcedbbea = 0;float dbacbecccbcfcefdb = 0;float aebaacaeaacfb = 0;float bdabdeadafdbbcefdeccfa = 0;float fafbaeadcadebbfdeb = 0;float edafdbedce = 0;float eafaddfedcdb = 0;float beaedcacffafb = 0;float dfeceabedbc = 0;float cbbabaacf = 0;float dceccefdefdfeb = 0;float fdcccaa = 0;float daeccffaae = 0;float bcffaafaadff = 0;float edebdffdaaf = 0;
 
 int width=0;
 int height=0;
@@ -113,7 +113,7 @@ void ofApp::update() {
 	using namespace boost::interprocess;
 
     // Open the shared memory object created by Python
-    shared_memory_object shm(open_only, "psm_79bf4d22", read_only);  // Replace with the actual name printed by the Python script
+    shared_memory_object shm(open_only, "psm_a793ba13", read_only);  // Replace with the actual name printed by the Python script
 
     // Map the whole shared memory in this process
     mapped_region region(shm, read_only);
@@ -129,46 +129,46 @@ void ofApp::update() {
 	if (str.substr(0, 6) == reload){
 		 std::cout << "RELOADING" << std::endl;
 		 shader1.load("shadersES2/shader1");
-		 shader1.setUniform1f("fccdedcbdadee", fccdedcbdadee);
-shader1.setUniform1f("dacfaebcb", dacfaebcb);
-shader1.setUniform1f("abaefcbffaee", abaefcbffaee);
-shader1.setUniform1f("cbbaeb", cbbaeb);
-shader1.setUniform1f("ecbacbcffbefd", ecbacbcffbefd);
-shader1.setUniform1f("feabbdddbff", feabbdddbff);
-shader1.setUniform1f("cbfac", cbfac);
-shader1.setUniform1f("efcefcbefdeaab", efcefcbefdeaab);
-shader1.setUniform1f("cfacecaebe", cfacecaebe);
-shader1.setUniform1f("fabbeedfebcc", fabbeedfebcc);
-shader1.setUniform1f("abcfbbaaabaca", abcfbbaaabaca);
-shader1.setUniform1f("edeceefbcfac", edeceefbcfac);
-shader1.setUniform1f("ebfcbbabfceaf", ebfcbbabfceaf);
-shader1.setUniform1f("bcbbaeda", bcbbaeda);
-shader1.setUniform1f("ccaeabeaadcb", ccaeabeaadcb);
-shader1.setUniform1f("edaacdadcd", edaacdadcd);
-shader1.setUniform1f("fbdaebedecfde", fbdaebedecfde);
-shader1.setUniform1f("dafccebcfdeafdf", dafccebcfdeafdf);
-shader1.setUniform1f("ccbfafffbcaefaf", ccbfafffbcaefaf);
-shader1.setUniform1f("bbfccbfddec", bbfccbfddec);
-shader1.setUniform1f("bacfdbefaffcaa", bacfdbefaffcaa);
-shader1.setUniform1f("caedbbfdaaa", caedbbfdaaa);
-shader1.setUniform1f("dcaaddcad", dcaaddcad);
-shader1.setUniform1f("dbedbbfafbbf", dbedbbfafbbf);
-shader1.setUniform1f("cbcdcabeef", cbcdcabeef);
-shader1.setUniform1f("afbaadcdfccc", afbaadcdfccc);
-shader1.setUniform1f("febabbeb", febabbeb);
-shader1.setUniform1f("fefcaee", fefcaee);
-shader1.setUniform1f("edcedfdefaeaf", edcedfdefaeaf);
-shader1.setUniform1f("cffacbabced", cffacbabced);
-shader1.setUniform1f("bffccfbcfcece", bffccfbcfcece);
-shader1.setUniform1f("bafdeabbbdbbe", bafdeabbbdbbe);
-shader1.setUniform1f("ebdbcaccebbbc", ebdbcaccebbbc);
-shader1.setUniform1f("cbdadedbcfc", cbdadedbcfc);
-shader1.setUniform1f("cddfabbccb", cddfabbccb);
-shader1.setUniform1f("dfabffefdbf", dfabffefdbf);
-shader1.setUniform1f("fdbbaaaaccde", fdbbaaaaccde);
-shader1.setUniform1f("ffbdcfbcbea", ffbdcfbcbea);
-shader1.setUniform1f("fedddaaededcaaea", fedddaaededcaaea);
-shader1.setUniform1f("efbfdfdaded", efbfdfdaded);
+		 shader1.setUniform1f("eebfdddbc", eebfdddbc);
+shader1.setUniform1f("aeefdadddc", aeefdadddc);
+shader1.setUniform1f("cfaffdadeface", cfaffdadeface);
+shader1.setUniform1f("eafafebdbb", eafafebdbb);
+shader1.setUniform1f("dcceeebb", dcceeebb);
+shader1.setUniform1f("dbbcbafe", dbbcbafe);
+shader1.setUniform1f("fbdbeefbfffff", fbdbeefbfffff);
+shader1.setUniform1f("dbadbbbcfac", dbadbbbcfac);
+shader1.setUniform1f("bbefeeafadcea", bbefeeafadcea);
+shader1.setUniform1f("efeecadeadfe", efeecadeadfe);
+shader1.setUniform1f("bddadcbeeeab", bddadcbeeeab);
+shader1.setUniform1f("dcaffadfa", dcaffadfa);
+shader1.setUniform1f("ecabeadbbbfea", ecabeadbbbfea);
+shader1.setUniform1f("cfffdbefaeff", cfffdbefaeff);
+shader1.setUniform1f("cdeebeddbbc", cdeebeddbbc);
+shader1.setUniform1f("cbbaaedffeecba", cbbaaedffeecba);
+shader1.setUniform1f("abbebeeaaefc", abbebeeaaefc);
+shader1.setUniform1f("fabccbbefcbdcf", fabccbbefcbdcf);
+shader1.setUniform1f("bbdfbaaaeca", bbdfbaaaeca);
+shader1.setUniform1f("aeefaedcebebd", aeefaedcebebd);
+shader1.setUniform1f("fccacdeeeadafcedd", fccacdeeeadafcedd);
+shader1.setUniform1f("babae", babae);
+shader1.setUniform1f("ceefddaddacbc", ceefddaddacbc);
+shader1.setUniform1f("dcdcecdafc", dcdcecdafc);
+shader1.setUniform1f("dfacaeff", dfacaeff);
+shader1.setUniform1f("fbdffbdcedbbea", fbdffbdcedbbea);
+shader1.setUniform1f("dbacbecccbcfcefdb", dbacbecccbcfcefdb);
+shader1.setUniform1f("aebaacaeaacfb", aebaacaeaacfb);
+shader1.setUniform1f("bdabdeadafdbbcefdeccfa", bdabdeadafdbbcefdeccfa);
+shader1.setUniform1f("fafbaeadcadebbfdeb", fafbaeadcadebbfdeb);
+shader1.setUniform1f("edafdbedce", edafdbedce);
+shader1.setUniform1f("eafaddfedcdb", eafaddfedcdb);
+shader1.setUniform1f("beaedcacffafb", beaedcacffafb);
+shader1.setUniform1f("dfeceabedbc", dfeceabedbc);
+shader1.setUniform1f("cbbabaacf", cbbabaacf);
+shader1.setUniform1f("dceccefdefdfeb", dceccefdefdfeb);
+shader1.setUniform1f("fdcccaa", fdcccaa);
+shader1.setUniform1f("daeccffaae", daeccffaae);
+shader1.setUniform1f("bcffaafaadff", bcffaafaadff);
+shader1.setUniform1f("edebdffdaaf", edebdffdaaf);
 
 	}else{
 		std::istringstream stream(receivedData);
@@ -185,7 +185,7 @@ shader1.setUniform1f("efbfdfdaded", efbfdfdaded);
 			std::cerr << "Out of range: " << e.what() << std::endl;
 		}
 
-		if (varName == "fccdedcbdadee"){fccdedcbdadee= varValue;}if (varName == "dacfaebcb"){dacfaebcb= varValue;}if (varName == "abaefcbffaee"){abaefcbffaee= varValue;}if (varName == "cbbaeb"){cbbaeb= varValue;}if (varName == "ecbacbcffbefd"){ecbacbcffbefd= varValue;}if (varName == "feabbdddbff"){feabbdddbff= varValue;}if (varName == "cbfac"){cbfac= varValue;}if (varName == "efcefcbefdeaab"){efcefcbefdeaab= varValue;}if (varName == "cfacecaebe"){cfacecaebe= varValue;}if (varName == "fabbeedfebcc"){fabbeedfebcc= varValue;}if (varName == "abcfbbaaabaca"){abcfbbaaabaca= varValue;}if (varName == "edeceefbcfac"){edeceefbcfac= varValue;}if (varName == "ebfcbbabfceaf"){ebfcbbabfceaf= varValue;}if (varName == "bcbbaeda"){bcbbaeda= varValue;}if (varName == "ccaeabeaadcb"){ccaeabeaadcb= varValue;}if (varName == "edaacdadcd"){edaacdadcd= varValue;}if (varName == "fbdaebedecfde"){fbdaebedecfde= varValue;}if (varName == "dafccebcfdeafdf"){dafccebcfdeafdf= varValue;}if (varName == "ccbfafffbcaefaf"){ccbfafffbcaefaf= varValue;}if (varName == "bbfccbfddec"){bbfccbfddec= varValue;}if (varName == "bacfdbefaffcaa"){bacfdbefaffcaa= varValue;}if (varName == "caedbbfdaaa"){caedbbfdaaa= varValue;}if (varName == "dcaaddcad"){dcaaddcad= varValue;}if (varName == "dbedbbfafbbf"){dbedbbfafbbf= varValue;}if (varName == "cbcdcabeef"){cbcdcabeef= varValue;}if (varName == "afbaadcdfccc"){afbaadcdfccc= varValue;}if (varName == "febabbeb"){febabbeb= varValue;}if (varName == "fefcaee"){fefcaee= varValue;}if (varName == "edcedfdefaeaf"){edcedfdefaeaf= varValue;}if (varName == "cffacbabced"){cffacbabced= varValue;}if (varName == "bffccfbcfcece"){bffccfbcfcece= varValue;}if (varName == "bafdeabbbdbbe"){bafdeabbbdbbe= varValue;}if (varName == "ebdbcaccebbbc"){ebdbcaccebbbc= varValue;}if (varName == "cbdadedbcfc"){cbdadedbcfc= varValue;}if (varName == "cddfabbccb"){cddfabbccb= varValue;}if (varName == "dfabffefdbf"){dfabffefdbf= varValue;}if (varName == "fdbbaaaaccde"){fdbbaaaaccde= varValue;}if (varName == "ffbdcfbcbea"){ffbdcfbcbea= varValue;}if (varName == "fedddaaededcaaea"){fedddaaededcaaea= varValue;}if (varName == "efbfdfdaded"){efbfdfdaded= varValue;}
+		if (varName == "eebfdddbc"){eebfdddbc= varValue;}if (varName == "aeefdadddc"){aeefdadddc= varValue;}if (varName == "cfaffdadeface"){cfaffdadeface= varValue;}if (varName == "eafafebdbb"){eafafebdbb= varValue;}if (varName == "dcceeebb"){dcceeebb= varValue;}if (varName == "dbbcbafe"){dbbcbafe= varValue;}if (varName == "fbdbeefbfffff"){fbdbeefbfffff= varValue;}if (varName == "dbadbbbcfac"){dbadbbbcfac= varValue;}if (varName == "bbefeeafadcea"){bbefeeafadcea= varValue;}if (varName == "efeecadeadfe"){efeecadeadfe= varValue;}if (varName == "bddadcbeeeab"){bddadcbeeeab= varValue;}if (varName == "dcaffadfa"){dcaffadfa= varValue;}if (varName == "ecabeadbbbfea"){ecabeadbbbfea= varValue;}if (varName == "cfffdbefaeff"){cfffdbefaeff= varValue;}if (varName == "cdeebeddbbc"){cdeebeddbbc= varValue;}if (varName == "cbbaaedffeecba"){cbbaaedffeecba= varValue;}if (varName == "abbebeeaaefc"){abbebeeaaefc= varValue;}if (varName == "fabccbbefcbdcf"){fabccbbefcbdcf= varValue;}if (varName == "bbdfbaaaeca"){bbdfbaaaeca= varValue;}if (varName == "aeefaedcebebd"){aeefaedcebebd= varValue;}if (varName == "fccacdeeeadafcedd"){fccacdeeeadafcedd= varValue;}if (varName == "babae"){babae= varValue;}if (varName == "ceefddaddacbc"){ceefddaddacbc= varValue;}if (varName == "dcdcecdafc"){dcdcecdafc= varValue;}if (varName == "dfacaeff"){dfacaeff= varValue;}if (varName == "fbdffbdcedbbea"){fbdffbdcedbbea= varValue;}if (varName == "dbacbecccbcfcefdb"){dbacbecccbcfcefdb= varValue;}if (varName == "aebaacaeaacfb"){aebaacaeaacfb= varValue;}if (varName == "bdabdeadafdbbcefdeccfa"){bdabdeadafdbbcefdeccfa= varValue;}if (varName == "fafbaeadcadebbfdeb"){fafbaeadcadebbfdeb= varValue;}if (varName == "edafdbedce"){edafdbedce= varValue;}if (varName == "eafaddfedcdb"){eafaddfedcdb= varValue;}if (varName == "beaedcacffafb"){beaedcacffafb= varValue;}if (varName == "dfeceabedbc"){dfeceabedbc= varValue;}if (varName == "cbbabaacf"){cbbabaacf= varValue;}if (varName == "dceccefdefdfeb"){dceccefdefdfeb= varValue;}if (varName == "fdcccaa"){fdcccaa= varValue;}if (varName == "daeccffaae"){daeccffaae= varValue;}if (varName == "bcffaafaadff"){bcffaafaadff= varValue;}if (varName == "edebdffdaaf"){edebdffdaaf= varValue;}
 	}
 
 
@@ -214,46 +214,46 @@ void ofApp::draw() {
 	shader1.setUniform1f("audio", scaledVol);
 
 
-	shader1.setUniform1f("fccdedcbdadee", fccdedcbdadee);
-shader1.setUniform1f("dacfaebcb", dacfaebcb);
-shader1.setUniform1f("abaefcbffaee", abaefcbffaee);
-shader1.setUniform1f("cbbaeb", cbbaeb);
-shader1.setUniform1f("ecbacbcffbefd", ecbacbcffbefd);
-shader1.setUniform1f("feabbdddbff", feabbdddbff);
-shader1.setUniform1f("cbfac", cbfac);
-shader1.setUniform1f("efcefcbefdeaab", efcefcbefdeaab);
-shader1.setUniform1f("cfacecaebe", cfacecaebe);
-shader1.setUniform1f("fabbeedfebcc", fabbeedfebcc);
-shader1.setUniform1f("abcfbbaaabaca", abcfbbaaabaca);
-shader1.setUniform1f("edeceefbcfac", edeceefbcfac);
-shader1.setUniform1f("ebfcbbabfceaf", ebfcbbabfceaf);
-shader1.setUniform1f("bcbbaeda", bcbbaeda);
-shader1.setUniform1f("ccaeabeaadcb", ccaeabeaadcb);
-shader1.setUniform1f("edaacdadcd", edaacdadcd);
-shader1.setUniform1f("fbdaebedecfde", fbdaebedecfde);
-shader1.setUniform1f("dafccebcfdeafdf", dafccebcfdeafdf);
-shader1.setUniform1f("ccbfafffbcaefaf", ccbfafffbcaefaf);
-shader1.setUniform1f("bbfccbfddec", bbfccbfddec);
-shader1.setUniform1f("bacfdbefaffcaa", bacfdbefaffcaa);
-shader1.setUniform1f("caedbbfdaaa", caedbbfdaaa);
-shader1.setUniform1f("dcaaddcad", dcaaddcad);
-shader1.setUniform1f("dbedbbfafbbf", dbedbbfafbbf);
-shader1.setUniform1f("cbcdcabeef", cbcdcabeef);
-shader1.setUniform1f("afbaadcdfccc", afbaadcdfccc);
-shader1.setUniform1f("febabbeb", febabbeb);
-shader1.setUniform1f("fefcaee", fefcaee);
-shader1.setUniform1f("edcedfdefaeaf", edcedfdefaeaf);
-shader1.setUniform1f("cffacbabced", cffacbabced);
-shader1.setUniform1f("bffccfbcfcece", bffccfbcfcece);
-shader1.setUniform1f("bafdeabbbdbbe", bafdeabbbdbbe);
-shader1.setUniform1f("ebdbcaccebbbc", ebdbcaccebbbc);
-shader1.setUniform1f("cbdadedbcfc", cbdadedbcfc);
-shader1.setUniform1f("cddfabbccb", cddfabbccb);
-shader1.setUniform1f("dfabffefdbf", dfabffefdbf);
-shader1.setUniform1f("fdbbaaaaccde", fdbbaaaaccde);
-shader1.setUniform1f("ffbdcfbcbea", ffbdcfbcbea);
-shader1.setUniform1f("fedddaaededcaaea", fedddaaededcaaea);
-shader1.setUniform1f("efbfdfdaded", efbfdfdaded);
+	shader1.setUniform1f("eebfdddbc", eebfdddbc);
+shader1.setUniform1f("aeefdadddc", aeefdadddc);
+shader1.setUniform1f("cfaffdadeface", cfaffdadeface);
+shader1.setUniform1f("eafafebdbb", eafafebdbb);
+shader1.setUniform1f("dcceeebb", dcceeebb);
+shader1.setUniform1f("dbbcbafe", dbbcbafe);
+shader1.setUniform1f("fbdbeefbfffff", fbdbeefbfffff);
+shader1.setUniform1f("dbadbbbcfac", dbadbbbcfac);
+shader1.setUniform1f("bbefeeafadcea", bbefeeafadcea);
+shader1.setUniform1f("efeecadeadfe", efeecadeadfe);
+shader1.setUniform1f("bddadcbeeeab", bddadcbeeeab);
+shader1.setUniform1f("dcaffadfa", dcaffadfa);
+shader1.setUniform1f("ecabeadbbbfea", ecabeadbbbfea);
+shader1.setUniform1f("cfffdbefaeff", cfffdbefaeff);
+shader1.setUniform1f("cdeebeddbbc", cdeebeddbbc);
+shader1.setUniform1f("cbbaaedffeecba", cbbaaedffeecba);
+shader1.setUniform1f("abbebeeaaefc", abbebeeaaefc);
+shader1.setUniform1f("fabccbbefcbdcf", fabccbbefcbdcf);
+shader1.setUniform1f("bbdfbaaaeca", bbdfbaaaeca);
+shader1.setUniform1f("aeefaedcebebd", aeefaedcebebd);
+shader1.setUniform1f("fccacdeeeadafcedd", fccacdeeeadafcedd);
+shader1.setUniform1f("babae", babae);
+shader1.setUniform1f("ceefddaddacbc", ceefddaddacbc);
+shader1.setUniform1f("dcdcecdafc", dcdcecdafc);
+shader1.setUniform1f("dfacaeff", dfacaeff);
+shader1.setUniform1f("fbdffbdcedbbea", fbdffbdcedbbea);
+shader1.setUniform1f("dbacbecccbcfcefdb", dbacbecccbcfcefdb);
+shader1.setUniform1f("aebaacaeaacfb", aebaacaeaacfb);
+shader1.setUniform1f("bdabdeadafdbbcefdeccfa", bdabdeadafdbbcefdeccfa);
+shader1.setUniform1f("fafbaeadcadebbfdeb", fafbaeadcadebbfdeb);
+shader1.setUniform1f("edafdbedce", edafdbedce);
+shader1.setUniform1f("eafaddfedcdb", eafaddfedcdb);
+shader1.setUniform1f("beaedcacffafb", beaedcacffafb);
+shader1.setUniform1f("dfeceabedbc", dfeceabedbc);
+shader1.setUniform1f("cbbabaacf", cbbabaacf);
+shader1.setUniform1f("dceccefdefdfeb", dceccefdefdfeb);
+shader1.setUniform1f("fdcccaa", fdcccaa);
+shader1.setUniform1f("daeccffaae", daeccffaae);
+shader1.setUniform1f("bcffaafaadff", bcffaafaadff);
+shader1.setUniform1f("edebdffdaaf", edebdffdaaf);
 
 
 	shader1.end();
