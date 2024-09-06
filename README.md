@@ -78,6 +78,7 @@ Next, try to add more modules to the layout and experiment.
 - Only one connection is allowed into an input, but multiple connections can come out of an output
 - Press `ctrl+s` to send changes to output
 - Hold `ctrl+click` and drag to create a line to delete connections
+- I'd recommend using a mouse to use the app.
 
 
 ### The modules
