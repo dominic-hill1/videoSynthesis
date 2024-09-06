@@ -9,7 +9,7 @@ The app has some awkward prerequisites, so I've made an install script to downlo
 
 It takes a while, but only takes a few commands
 
-### Linux
+### Linux (recommended)
 - Run the commands:
   - `wget https://raw.githubusercontent.com/dominic-hill1/videoSynthesis/main/install.sh`
   - `chmod +x install.sh`
@@ -23,13 +23,17 @@ If you close the app and want to run it again, the main python file can be found
 `of_v0.12.0_linux64gcc6_release/apps/myApps/videoSynthesis/GUI`
 
 ### Windows
-I've written this so someone without any command line experience can install the app easily. 
+I've written this so someone without any command line experience can install the app easily. If you've worked with WSL before you'll know what to do for the first section. 
 - Open a Windows PowerShell window (This can be done by searching up "Windows Powershell" on your PC)
-- Type the command `wsl --install` and hit enter to run the command. 
-- Run the command `wsl.exe --install Ubuntu-22.04`
-- Run the command `wget https://raw.githubusercontent.com/dominic-hill1/videoSynthesis/main/install.sh`
-- Run the command `chmod +x install.sh`
-- Run the command `sudo ./install.sh`
+- Type the command `wsl --install` and hit enter to run the command and follow the instructions. More info [here](https://learn.microsoft.com/en-us/windows/wsl/install)
+- You might need to run the command `wsl.exe --install Ubuntu-22.04`
+- Restart your computer
+- You should now see a terminal that looks like this:
+- ![image](https://github.com/user-attachments/assets/853d670b-e612-4889-a3d6-e979bbe16b2c)
+- In this terminal, run the commands:
+- `wget https://raw.githubusercontent.com/dominic-hill1/videoSynthesis/main/install.sh`
+- `chmod +x install.sh`
+- `sudo ./install.sh`
 - Occationally you'll get messages asking for confirmation to download something. Press "y" and enter to continue the installation
 
 This should run a script which installs the app and all of its prerequisites.
