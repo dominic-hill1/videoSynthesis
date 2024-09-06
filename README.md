@@ -1,8 +1,7 @@
 ⬇️⬇️ Installation instructions below ⬇️⬇️
 # Modular Video Synth
-A full-stack application to emulate analogue video synthesis, using a node editor to generate GLSL shaders
+A full-stack application to emulate analogue modular video synthesis, using a node editor to generate GLSL shaders
 
-## Showcase
 ![image](https://github.com/user-attachments/assets/05b4e7a7-8a6e-44ed-a274-314c3cb01eb2)
 
 ## Installation
@@ -19,7 +18,7 @@ I've written this so someone without any command line experience can install the
 - Occationally you'll get messages asking for confirmation to download something. Press "y" and enter to continue the installation
 
 This should run a script which installs the app and all of its prerequisites.
-This will take a while. It took 10 mins on my machine.
+**This will take a while**. It took 10 mins on my machine.
 After it finishes running, the app should open.
 If the install script doesn't work, have a look at install.sh and try to find the point where things went wrong or send me a message and I'll try to help out.
 
@@ -33,7 +32,7 @@ If you close the app and want to run it again, run these commands:
   - `chmod +x install.sh`
   - `sudo ./install.sh`
 This should run a script which installs the app and all of its prerequisites.
-This will take a while. It took 10 mins on my machine.
+**This will take a while**. It took 10 mins on my machine.
 After it finishes running, the app should open.
 If the install script doesn't work, have a look at install.sh and try to find the point where things went wrong or send me a message and I'll try to help out.
 
@@ -83,19 +82,50 @@ Oscillators:
   -   Frequency
 - Output: Oscillating number between 0-1
 
-Luma Key:
-- Similar to a green screen effect, but selects based on brightness
+Video input:
+- This plays video clips of 2001 A Space Odyssey on repeat.
+- The video can be changed by replacing movie.mp4 in `bin/data/`
+
+Audio input:
+- Microphone volume normalised between 0-1
+
+Colour Mixer:
+- Takes red, green and blue channels to create a full video.
+
+Colour Addition:
+- Add two colour channels
+
+Colour Multiplication:
+- Multiply two colour channels
+
+Colour displacement:
+- Takes a video input and has 3 colour channels which can be displaced.
+
+Luma Keying:
+- Similar to a green screen effect, but selects pixels based on brightness
 - 3 inputs:
   -   Default video
   -   Alternative Video
   -   Sensitivity: control the sensitivity of the effect (0 will show one video, 1 will show the other)
 - Output: Keyed video
-  
+
+Zooming feedback:
+- Takes a video, and does the equivalent of pointing a camera at its own output.
+- Zoom factor controls the strength of the effect
+
 X-Coordinate:
 - An x-coordinate of a pixel, normalized between 0-1
 
 Y-Coordinate:
 - A y-coordinate of a pixel, normalized between 0-1
+
+Time:
+- A constantly increasing value
+
+Arthithmetic modules:
+- Addition
+- Multiplication
+- Negation
 
 ## Acknowledgements
 Thanks to [Pavel Křupala](https://gitlab.com/pavel.krupala) for his node editor tutorials for helping me to get started on the node editor
