@@ -82,19 +82,50 @@ Oscillators:
   -   Frequency
 - Output: Oscillating number between 0-1
 
-Luma Key:
-- Similar to a green screen effect, but selects based on brightness
+Video input:
+- This plays video clips of 2001 A Space Odyssey on repeat.
+- The video can be changed by replacing movie.mp4 in `bin/data/`
+
+Audio input:
+- Microphone volume normalised between 0-1
+
+Colour Mixer:
+- Takes red, green and blue channels to create a full video.
+
+Colour Addition:
+- Add two colour channels
+
+Colour Multiplication:
+- Multiply two colour channels
+
+Colour displacement:
+- Takes a video input and has 3 colour channels which can be displaced.
+
+Luma Keying:
+- Similar to a green screen effect, but selects pixels based on brightness
 - 3 inputs:
   -   Default video
   -   Alternative Video
   -   Sensitivity: control the sensitivity of the effect (0 will show one video, 1 will show the other)
 - Output: Keyed video
-  
+
+Zooming feedback:
+- Takes a video, and does the equivalent of pointing a camera at its own output.
+- Zoom factor controls the strength of the effect
+
 X-Coordinate:
 - An x-coordinate of a pixel, normalized between 0-1
 
 Y-Coordinate:
 - A y-coordinate of a pixel, normalized between 0-1
+
+Time:
+- A constantly increasing value
+
+Arthithmetic modules:
+- Addition
+- Multiplication
+- Negation
 
 ## Acknowledgements
 Thanks to [Pavel Křupala](https://gitlab.com/pavel.krupala) for his node editor tutorials for helping me to get started on the node editor
