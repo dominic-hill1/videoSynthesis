@@ -4,6 +4,8 @@ A full-stack application to emulate analogue modular video synthesis, using a no
 
 ![image](https://github.com/user-attachments/assets/05b4e7a7-8a6e-44ed-a274-314c3cb01eb2)
 
+[Showcase videos](https://drive.google.com/drive/folders/1wLoViHbur1zgaFwqx00iV_4vDBuumJgl?usp=drive_link)
+
 ## Installation
 The app has some awkward prerequisites, so I've made an install script to download it all for you.
 
